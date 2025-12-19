@@ -8,17 +8,21 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      /* THEME: "Deep Ocean" */
-      --bg: #020617;
-      --panel: #0f172a;
-      --border: #1e293b;
-      --text-main: #f1f5f9;
-      --text-muted: #64748b;
-      --accent: #38bdf8;
+      /* THEME: "Deep Ocean" / Institutional Data */
+      --bg: #020617;        /* Midnight Navy */
+      --panel: #0f172a;     /* Dark Slate */
+      --border: #1e293b;    /* Slate Border */
+      
+      --text-main: #f1f5f9; /* Cool White */
+      --text-muted: #64748b; /* Slate Grey */
+      
+      /* ACCENTS: Electric Blue Signal */
+      --accent: #38bdf8;    /* Sky Blue (The "Signal") */
+      
       --max-w: 1100px;
       --pad: 2rem;
       
@@ -37,6 +41,7 @@
       font-family: var(--font-sans);
       font-weight: 300;
       line-height: 1.6;
+      /* Technical Grid Background */
       background-image: 
         linear-gradient(rgba(56, 189, 248, 0.03) 1px, transparent 1px),
         linear-gradient(90deg, rgba(56, 189, 248, 0.03) 1px, transparent 1px);
@@ -62,37 +67,48 @@
     }
     .nav-flex { display: flex; justify-content: space-between; align-items: center; }
     
+    /* BRAND TYPOGRAPHY */
     .brand {
       font-family: var(--font-mono);
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      font-size: 0.9rem;
+      font-size: 1.1rem; 
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 16px; 
       color: var(--text-main);
+      line-height: 1;
+    }
+    .brand-heavy {
+        font-weight: 800; /* Extra Bold */
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+    }
+    .brand-light {
+        font-weight: 300; /* Light */
+        color: var(--text-muted);
+        text-transform: lowercase;
+        font-size: 0.9em; 
     }
     
-    /* --- NEW LOGO: THE "G+I" MONOGRAM --- */
+    /* LOGO: MONOGRAM G+I */
     .logo-monogram {
         position: relative;
-        width: 24px;
-        height: 24px;
-        border: 2px solid var(--text-muted);
-        border-right: none; /* Open the G */
-        border-radius: 2px 0 0 2px;
+        width: 40px;  
+        height: 40px; 
+        border: 3px solid var(--text-muted); 
+        border-right: none; 
+        border-radius: 4px 0 0 4px;
+        flex-shrink: 0;
     }
     /* The "I" / The Pillar */
     .logo-monogram::after {
         content: '';
         position: absolute;
-        right: -2px; /* Align with open edge */
-        bottom: 4px;
-        width: 2px;
-        height: 10px; /* The vertical bar of the G/I overlap */
+        right: -3px; 
+        bottom: 6px;
+        width: 3px; 
+        height: 18px; 
         background: var(--accent);
-        box-shadow: 0 0 8px rgba(56, 189, 248, 0.6);
+        box-shadow: 0 0 12px rgba(56, 189, 248, 0.6);
     }
     /* The G Crossbar */
     .logo-monogram::before {
@@ -100,8 +116,8 @@
         position: absolute;
         right: 0;
         top: 0;
-        width: 6px;
-        height: 2px;
+        width: 12px;
+        height: 3px; 
         background: var(--text-muted);
     }
 
@@ -264,23 +280,68 @@
       border-color: var(--accent);
       transform: translateY(-5px);
     }
-    /* Crosshair Graphic for Card 2 */
-    .sniper-crosshair {
+    
+    /* PRECISION BRACKET */
+    .capture-frame {
         position: absolute;
         top: 2rem; right: 2rem;
-        width: 30px; height: 30px;
-        border: 1px solid var(--text-muted);
-        border-radius: 50%;
-        opacity: 0.2;
+        width: 20px; height: 20px;
+        border-top: 2px solid var(--text-muted);
+        border-right: 2px solid var(--text-muted);
+        opacity: 0.5;
+        transition: 0.3s;
     }
-    .sniper-crosshair::before, .sniper-crosshair::after {
-        content: ''; position: absolute; background: var(--text-muted);
+    .card:hover .capture-frame {
+        width: 25px; height: 25px; 
+        border-color: var(--accent);
+        opacity: 1;
+        box-shadow: 2px -2px 10px rgba(56, 189, 248, 0.4);
     }
-    .sniper-crosshair::before { top: 50%; left: -5px; width: 40px; height: 1px; }
-    .sniper-crosshair::after { left: 50%; top: -5px; height: 40px; width: 1px; }
 
-    .card:hover .sniper-crosshair { border-color: var(--accent); opacity: 0.8; }
-    .card:hover .sniper-crosshair::before, .card:hover .sniper-crosshair::after { background: var(--accent); }
+    /* TRUST SIGNAL VISUALIZATION (New) */
+    .signal-card {
+        background: rgba(2, 6, 23, 0.6);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 1.25rem;
+        margin-top: 1.5rem;
+        position: relative;
+        font-family: var(--font-sans);
+    }
+    .signal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.8rem;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+        padding-bottom: 0.8rem;
+    }
+    .g-icon {
+        font-weight: 700;
+        font-family: var(--font-sans);
+        background: linear-gradient(135deg, #4285F4, #34A853, #FBBC05, #EA4335);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size: 1.1rem;
+    }
+    .stars { color: #F5C518; letter-spacing: 2px; font-size: 0.8rem; }
+    .signal-body { font-size: 0.85rem; color: var(--text-main); line-height: 1.5; font-style: italic; }
+    .signal-meta {
+        margin-top: 1rem;
+        display: flex;
+        gap: 12px;
+        font-family: var(--font-mono);
+        font-size: 0.65rem;
+        color: var(--accent);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+    .verified-badge {
+        background: rgba(56, 189, 248, 0.1);
+        padding: 2px 6px;
+        border: 1px solid rgba(56, 189, 248, 0.3);
+        border-radius: 2px;
+    }
 
     .card-num {
       font-family: var(--font-mono);
@@ -364,7 +425,10 @@
     <div class="container nav-flex">
       <div class="brand">
         <div class="logo-monogram"></div>
-        GRAVITAS INDEX
+        <div>
+          <span class="brand-heavy">GRAVITAS</span>
+          <span class="brand-light">index</span>
+        </div>
       </div>
       <nav>
         <a href="#thesis">Thesis</a>
@@ -413,24 +477,38 @@
           <span class="card-num">01</span>
           <h4>Velocity</h4>
           <p>
-            <strong>The Concierge AI.</strong> Modeled after a Chief of Staff. It answers 24/7 in under 60 seconds. It is not here to chitchat - "chat"—it interviews.
+            <strong>The Executive Gatekeeper.</strong> Modeled after a British Chief of Staff. It answers instantly (0ms latency), qualifies rigorously, and guards your calendar against low-intent traffic.
           </p>
         </div>
 
         <div class="card fade-up" style="transition-delay: 0.1s">
-          <div class="sniper-crosshair"></div>
+          <div class="capture-frame"></div> 
           <span class="card-num">02</span>
           <h4>Trust</h4>
           <p>
-            <strong>The reviewSNIPER Protocol.</strong> We don't pray for reviews. We collect with terrific precision EXACTLY how our clients feel about our expertise. Our engine identifies the exact moment of transaction closure to extract verified sentiment, creating the "Trust Signals" Google demands.
+            <strong>The reviewSNIPER Protocol.</strong> We don't pray for reviews. We engineer the capture. Our engine syncs with the closing table to verify and publish client sentiment before the transaction cools.
           </p>
+          
+          <div class="signal-card">
+              <div class="signal-header">
+                  <span class="g-icon">G</span>
+                  <div class="stars">★★★★★</div>
+              </div>
+              <div class="signal-body">
+                  "The most professional transaction I've experienced. The data transparency was unmatched..."
+              </div>
+              <div class="signal-meta">
+                  <span class="verified-badge">✓ Verified Asset</span>
+                  <span>T-Minus 2hrs from Close</span>
+              </div>
+          </div>
         </div>
 
         <div class="card fade-up" style="transition-delay: 0.2s">
           <span class="card-num">03</span>
           <h4>Capital</h4>
           <p>
-            <strong>The Intent Algorithm.</strong> We pre-flight the buyer before the calendar opens. <em>"Do you have a pre-qual letter?"</em> No letter, no tour.
+            <strong>The Capital Audit.</strong> We quantify intent before booking. By verifying liquidity, credit awareness, and contingency risk tolerance, we ensure 100% of tours are transaction-ready.
           </p>
         </div>
       </div>
@@ -509,7 +587,10 @@
       <div>
         <div class="brand" style="margin-bottom: 1rem;">
           <div class="logo-monogram"></div>
-          GRAVITAS INDEX
+          <div>
+            <span class="brand-heavy">GRAVITAS</span>
+            <span class="brand-light">index</span>
+          </div>
         </div>
         <p class="mono" style="color: #475569;">SAN FRANCISCO</p>
       </div>
