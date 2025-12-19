@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Gravitas Index — The Architecture of Trust</title>
-  <meta name="description" content="Gravitas Index — canonical, verified, transaction-ready real estate leads." />
+  <title>Gravitas Index — Stop Renting Leads. Own Your Pipeline.</title>
+  <meta name="description" content="Gravitas Index — escape portal extortion. AI-powered lead qualification, review automation, and transaction-ready tours." />
   <link rel="icon" href="/favicon.ico" />
-  <meta property="og:title" content="Gravitas Index — The Architecture of Trust" />
-  <meta property="og:description" content="Canonical, verified, transaction-ready real estate leads." />
+  <meta property="og:title" content="Gravitas Index — Stop Renting Leads. Own Your Pipeline." />
+  <meta property="og:description" content="Escape $50K/month portal spend. Build conversion infrastructure you actually own." />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
 
@@ -32,7 +32,7 @@
     html,body{height:100%}
     body{
       margin:0; background:var(--bg); color:var(--text); -webkit-font-smoothing:antialiased;
-      line-height:1.5; font-weight:300;
+      line-height:1.6; font-weight:300;
     }
     a{color:inherit}
     .container{max-width:var(--max); margin:0 auto; padding:0 var(--pad)}
@@ -46,14 +46,24 @@
     .skip:focus{left:1rem; top:1rem; background:#fff; color:#000; padding:0.5rem}
 
     /* Hero */
-    .hero{min-height:72vh; display:flex; align-items:center; padding:4rem 0}
-    h1{font-size:clamp(2rem,6vw,4rem); margin:0; line-height:1.02; font-weight:700; letter-spacing:-0.02em; text-transform:uppercase}
-    .lead{color:var(--muted); margin-top:1rem; max-width:60ch}
+    .hero{min-height:70vh; display:flex; align-items:center; padding:4rem 0}
+    h1{font-size:clamp(2rem,5.5vw,3.5rem); margin:0; line-height:1.08; font-weight:700; letter-spacing:-0.02em}
+    .lead{color:var(--muted); margin-top:1rem; max-width:58ch; font-size:1.05rem}
     .hero-grid{display:grid; grid-template-columns:1fr 380px; gap:3rem; align-items:start; margin-top:2rem}
+    
     .card{background:rgba(255,255,255,0.03); padding:1.5rem; border:1px solid var(--accent); border-radius:8px}
     .card h4{margin:0 0 0.5rem 0; color:var(--text)}
-    .cta{display:inline-block; margin-top:1.25rem; padding:0.9rem 1.6rem; border:1px solid var(--text); text-transform:uppercase; font-family:monospace; letter-spacing:0.08em}
+    .card-label{color:var(--gold); font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; font-weight:600}
+    
+    .cta{display:inline-block; margin-top:1.25rem; padding:0.9rem 1.6rem; border:1px solid var(--text); text-transform:uppercase; font-family:monospace; letter-spacing:0.08em; text-decoration:none; transition: all 0.2s}
     .cta.primary{background:var(--text); color:var(--bg); border-color:var(--text)}
+    .cta:hover{opacity:0.85}
+
+    /* Stat callout */
+    .stat-row{display:flex; gap:2rem; margin-top:2rem; flex-wrap:wrap}
+    .stat{text-align:left}
+    .stat-num{font-size:2rem; font-weight:700; color:var(--gold); line-height:1}
+    .stat-label{font-size:0.8rem; color:var(--muted); margin-top:0.25rem}
 
     /* Form */
     form{display:flex; flex-direction:column; gap:0.75rem}
@@ -62,14 +72,32 @@
     .muted{color:var(--muted); font-size:0.9rem}
 
     /* Grid cards */
-    .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem; margin-top:1rem}
+    .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.25rem; margin-top:1.5rem}
+    .grid-3{grid-template-columns:repeat(3,1fr)}
 
-    footer{padding:6rem 0 4rem; text-align:center; color:var(--muted)}
+    /* Sections */
+    section{padding:4rem 0}
+    h2{font-size:1.75rem; margin:0 0 0.5rem 0; font-weight:600}
+    .section-lead{color:var(--muted); max-width:65ch}
+
+    /* Founder */
+    .founder-section{border-top:1px solid var(--accent); border-bottom:1px solid var(--accent)}
+    .founder-grid{display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center}
+    .founder-stats{display:flex; gap:2rem; margin-top:1.5rem}
+
+    /* Disclaimer */
+    .disclaimer{background:rgba(197,160,89,0.08); border:1px solid rgba(197,160,89,0.2); border-radius:6px; padding:1rem 1.25rem; margin-top:2rem}
+    .disclaimer p{margin:0; font-size:0.85rem; color:var(--muted)}
+
+    footer{padding:5rem 0 3rem; text-align:center; color:var(--muted)}
     .small{font-size:0.85rem; color:var(--muted)}
 
     @media(max-width:900px){
       .hero-grid{grid-template-columns:1fr; margin-top:1.25rem}
+      .grid-3{grid-template-columns:1fr}
+      .founder-grid{grid-template-columns:1fr}
       header{padding:0.75rem 0}
+      .stat-row{gap:1.5rem}
     }
   </style>
 </head>
@@ -84,96 +112,211 @@
       <div>GRAVITAS INDEX</div>
     </div>
     <nav role="navigation" aria-label="Primary">
-      <a href="#about" class="small">About</a>
+      <a href="#how" class="small">How It Works</a>
+      <a href="#founder" class="small">Founder</a>
       <a href="#pilot" class="small">Pilot</a>
       <a href="#contact" class="small">Contact</a>
     </nav>
   </header>
 
   <main id="main">
+    <!-- HERO -->
     <section class="container hero" aria-labelledby="hero-title">
       <div>
-        <p class="small">EST. 2005 — SAN FRANCISCO</p>
-        <h1 id="hero-title">I Recognize Markets</h1>
-        <p class="lead">Canonical listing data, verified buyers, and a transaction‑ready concierge. We feed Google’s entity layer with provenance so agents get higher‑quality tours and faster closes.</p>
+        <p class="small" style="color:var(--gold)">EST. 2005 — SAN FRANCISCO</p>
+        <h1 id="hero-title">Stop Renting Leads.<br>Own Your Pipeline.</h1>
+        <p class="lead">You're paying Zillow $30–50K/month for leads that don't convert. We install AI-powered qualification, automated review systems, and sub-minute response infrastructure—so you compete on merit, not portal spend.</p>
 
-        <div style="margin-top:1.5rem">
-          <a class="cta primary" href="#contact">Partner with us</a>
-          <a class="cta" href="#pilot" style="margin-left:0.75rem">Pilot details</a>
+        <div class="stat-row">
+          <div class="stat">
+            <div class="stat-num">&lt;60s</div>
+            <div class="stat-label">Response time guarantee</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">100%</div>
+            <div class="stat-label">Pre-qualified before tour</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">5×</div>
+            <div class="stat-label">Review velocity vs. manual</div>
+          </div>
         </div>
 
-        <div class="hero-grid" style="margin-top:2rem">
-          <div>
-            <div class="card">
-              <span class="muted">SIGNAL VELOCITY</span>
-              <h4>Digital Concierge</h4>
-              <p class="small">AI‑led qualification and instant answers. We reduce time‑to‑book and remove low‑intent noise.</p>
-            </div>
+        <div style="margin-top:2rem">
+          <a class="cta primary" href="#contact">Join the pilot</a>
+          <a class="cta" href="#how" style="margin-left:0.75rem">See how it works</a>
+        </div>
+      </div>
+    </section>
 
-            <div class="card" style="margin-top:1rem">
-              <span class="muted">SIGNAL COMPLIANCE</span>
-              <h4>Contract Automation</h4>
-              <p class="small">Exclusive Agency Agreement collection and verification before agent handoff.</p>
+    <!-- THE PROBLEM -->
+    <section class="container" style="padding-top:2rem">
+      <div class="card" style="border-color:rgba(197,160,89,0.3); max-width:700px">
+        <p style="margin:0; font-size:1.1rem; line-height:1.7">
+          <strong style="color:var(--gold)">The portal model is extortion.</strong> You pay per lead. Leads are shared. Response windows are tight. Conversion is your problem. Meanwhile, Zillow builds equity on your spend while you rent access to your own market.
+        </p>
+        <p style="margin:1rem 0 0 0; color:var(--muted)">
+          We're building the alternative: infrastructure you own, systems that compound, and qualification that happens <em>before</em> you leave the driveway.
+        </p>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how" class="container">
+      <h2>What You Get on Day One</h2>
+      <p class="section-lead">Three systems that work whether Google scales Entity Search or not. Built for the agents who want to stop renting and start owning.</p>
+
+      <div class="grid grid-3">
+        <div class="card">
+          <span class="card-label">01 // Velocity</span>
+          <h4>AI Concierge</h4>
+          <p class="small" style="margin-top:0.75rem">
+            24/7 instant response. Your AI answers in under 60 seconds—the #1 ranking signal for local search. No more missed leads at 2am. No more "sorry, I was showing a property."
+          </p>
+          <p class="small" style="margin-top:0.5rem; color:var(--gold)">
+            Response time is a confirmed ranking factor.
+          </p>
+        </div>
+
+        <div class="card">
+          <span class="card-label">02 // Trust</span>
+          <h4>Review Automation</h4>
+          <p class="small" style="margin-top:0.75rem">
+            Systematic post-close review requests. We automate the ask, track the response, and build your review velocity 5× faster than manual follow-up.
+          </p>
+          <p class="small" style="margin-top:0.5rem; color:var(--gold)">
+            Review count is a confirmed ranking factor.
+          </p>
+        </div>
+
+        <div class="card">
+          <span class="card-label">03 // Capital</span>
+          <h4>The Intent Algorithm</h4>
+          <p class="small" style="margin-top:0.75rem">
+            Our AI stress-tests buyers before they book: <em>"Do you have a pre-qual letter?" "Are you willing to waive contingencies?"</em> We filter the noise so 100% of booked tours are transaction-ready.
+          </p>
+          <p class="small" style="margin-top:0.5rem; color:var(--gold)">
+            No more ghost tours. No more tire-kickers.
+          </p>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:1.5rem">
+        <span class="card-label">04 // Compliance</span>
+        <h4>Contract Automation</h4>
+        <p class="small" style="margin-top:0.75rem; max-width:70ch">
+          Post-NAR settlement, the Exclusive Agency Agreement is mandatory. Agents hate asking for it. Our AI doesn't. We automate the ask, send the digital contract link, and verify the signature <em>before</em> you leave for the showing.
+        </p>
+      </div>
+    </section>
+
+    <!-- THE HEDGE -->
+    <section class="container" style="padding-top:0">
+      <div class="card" style="background:rgba(197,160,89,0.05); border-color:rgba(197,160,89,0.15)">
+        <h4 style="color:var(--gold)">Built to work regardless of Google.</h4>
+        <p class="small" style="margin-top:0.5rem; max-width:70ch">
+          Yes, Google's Entity Search rollout (LA, Miami, Houston, Denver) is real—and we're positioned for it. But these systems improve your business <em>today</em>: faster response times boost any lead source. More reviews help any local SEO. Better qualification makes any pipeline more profitable. We're not betting your business on one platform.
+        </p>
+      </div>
+    </section>
+
+    <!-- FOUNDER -->
+    <section id="founder" class="container founder-section">
+      <div class="founder-grid">
+        <div>
+          <p class="small" style="color:var(--gold)">THE FOUNDER</p>
+          <h2 style="margin-top:0.25rem">Full-Stack Real Estate</h2>
+          <p style="color:var(--muted); margin-top:1rem">
+            I've sat in every seat: product leadership at Trulia, built trust systems that processed millions of reviews, held a mortgage license and underwrote loans, worked the brokerage floor. There's no one with more cross-functional insight into how data, trust, and transactions actually connect.
+          </p>
+          <div class="founder-stats">
+            <div class="stat">
+              <div class="stat-num" style="font-size:1.5rem">20+</div>
+              <div class="stat-label">Years in real estate tech</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num" style="font-size:1.5rem">3</div>
+              <div class="stat-label">Sides of the transaction</div>
             </div>
           </div>
-
-          <aside class="card" aria-labelledby="contact-form">
-            <h4 id="contact-form">Inquire about the pilot</h4>
-            <form id="leadForm" action="#" method="post" novalidate>
-              <input name="name" type="text" placeholder="Full name" required />
-              <input name="email" type="email" placeholder="Email" required />
-              <select name="role" aria-label="Role">
-                <option value="">I am a</option>
-                <option>Agent</option>
-                <option>Broker</option>
-                <option>Investor</option>
-                <option>Partner</option>
-              </select>
-              <input name="market" type="text" placeholder="Market (city or MLS)" />
-              <textarea name="notes" rows="3" placeholder="Short note or question"></textarea>
-              <button type="submit" class="cta primary">Send inquiry</button>
-              <p class="muted" style="margin-top:0.5rem">We respond within 24 hours. No spam. Data used for pilot routing only.</p>
-            </form>
-          </aside>
+        </div>
+        <div>
+          <div class="card">
+            <h4>Why this matters</h4>
+            <p class="small" style="margin-top:0.5rem">
+              Most vendors know one slice: the tech, the brokerage ops, or the lending. I know how they intersect. That's the difference between building a tool and building a system that actually converts.
+            </p>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="about" class="container" aria-labelledby="about-title" style="padding-top:3rem">
-      <h2 id="about-title">The Unified Theory</h2>
-      <p class="small" style="max-width:70ch">We combine MLS canonical feeds, verification workflows, and an intent algorithm to deliver transaction‑ready tours. Founder experience spans product, trust engineering, brokerage, and mortgage underwriting.</p>
+    <!-- PILOT -->
+    <section id="pilot" class="container">
+      <h2>The Pilot</h2>
+      <p class="section-lead">30 days. 5 agents. One MLS market. We measure everything.</p>
 
-      <div class="grid" style="margin-top:1.25rem">
+      <div class="grid" style="margin-top:1.5rem; max-width:700px">
         <div class="card">
-          <h4>Why it matters</h4>
-          <p class="small">Google’s entity indexing rewards canonical, structured data. We supply the provenance and the verification that portals cannot replicate.</p>
+          <h4>What we're testing</h4>
+          <ul class="small" style="margin:0.75rem 0 0 0; padding-left:1.25rem; color:var(--muted)">
+            <li>Lead→tour conversion lift vs. portal baseline</li>
+            <li>Time-to-book reduction</li>
+            <li>Tour→contract rate</li>
+            <li>Review acquisition velocity</li>
+          </ul>
         </div>
         <div class="card">
-          <h4>Pilot focus</h4>
-          <p class="small">Single MLS market, 5 agents, 30 days. Measure lead→tour and tour→contract lift versus portal baseline.</p>
+          <h4>What you get</h4>
+          <ul class="small" style="margin:0.75rem 0 0 0; padding-left:1.25rem; color:var(--muted)">
+            <li>Full AI concierge installation</li>
+            <li>Review automation setup</li>
+            <li>Intent algorithm calibration</li>
+            <li>Weekly performance reports</li>
+          </ul>
         </div>
+      </div>
+
+      <div class="disclaimer">
+        <p><strong>Compliance note:</strong> Gravitas Index provides tools and automation. Agents and brokerages remain solely responsible for legal and regulatory compliance, including NAR settlement requirements, fair housing laws, and state-specific contract rules.</p>
       </div>
     </section>
 
-    <section id="pilot" class="container" style="padding-top:3rem">
-      <h2>Pilot Plan</h2>
-      <ul class="small" style="margin-top:0.75rem">
-        <li><strong>Duration</strong> 30 days</li>
-        <li><strong>Goal</strong> Prove conversion lift and reduced time‑to‑book</li>
-        <li><strong>Instrumentation</strong> event logging for every verification and booking step</li>
-      </ul>
+    <!-- CONTACT FORM -->
+    <section id="contact" class="container" style="padding-bottom:2rem">
+      <div style="max-width:480px">
+        <h2>Join the Pilot</h2>
+        <p class="section-lead" style="margin-bottom:1.5rem">Limited to 5 agents per market. We respond within 24 hours.</p>
+
+        <form id="leadForm" action="#" method="post" novalidate>
+          <input name="name" type="text" placeholder="Full name" required aria-label="Full name" />
+          <input name="email" type="email" placeholder="Email" required aria-label="Email" />
+          <select name="role" aria-label="Your role">
+            <option value="">I am a...</option>
+            <option>Solo Agent</option>
+            <option>Team Lead</option>
+            <option>Broker/Owner</option>
+            <option>Investor</option>
+            <option>Other</option>
+          </select>
+          <input name="market" type="text" placeholder="Market (city or MLS)" aria-label="Market" />
+          <input name="portal_spend" type="text" placeholder="Current monthly portal spend (optional)" aria-label="Portal spend" />
+          <textarea name="notes" rows="3" placeholder="What's your biggest lead qualification pain point?" aria-label="Notes"></textarea>
+          <button type="submit" class="cta primary" style="width:100%; margin-top:0.5rem">Request Pilot Access</button>
+          <p class="muted" style="margin-top:0.75rem; text-align:center">No spam. Data used for pilot routing only.</p>
+        </form>
+      </div>
     </section>
   </main>
 
-  <footer id="contact" class="container" role="contentinfo">
-    <div style="margin-top:3rem">
+  <footer class="container" role="contentinfo">
+    <div>
       <a class="cta" href="mailto:partners@gravitasindex.com">partners@gravitasindex.com</a>
     </div>
     <div style="margin-top:2rem" class="small">&copy; 2025 Gravitas Index — San Francisco</div>
   </footer>
 
   <script>
-    // Lightweight form handler for the holding page
     document.getElementById('leadForm').addEventListener('submit', function(e){
       e.preventDefault();
       const data = new FormData(e.target);
