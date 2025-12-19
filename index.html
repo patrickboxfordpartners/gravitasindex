@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>GRAVITAS INDEX | The Architecture of Trust</title>
-  <meta name="description" content="Infrastructure for the Post-Portal Era. AI-powered qualification, review automation, and transaction-ready tours." />
+  <meta name="description" content="Infrastructure for the Post-Portal Era. Powered by reviewSNIPER protocol." />
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,18 +12,13 @@
 
   <style>
     :root {
-      /* THEME: "Deep Ocean" / Institutional Data */
-      --bg: #020617;        /* Midnight Navy */
-      --panel: #0f172a;     /* Dark Slate */
-      --border: #1e293b;    /* Slate Border */
-      
-      --text-main: #f1f5f9; /* Cool White */
-      --text-muted: #64748b; /* Slate Grey */
-      
-      /* ACCENTS: Electric Blue Signal */
-      --accent: #38bdf8;    /* Sky Blue (The "Signal") */
-      --accent-dim: #0ea5e9; 
-      
+      /* THEME: "Deep Ocean" */
+      --bg: #020617;
+      --panel: #0f172a;
+      --border: #1e293b;
+      --text-main: #f1f5f9;
+      --text-muted: #64748b;
+      --accent: #38bdf8;
       --max-w: 1100px;
       --pad: 2rem;
       
@@ -42,7 +37,6 @@
       font-family: var(--font-sans);
       font-weight: 300;
       line-height: 1.6;
-      /* Technical Grid Background */
       background-image: 
         linear-gradient(rgba(56, 189, 248, 0.03) 1px, transparent 1px),
         linear-gradient(90deg, rgba(56, 189, 248, 0.03) 1px, transparent 1px);
@@ -80,7 +74,7 @@
       color: var(--text-main);
     }
     
-    /* CSS Logo (Updated to Blue) */
+    /* LOGO MARK */
     .logo-mark { display: flex; flex-direction: column; gap: 3px; }
     .l-bar { width: 22px; height: 2px; background: var(--text-muted); }
     .l-bar.active { width: 22px; height: 4px; background: var(--accent); box-shadow: 0 0 10px rgba(56, 189, 248, 0.4); }
@@ -114,11 +108,12 @@
     }
     .hero-pre::before {
       content: '';
-      width: 8px;
-      height: 8px;
+      width: 6px;
+      height: 6px;
       background: var(--accent);
       border-radius: 50%;
-      box-shadow: 0 0 10px var(--accent);
+      box-shadow: 0 0 8px var(--accent);
+      animation: pulse 2s infinite;
     }
 
     h1 {
@@ -243,15 +238,23 @@
       border-color: var(--accent);
       transform: translateY(-5px);
     }
-    .card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; width: 4px; height: 100%;
-      background: var(--accent);
-      opacity: 0;
-      transition: 0.3s;
+    /* Crosshair Graphic for Card 2 */
+    .sniper-crosshair {
+        position: absolute;
+        top: 2rem; right: 2rem;
+        width: 30px; height: 30px;
+        border: 1px solid var(--text-muted);
+        border-radius: 50%;
+        opacity: 0.2;
     }
-    .card:hover::before { opacity: 1; }
+    .sniper-crosshair::before, .sniper-crosshair::after {
+        content: ''; position: absolute; background: var(--text-muted);
+    }
+    .sniper-crosshair::before { top: 50%; left: -5px; width: 40px; height: 1px; }
+    .sniper-crosshair::after { left: 50%; top: -5px; height: 40px; width: 1px; }
+
+    .card:hover .sniper-crosshair { border-color: var(--accent); opacity: 0.8; }
+    .card:hover .sniper-crosshair::before, .card:hover .sniper-crosshair::after { background: var(--accent); }
 
     .card-num {
       font-family: var(--font-mono);
@@ -311,7 +314,8 @@
     }
     input::placeholder, textarea::placeholder { color: #475569; }
     
-    /* ANIMATION UTILS */
+    /* ANIMATION */
+    @keyframes pulse { 0% { opacity: 0.5; } 50% { opacity: 1; } 100% { opacity: 0.5; } }
     .fade-up {
       opacity: 0;
       transform: translateY(20px);
@@ -349,7 +353,7 @@
 
   <main>
     <section class="container hero fade-up">
-      <div class="hero-pre">SYSTEM STATUS: ONLINE // SF_NODE_01</div>
+      <div class="hero-pre">SYSTEM STATUS: ONLINE // PROTOCOL: SNIPER_V4</div>
       <h1>Stop Renting Leads.<br><span>Own The Infrastructure.</span></h1>
       <p class="lead">
         The "Portal Era" is ending. We install the Velocity, Trust, and Capital systems required to survive the shift to Entity Search.
@@ -391,10 +395,10 @@
         </div>
 
         <div class="card fade-up" style="transition-delay: 0.1s">
-          <span class="card-num">02</span>
+          <div class="sniper-crosshair"></div> <span class="card-num">02</span>
           <h4>Trust</h4>
           <p>
-            <strong>Review Engineering.</strong> Google's new Knowledge Graph ranks by "Trust Signals," not just SEO. We automate the aggregation of verified sentiment.
+            <strong>The reviewSNIPER Protocol.</strong> We don't pray for reviews. We snipe them. Our engine identifies the exact moment of transaction closure to extract verified sentiment, creating the "Trust Signals" Google demands.
           </p>
         </div>
 
@@ -425,9 +429,8 @@
             <span class="blue">TRULIA (IPO TEAM)</span>
           </div>
           <div class="bio-stat">
-            <span>REPUTATION</span>
-            <span class="blue">CUSTOMER LOBBY</span>
-          </div>
+            <span>REPUTATION ENGINE</span>
+            <span class="blue">reviewsniper</span> </div>
           <div class="bio-stat">
             <span>TRANSACTION</span>
             <span class="blue">LICENSED REALTOR</span>
