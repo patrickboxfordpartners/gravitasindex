@@ -84,15 +84,15 @@
         font-size: 0.9em; 
     }
     
-    /* --- THE LOGO CONSTRUCTION (LARGE HEADER VERSION) --- */
+    /* --- THE LOGO CONSTRUCTION (REFINED) --- */
     .logo-monogram {
         position: relative;
-        width: 44px;  
-        height: 44px; 
+        width: 36px;   /* Slightly smaller box */
+        height: 36px; 
         
         /* The Bracket C */
-        border: 3px solid var(--text-muted); 
-        border-right: none; /* Open right side */
+        border: 2px solid var(--text-muted); /* Thinner, elegant border */
+        border-right: none; 
         border-radius: 2px 0 0 2px;
         flex-shrink: 0;
     }
@@ -101,46 +101,36 @@
     .logo-monogram::after {
         content: '';
         position: absolute;
+        right: -2px;   /* Sits flush on the opening */
+        top: 6px;      /* Starts inside */
         
-        /* Sits exactly on the right opening */
-        right: -3px; 
+        /* Height Calculation: 36px (Box) - 6px (Top) + 4px (Drop) = 34px Total */
+        height: 34px; 
         
-        /* Starts inside the C */
-        top: 8px;    
-        
-        /* Extends 10px BELOW the C */
-        /* Calculation: (44px Height - 8px Top) + 10px Drop = 46px Total */
-        height: 36px; 
-        
-        width: 4px; /* Heavy stroke */
+        width: 3px;    /* Thinner stroke */
         background: var(--accent);
-        box-shadow: 0 0 15px rgba(56, 189, 248, 0.6); /* Glow */
+        box-shadow: 0 0 10px rgba(56, 189, 248, 0.4); /* Softer glow */
     }
     
     /* 2. THE SERIFS (Top and Bottom Crossbars) */
     .logo-monogram::before {
         content: '';
         position: absolute;
+        right: -4.5px; /* Center the serif on the 3px pillar */
+        top: 6px;
         
-        /* Aligns horizontally with the pillar */
-        right: -6px;
-        
-        /* TOP BAR Position */
-        top: 8px;
-        
-        /* Dimensions of Top Bar */
-        width: 10px;
-        height: 3px;
+        width: 8px;    /* Compact serif */
+        height: 2px;
         background: var(--accent);
         
-        /* BOTTOM BAR (Created via Shadow Clone) */
-        /* Distance: 46px (pillar height) - 3px (bar height) = 43px down */
-        box-shadow: 0 43px 0 var(--accent);
+        /* Shadow Clone for Bottom Bar */
+        /* Distance: 34px (pillar height) - 2px (bar height) = 32px down */
+        box-shadow: 0 32px 0 var(--accent);
     }
     
     /* --- FOOTER LOGO VARIANT (Scaled Down) --- */
     .logo-monogram.small {
-        transform: scale(0.7); /* Simply scale it down to 70% */
+        transform: scale(0.8);
         transform-origin: left center;
     }
 
