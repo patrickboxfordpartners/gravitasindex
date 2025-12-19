@@ -1,1 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Unified Theory of Real Estate. From Trulia to Entity Search.">
+    <title>GRAVITAS INDEX | The Architecture of Trust</title>
+    <style>
+        /* --- CSS VARIABLES (THE "GRAVITAS" THEME) --- */
+        :root {
+            --bg-color: #0a0a0a;       /* Deepest Black */
+            --text-color: #e0e0e0;     /* Off-White for readability */
+            --accent-color: #333;      /* Structural Grays */
+            --highlight: #ffffff;      /* Pure White for Impact */
+            --gold-subtle: #C5A059;    /* Muted Gold for the "Weight" accent */
+            
+            --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            --font-mono: 'Courier New', Courier, monospace; 
+            
+            --spacing-unit: 2rem;
+            --max-width: 1000px;
+        }
 
+        /* --- RESET & BASE --- */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-main);
+            line-height: 1.6;
+            font-weight: 300;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--accent-color); transition: 0.3s; }
+        a:hover { border-color: var(--highlight); }
+
+        /* --- TYPOGRAPHY --- */
+        h1, h2, h3 { font-weight: 700; letter-spacing: -0.05em; line-height: 1.1; }
+        h1 { font-size: clamp(3rem, 8vw, 6rem); text-transform: uppercase; margin-bottom: 0.5em; }
+        h2 { font-size: clamp(2rem, 5vw, 4rem); margin-bottom: 1rem; }
+        h3 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.2em; color: #666; margin-bottom: 1.5rem; display: block; }
+        
+        .mono { font-family: var(--font-mono); font-size: 0.85rem; color: #666; letter-spacing: 0.05em; }
+        .highlight { color: var(--highlight); }
+
+        /* --- LOGO (PURE CSS) --- */
+        .logo-container {
+            position: absolute;
+            top: 2.5rem;
+            left: var(--spacing-unit);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--text-color);
+        }
+
+        .logo-icon {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            width: 24px;
+        }
+
+        .bar-thin { height: 2px; background-color: #666; width: 100%; }
+        .bar-thick { height: 6px; background-color: var(--gold-subtle); width: 100%; }
+
+        /* --- LAYOUT UTILITIES --- */
+        .container { max-width: var(--max-width); margin: 0 auto; padding: 0 var(--spacing-unit); }
+        
+        section { padding: 15vh 0; border-bottom: 1px solid var(--accent-color); }
+        section:last-of-type { border-bottom: none; }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 4rem; }
+
+        /* --- HERO --- */
+        .hero { min-height: 90vh; display: flex; flex-direction: column; justify-content: center; position: relative; }
+        .hero-sub { font-size: 1.5rem; max-width: 650px; color: #999; margin-top: 2rem; font-weight: 300; }
+
+        /* --- THE STACK --- */
+        .stack-list { list-style: none; margin-top: 2rem; }
+        .stack-item { display: flex; justify-content: space-between; align-items: baseline; padding: 1.5rem 0; border-top: 1px solid #222; }
+        .stack-role { font-weight: 700; font-size: 1.2rem; color: var(--highlight); }
+        .stack-context { text-align: right; color: #666; font-family: var(--font-mono); font-size: 0.9rem; }
+
+        /* --- THESIS & CARDS --- */
+        .thesis-text { font-size: 1.6rem; color: #ccc; }
+        
+        .card { 
+            background: rgba(255,255,255,0.03); 
+            padding: 2.5rem; 
+            border: 1px solid #222; 
+            transition: all 0.4s ease; 
+        }
+        .card:hover { 
+            transform: translateY(-5px); 
+            border-color: var(--text-color); 
+            background: rgba(255,255,255,0.05);
+        }
+        .card-header { font-family: var(--font-mono); color: #555; margin-bottom: 1.5rem; display: block; font-size: 0.8rem; }
+        .card h4 { font-size: 1.4rem; margin-bottom: 1rem; color: var(--highlight); }
+        
+        /* --- FOOTER --- */
+        .footer-cta { text-align: center; padding: 25vh 0; }
+        .cta-btn { 
+            display: inline-block; 
+            margin-top: 3rem; 
+            padding: 1.2rem 4rem; 
+            border: 1px solid var(--text-color); 
+            font-family: var(--font-mono); 
+            text-transform: uppercase; 
+            font-size: 0.9rem; 
+            letter-spacing: 0.1em;
+            transition: all 0.3s;
+        }
+        .cta-btn:hover { background: var(--text-color); color: var(--bg-color); cursor: pointer; }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero { min-height: 85vh; justify-content: flex-end; padding-bottom: 10vh; }
+            h1 { font-size: 3rem; }
+            .stack-item { flex-direction: column; gap: 0.5rem; }
+            .stack-context { text-align: left; }
+            
+            /* On mobile, move logo from absolute top-left to relative center */
+            .logo-container { 
+                position: relative; 
+                top: auto; 
+                left: auto; 
+                margin-bottom: 3rem; 
+                justify-content: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero container">
+        
+        <div class="logo-container">
+            <div class="logo-icon">
+                <div class="bar-thin"></div>
+                <div class="bar-thin"></div>
+                <div class="bar-thick"></div>
+            </div>
+            <div class="logo-text">GRAVITAS INDEX</div>
+        </div>
+
+        <p class="mono">EST. 2008 — PRESENT</p>
+        <h1>I Don't Follow Markets.<br><span class="highlight">I Recognize Them.</span></h1>
+        <p class="hero-sub">
+            The industry is fragmented. My career is unified. From building Trulia’s engine to underwriting the mortgage, I am the only founder who has mastered every inch of the real estate lifecycle.
+        </p>
+    </section>
+
+    <section class="container">
+        <h3>01 // The Unified Theory</h3>
+        <div class="grid">
+            <div>
+                <h2>I've Sat In Every Chair.</h2>
+                <p style="color: #888;">To fix the market, you have to understand the whole machine. Most founders have blind spots. I have the blueprint.</p>
+            </div>
+            <div>
+                <ul class="stack-list">
+                    <li class="stack-item">
+                        <span class="stack-role">The Scaler</span>
+                        <span class="stack-context">Trulia (First 50 &rarr; IPO)</span>
+                    </li>
+                    <li class="stack-item">
+                        <span class="stack-role">The Trust Engineer</span>
+                        <span class="stack-context">Customer Lobby / reviewSNIPER</span>
+                    </li>
+                    <li class="stack-item">
+                        <span class="stack-role">The Agent</span>
+                        <span class="stack-context">Licensed Realtor</span>
+                    </li>
+                    <li class="stack-item">
+                        <span class="stack-role">The Banker</span>
+                        <span class="stack-context">Mortgage Company Founder</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <h3>02 // Current Thesis</h3>
+        <div class="grid">
+            <div class="thesis-text">
+                The "Portal Era" ended in December 2025. Google's shift to indexing homes as <span class="highlight">Structured Entities</span> has commoditized the search interface.
+            </div>
+            <div>
+                <p style="margin-bottom: 1.5rem; color: #999;">
+                    Zillow and Redfin are now just middlemen fighting for attention. We don't compete with Google; we feed them. 
+                </p>
+                <p style="color: #999;">
+                    We structure inventory specifically for Google’s <strong>Knowledge Graph</strong>, ensuring our assets bypass the portals and appear directly in the "Homes for Sale" carousel.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <h3>03 // The Execution</h3>
+        <h2>Optimizing for the Entity Layer.</h2>
+        <br>
+        <div class="grid">
+            
+            <div class="card">
+                <span class="card-header">SIGNAL: VELOCITY</span>
+                <h4>The Digital Concierge</h4>
+                <p style="margin-top: 1rem; color: #999; font-size: 0.95rem;">
+                    Modeled after a high-end Chief of Staff, my AI (Voice: <em>British/Authoritative</em>) doesn't just chat. It conducts the interview. It answers instantly, qualifies politely, and enforces the process without the "sales breath" of a typical bot.
+                </p>
+            </div>
+
+            <div class="card">
+                <span class="card-header">SIGNAL: COMPLIANCE</span>
+                <h4>Contract Automation</h4>
+                <p style="margin-top: 1rem; color: #999; font-size: 0.95rem;">
+                    Post-NAR settlement, the <strong>Exclusive Agency Agreement</strong> is mandatory. Agents hate asking for it. My AI doesn't. We automate the "ask" and verify the signature <em>before</em> the agent leaves their driveway.
+                </p>
+            </div>
+
+            <div class="card">
+                <span class="card-header">SIGNAL: CAPITAL</span>
+                <h4>The "Intent Algorithm"</h4>
+                <p style="margin-top: 1rem; color: #999; font-size: 0.95rem;">
+                    My AI stress-tests the buyer. By asking hard questions upfront—<em>"Do you have a pre-qual letter?"</em>, <em>"Are you willing to waive contingencies?"</em>—we filter out the noise. Result: 100% TRANSACTION-READY TOURS.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="footer-cta container">
+        <h2>Building the Next Outlier?</h2>
+        <p class="mono">I PARTNER WITH FOUNDERS & FIRMS READY TO DEFINE THE CATEGORY.</p>
+        
+        <a href="mailto:partners@gravitasindex.com" class="cta-btn">Inquire</a>
+        
+        <div style="margin-top: 5rem; font-size: 0.8rem; color: #333; font-family: var(--font-mono);">
+            &copy; 2025 GRAVIS INDEX / SAN FRANCISCO
+        </div>
+    </section>
+
+</body>
+</html>
