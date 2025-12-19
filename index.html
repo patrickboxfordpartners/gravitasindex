@@ -74,25 +74,35 @@
       color: var(--text-main);
     }
     
-    /* --- NEW LOGO: THE PLUMB LINE --- */
-    .logo-mark { 
-        display: flex; 
-        flex-direction: column; 
-        align-items: center; 
-        width: 20px;
+    /* --- NEW LOGO: THE "G+I" MONOGRAM --- */
+    .logo-monogram {
+        position: relative;
+        width: 24px;
+        height: 24px;
+        border: 2px solid var(--text-muted);
+        border-right: none; /* Open the G */
+        border-radius: 2px 0 0 2px;
     }
-    .plumb-line { 
-        width: 1px; 
-        height: 14px; 
-        background: var(--text-muted); 
+    /* The "I" / The Pillar */
+    .logo-monogram::after {
+        content: '';
+        position: absolute;
+        right: -2px; /* Align with open edge */
+        bottom: 4px;
+        width: 2px;
+        height: 10px; /* The vertical bar of the G/I overlap */
+        background: var(--accent);
+        box-shadow: 0 0 8px rgba(56, 189, 248, 0.6);
     }
-    .plumb-weight { 
-        width: 8px; 
-        height: 8px; 
-        background: var(--accent); 
-        transform: rotate(45deg); /* Diamond shape */
-        margin-top: -1px;
-        box-shadow: 0 0 10px rgba(56, 189, 248, 0.6);
+    /* The G Crossbar */
+    .logo-monogram::before {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 6px;
+        height: 2px;
+        background: var(--text-muted);
     }
 
     nav a { 
@@ -353,10 +363,7 @@
   <header>
     <div class="container nav-flex">
       <div class="brand">
-        <div class="logo-mark">
-          <div class="plumb-line"></div>
-          <div class="plumb-weight"></div>
-        </div>
+        <div class="logo-monogram"></div>
         GRAVITAS INDEX
       </div>
       <nav>
@@ -406,7 +413,7 @@
           <span class="card-num">01</span>
           <h4>Velocity</h4>
           <p>
-            <strong>The Concierge AI.</strong> Modeled after a British Chief of Staff. It answers 24/7 in under 60 seconds. It doesn't "chat"—it interviews.
+            <strong>The Concierge AI.</strong> Modeled after a Chief of Staff. It answers 24/7 in under 60 seconds. It is not here to chitchat - "chat"—it interviews.
           </p>
         </div>
 
@@ -415,7 +422,7 @@
           <span class="card-num">02</span>
           <h4>Trust</h4>
           <p>
-            <strong>The reviewSNIPER Protocol.</strong> We don't pray for reviews. We snipe them. Our engine identifies the exact moment of transaction closure to extract verified sentiment, creating the "Trust Signals" Google demands.
+            <strong>The reviewSNIPER Protocol.</strong> We don't pray for reviews. We collect with terrific precision EXACTLY how our clients feel about our expertise. Our engine identifies the exact moment of transaction closure to extract verified sentiment, creating the "Trust Signals" Google demands.
           </p>
         </div>
 
@@ -447,7 +454,7 @@
           </div>
           <div class="bio-stat">
             <span>REPUTATION ENGINE</span>
-            <span class="blue">reviewsniper</span>
+            <span class="blue">reviewSNIPER</span>
           </div>
           <div class="bio-stat">
             <span>TRANSACTION</span>
@@ -501,10 +508,7 @@
     <div style="display: flex; justify-content: space-between; align-items: flex-end;">
       <div>
         <div class="brand" style="margin-bottom: 1rem;">
-          <div class="logo-mark">
-            <div class="plumb-line"></div>
-            <div class="plumb-weight"></div>
-          </div>
+          <div class="logo-monogram"></div>
           GRAVITAS INDEX
         </div>
         <p class="mono" style="color: #475569;">SAN FRANCISCO</p>
