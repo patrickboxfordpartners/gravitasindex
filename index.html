@@ -23,81 +23,363 @@
   </script>
 
   <style>
-    :root{
-      --bg:#0a0a0a; --text:#e6e6e6; --muted:#9a9a9a; --gold:#C5A059;
-      --max:1100px; --pad:2rem; --accent:#222;
+    :root {
+      --bg: #0f2137;
+      --bg-light: #1a3352;
+      --text: #e8edf3;
+      --muted: #8fa3b8;
+      --emerald: #10b981;
+      --emerald-dark: #059669;
+      --orange: #f97316;
+      --orange-dark: #ea580c;
+      --gradient: linear-gradient(135deg, var(--emerald) 0%, #14b8a6 50%, var(--bg-light) 100%);
+      --gradient-accent: linear-gradient(90deg, var(--emerald), #14b8a6);
+      --max: 1100px;
+      --pad: 2rem;
       font-family: Inter, 'Helvetica Neue', Arial, sans-serif;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0; background:var(--bg); color:var(--text); -webkit-font-smoothing:antialiased;
-      line-height:1.6; font-weight:300;
+    * { box-sizing: border-box }
+    html { scroll-behavior: smooth }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+      font-weight: 300;
+      overflow-x: hidden;
     }
-    a{color:inherit}
-    .container{max-width:var(--max); margin:0 auto; padding:0 var(--pad)}
-    header{padding:1.25rem 0; display:flex; align-items:center; justify-content:space-between}
-    .brand{display:flex; gap:12px; align-items:center; text-transform:uppercase; letter-spacing:0.12em; font-weight:700}
-    .logo{width:36px; height:36px; display:flex; flex-direction:column; gap:4px}
-    .bar{height:3px; background:#666; border-radius:2px}
-    .bar.gold{height:6px; background:var(--gold)}
-    nav{display:flex; gap:1rem; align-items:center}
-    .skip{position:absolute; left:-999px; top:auto}
-    .skip:focus{left:1rem; top:1rem; background:#fff; color:#000; padding:0.5rem}
+    a { color: inherit }
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad) }
+    
+    /* Header */
+    header {
+      padding: 1.25rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      z-index: 100;
+    }
+    .brand {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 700;
+    }
+    .logo {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .bar { height: 3px; background: var(--muted); border-radius: 2px }
+    .bar.accent { height: 6px; background: var(--emerald); border-radius: 2px }
+    nav { display: flex; gap: 1.25rem; align-items: center }
+    nav a {
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--emerald) }
+    .skip { position: absolute; left: -999px; top: auto }
+    .skip:focus { left: 1rem; top: 1rem; background: #fff; color: #000; padding: 0.5rem }
+
+    /* Buttons */
+    .cta {
+      display: inline-block;
+      padding: 0.9rem 1.8rem;
+      border: 2px solid transparent;
+      text-transform: uppercase;
+      font-family: monospace;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border-radius: 6px;
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+    .cta.primary {
+      background: var(--orange);
+      color: #fff;
+      border-color: var(--orange);
+      box-shadow: 0 4px 20px rgba(249, 115, 22, 0.3);
+    }
+    .cta.primary:hover {
+      background: var(--orange-dark);
+      border-color: var(--orange-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(249, 115, 22, 0.4);
+    }
+    .cta.secondary {
+      background: transparent;
+      color: var(--text);
+      border-color: var(--emerald);
+    }
+    .cta.secondary:hover {
+      background: rgba(16, 185, 129, 0.1);
+      transform: translateY(-2px);
+    }
 
     /* Hero */
-    .hero{min-height:70vh; display:flex; align-items:center; padding:4rem 0}
-    h1{font-size:clamp(2rem,5.5vw,3.5rem); margin:0; line-height:1.08; font-weight:700; letter-spacing:-0.02em}
-    .lead{color:var(--muted); margin-top:1rem; max-width:58ch; font-size:1.05rem}
-    .hero-grid{display:grid; grid-template-columns:1fr 380px; gap:3rem; align-items:start; margin-top:2rem}
-    
-    .card{background:rgba(255,255,255,0.03); padding:1.5rem; border:1px solid var(--accent); border-radius:8px}
-    .card h4{margin:0 0 0.5rem 0; color:var(--text)}
-    .card-label{color:var(--gold); font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; font-weight:600}
-    
-    .cta{display:inline-block; margin-top:1.25rem; padding:0.9rem 1.6rem; border:1px solid var(--text); text-transform:uppercase; font-family:monospace; letter-spacing:0.08em; text-decoration:none; transition: all 0.2s}
-    .cta.primary{background:var(--text); color:var(--bg); border-color:var(--text)}
-    .cta:hover{opacity:0.85}
+    .hero {
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      padding: 4rem 0;
+      position: relative;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 60%;
+      height: 100%;
+      background: radial-gradient(ellipse at 70% 30%, rgba(16, 185, 129, 0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 1 }
+    .tagline {
+      display: inline-block;
+      font-size: 0.8rem;
+      color: var(--emerald);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    h1 {
+      font-size: clamp(2.25rem, 5.5vw, 3.75rem);
+      margin: 0;
+      line-height: 1.08;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    h1 .gradient-text {
+      background: var(--gradient-accent);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .lead {
+      color: var(--muted);
+      margin-top: 1.25rem;
+      max-width: 56ch;
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
 
-    /* Stat callout */
-    .stat-row{display:flex; gap:2rem; margin-top:2rem; flex-wrap:wrap}
-    .stat{text-align:left}
-    .stat-num{font-size:2rem; font-weight:700; color:var(--gold); line-height:1}
-    .stat-label{font-size:0.8rem; color:var(--muted); margin-top:0.25rem}
+    /* Stats */
+    .stat-row {
+      display: flex;
+      gap: 3rem;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .stat { text-align: left }
+    .stat-num {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--emerald);
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+    }
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.35rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .hero-ctas { margin-top: 2.5rem; display: flex; gap: 1rem; flex-wrap: wrap }
 
-    /* Form */
-    form{display:flex; flex-direction:column; gap:0.75rem}
-    input,select,textarea{background:transparent; border:1px solid #222; color:var(--text); padding:0.7rem; border-radius:6px}
-    input:focus,textarea:focus,select:focus{outline:3px solid rgba(197,160,89,0.12); border-color:var(--gold)}
-    .muted{color:var(--muted); font-size:0.9rem}
+    /* Cards */
+    .card {
+      background: rgba(255, 255, 255, 0.03);
+      padding: 1.75rem;
+      border: 1px solid rgba(16, 185, 129, 0.15);
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--gradient-accent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .card:hover {
+      border-color: rgba(16, 185, 129, 0.35);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25), 0 0 30px rgba(16, 185, 129, 0.08);
+    }
+    .card:hover::before { opacity: 1 }
+    .card h4 { margin: 0 0 0.5rem 0; color: var(--text); font-weight: 600 }
+    .card-label {
+      color: var(--emerald);
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 700;
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+    .card-highlight {
+      margin-top: 0.75rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid rgba(16, 185, 129, 0.15);
+      font-size: 0.8rem;
+      color: var(--emerald);
+    }
 
-    /* Grid cards */
-    .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.25rem; margin-top:1.5rem}
-    .grid-3{grid-template-columns:repeat(3,1fr)}
+    /* Problem callout */
+    .problem-card {
+      background: linear-gradient(135deg, rgba(249, 115, 22, 0.08) 0%, rgba(16, 185, 129, 0.05) 100%);
+      border: 1px solid rgba(249, 115, 22, 0.2);
+      max-width: 720px;
+    }
+    .problem-card strong { color: var(--orange) }
+
+    /* Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .grid-3 { grid-template-columns: repeat(3, 1fr) }
 
     /* Sections */
-    section{padding:4rem 0}
-    h2{font-size:1.75rem; margin:0 0 0.5rem 0; font-weight:600}
-    .section-lead{color:var(--muted); max-width:65ch}
+    section { padding: 5rem 0 }
+    h2 {
+      font-size: 2rem;
+      margin: 0 0 0.5rem 0;
+      font-weight: 700;
+    }
+    .section-lead { color: var(--muted); max-width: 60ch; font-size: 1.05rem }
+    .small { font-size: 0.85rem; color: var(--muted) }
 
-    /* Founder */
-    .founder-section{border-top:1px solid var(--accent); border-bottom:1px solid var(--accent)}
-    .founder-grid{display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center}
-    .founder-stats{display:flex; gap:2rem; margin-top:1.5rem}
+    /* Hedge card */
+    .hedge-card {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(20, 184, 166, 0.05) 100%);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+    }
+    .hedge-card h4 { color: var(--emerald) }
+
+    /* Founder section */
+    .founder-section {
+      border-top: 1px solid rgba(16, 185, 129, 0.15);
+      border-bottom: 1px solid rgba(16, 185, 129, 0.15);
+      background: linear-gradient(180deg, transparent 0%, rgba(16, 185, 129, 0.03) 50%, transparent 100%);
+    }
+    .founder-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .founder-stats { display: flex; gap: 2.5rem; margin-top: 2rem }
+
+    /* Pilot */
+    .pilot-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      max-width: 800px;
+    }
 
     /* Disclaimer */
-    .disclaimer{background:rgba(197,160,89,0.08); border:1px solid rgba(197,160,89,0.2); border-radius:6px; padding:1rem 1.25rem; margin-top:2rem}
-    .disclaimer p{margin:0; font-size:0.85rem; color:var(--muted)}
+    .disclaimer {
+      background: rgba(249, 115, 22, 0.06);
+      border: 1px solid rgba(249, 115, 22, 0.15);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin-top: 2.5rem;
+      max-width: 800px;
+    }
+    .disclaimer p { margin: 0; font-size: 0.85rem; color: var(--muted) }
+    .disclaimer strong { color: var(--orange) }
 
-    footer{padding:5rem 0 3rem; text-align:center; color:var(--muted)}
-    .small{font-size:0.85rem; color:var(--muted)}
+    /* Form */
+    .form-section { max-width: 500px }
+    form { display: flex; flex-direction: column; gap: 0.85rem }
+    input, select, textarea {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(16, 185, 129, 0.2);
+      color: var(--text);
+      padding: 0.85rem 1rem;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+    }
+    input::placeholder, textarea::placeholder { color: var(--muted) }
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: var(--emerald);
+      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+    }
+    select { cursor: pointer }
+    select option { background: var(--bg); color: var(--text) }
 
-    @media(max-width:900px){
-      .hero-grid{grid-template-columns:1fr; margin-top:1.25rem}
-      .grid-3{grid-template-columns:1fr}
-      .founder-grid{grid-template-columns:1fr}
-      header{padding:0.75rem 0}
-      .stat-row{gap:1.5rem}
+    /* Footer */
+    footer {
+      padding: 5rem 0 3rem;
+      text-align: center;
+      color: var(--muted);
+      border-top: 1px solid rgba(16, 185, 129, 0.1);
+    }
+
+    /* Animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .fade-in-delay-1 { transition-delay: 0.1s }
+    .fade-in-delay-2 { transition-delay: 0.2s }
+    .fade-in-delay-3 { transition-delay: 0.3s }
+
+    /* Gradient line */
+    .gradient-line {
+      height: 3px;
+      background: var(--gradient-accent);
+      border-radius: 2px;
+      margin: 1rem 0 2rem 0;
+      width: 80px;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero { min-height: auto; padding: 3rem 0 }
+      .grid-3 { grid-template-columns: 1fr }
+      .founder-grid { grid-template-columns: 1fr }
+      .pilot-grid { grid-template-columns: 1fr }
+      header { padding: 0.75rem 0 }
+      .stat-row { gap: 2rem }
+      nav { gap: 0.75rem }
+      section { padding: 3.5rem 0 }
+    }
+    @media (max-width: 600px) {
+      .hero-ctas { flex-direction: column }
+      .hero-ctas .cta { text-align: center }
+      h1 { font-size: 2rem }
     }
   </style>
 </head>
@@ -107,55 +389,57 @@
   <header class="container" role="banner">
     <div class="brand" aria-label="Gravitas Index">
       <div class="logo" aria-hidden="true">
-        <div class="bar"></div><div class="bar"></div><div class="bar gold"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar accent"></div>
       </div>
       <div>GRAVITAS INDEX</div>
     </div>
     <nav role="navigation" aria-label="Primary">
-      <a href="#how" class="small">How It Works</a>
-      <a href="#founder" class="small">Founder</a>
-      <a href="#pilot" class="small">Pilot</a>
-      <a href="#contact" class="small">Contact</a>
+      <a href="#how">How It Works</a>
+      <a href="#founder">Founder</a>
+      <a href="#pilot">Pilot</a>
+      <a href="#contact">Contact</a>
     </nav>
   </header>
 
   <main id="main">
     <!-- HERO -->
     <section class="container hero" aria-labelledby="hero-title">
-      <div>
-        <p class="small" style="color:var(--gold)">EST. 2005 — SAN FRANCISCO</p>
-        <h1 id="hero-title">Stop Renting Leads.<br>Own Your Pipeline.</h1>
+      <div class="hero-content">
+        <span class="tagline">Est. 2005 — San Francisco</span>
+        <h1 id="hero-title">Stop Renting Leads.<br><span class="gradient-text">Own Your Pipeline.</span></h1>
         <p class="lead">You're paying Zillow $30–50K/month for leads that don't convert. We install AI-powered qualification, automated review systems, and sub-minute response infrastructure—so you compete on merit, not portal spend.</p>
 
         <div class="stat-row">
           <div class="stat">
-            <div class="stat-num">&lt;60s</div>
-            <div class="stat-label">Response time guarantee</div>
+            <div class="stat-num" data-target="60" data-prefix="<" data-suffix="s">0</div>
+            <div class="stat-label">Response time</div>
           </div>
           <div class="stat">
-            <div class="stat-num">100%</div>
-            <div class="stat-label">Pre-qualified before tour</div>
+            <div class="stat-num" data-target="100" data-suffix="%">0</div>
+            <div class="stat-label">Pre-qualified tours</div>
           </div>
           <div class="stat">
-            <div class="stat-num">5×</div>
-            <div class="stat-label">Review velocity vs. manual</div>
+            <div class="stat-num" data-target="5" data-suffix="×">0</div>
+            <div class="stat-label">Review velocity</div>
           </div>
         </div>
 
-        <div style="margin-top:2rem">
-          <a class="cta primary" href="#contact">Join the pilot</a>
-          <a class="cta" href="#how" style="margin-left:0.75rem">See how it works</a>
+        <div class="hero-ctas">
+          <a class="cta primary" href="#contact">Join the Pilot</a>
+          <a class="cta secondary" href="#how">See How It Works</a>
         </div>
       </div>
     </section>
 
     <!-- THE PROBLEM -->
-    <section class="container" style="padding-top:2rem">
-      <div class="card" style="border-color:rgba(197,160,89,0.3); max-width:700px">
-        <p style="margin:0; font-size:1.1rem; line-height:1.7">
-          <strong style="color:var(--gold)">The portal model is extortion.</strong> You pay per lead. Leads are shared. Response windows are tight. Conversion is your problem. Meanwhile, Zillow builds equity on your spend while you rent access to your own market.
+    <section class="container" style="padding-top:0">
+      <div class="card problem-card fade-in">
+        <p style="margin:0; font-size:1.1rem; line-height:1.8">
+          <strong>The portal model is extortion.</strong> You pay per lead. Leads are shared. Response windows are tight. Conversion is your problem. Meanwhile, Zillow builds equity on your spend while you rent access to your own market.
         </p>
-        <p style="margin:1rem 0 0 0; color:var(--muted)">
+        <p style="margin:1.25rem 0 0 0; color:var(--muted)">
           We're building the alternative: infrastructure you own, systems that compound, and qualification that happens <em>before</em> you leave the driveway.
         </p>
       </div>
@@ -163,48 +447,51 @@
 
     <!-- HOW IT WORKS -->
     <section id="how" class="container">
-      <h2>What You Get on Day One</h2>
-      <p class="section-lead">Three systems that work whether Google scales Entity Search or not. Built for the agents who want to stop renting and start owning.</p>
+      <div class="fade-in">
+        <h2>What You Get on Day One</h2>
+        <div class="gradient-line"></div>
+        <p class="section-lead">Three systems that work whether Google scales Entity Search or not. Built for agents who want to stop renting and start owning.</p>
+      </div>
 
       <div class="grid grid-3">
-        <div class="card">
+        <div class="card fade-in fade-in-delay-1">
           <span class="card-label">01 // Velocity</span>
           <h4>AI Concierge</h4>
-          <p class="small" style="margin-top:0.75rem">
+          <p class="small" style="margin-top:0.75rem; line-height:1.7">
             24/7 instant response. Your AI answers in under 60 seconds—the #1 ranking signal for local search. No more missed leads at 2am. No more "sorry, I was showing a property."
           </p>
-          <p class="small" style="margin-top:0.5rem; color:var(--gold)">
+          <div class="card-highlight">
             Response time is a confirmed ranking factor.
-          </p>
+          </div>
         </div>
 
-        <div class="card">
+        <div class="card fade-in fade-in-delay-2">
           <span class="card-label">02 // Trust</span>
           <h4>Review Automation</h4>
-          <p class="small" style="margin-top:0.75rem">
+          <p class="small" style="margin-top:0.75rem; line-height:1.7">
             Systematic post-close review requests. We automate the ask, track the response, and build your review velocity 5× faster than manual follow-up.
           </p>
-          <p class="small" style="margin-top:0.5rem; color:var(--gold)">
+          <div class="card-highlight">
             Review count is a confirmed ranking factor.
-          </p>
+          </div>
         </div>
 
-        <div class="card">
+        <div class="card fade-in fade-in-delay-3">
           <span class="card-label">03 // Capital</span>
           <h4>The Intent Algorithm</h4>
-          <p class="small" style="margin-top:0.75rem">
-            Our AI stress-tests buyers before they book: <em>"Do you have a pre-qual letter?" "Are you willing to waive contingencies?"</em> We filter the noise so 100% of booked tours are transaction-ready.
+          <p class="small" style="margin-top:0.75rem; line-height:1.7">
+            Our AI stress-tests buyers before they book: <em>"Do you have a pre-qual letter?" "Are you willing to waive contingencies?"</em> 100% of booked tours are transaction-ready.
           </p>
-          <p class="small" style="margin-top:0.5rem; color:var(--gold)">
+          <div class="card-highlight">
             No more ghost tours. No more tire-kickers.
-          </p>
+          </div>
         </div>
       </div>
 
-      <div class="card" style="margin-top:1.5rem">
+      <div class="card fade-in" style="margin-top:1.5rem">
         <span class="card-label">04 // Compliance</span>
         <h4>Contract Automation</h4>
-        <p class="small" style="margin-top:0.75rem; max-width:70ch">
+        <p class="small" style="margin-top:0.75rem; max-width:70ch; line-height:1.7">
           Post-NAR settlement, the Exclusive Agency Agreement is mandatory. Agents hate asking for it. Our AI doesn't. We automate the ask, send the digital contract link, and verify the signature <em>before</em> you leave for the showing.
         </p>
       </div>
@@ -212,9 +499,9 @@
 
     <!-- THE HEDGE -->
     <section class="container" style="padding-top:0">
-      <div class="card" style="background:rgba(197,160,89,0.05); border-color:rgba(197,160,89,0.15)">
-        <h4 style="color:var(--gold)">Built to work regardless of Google.</h4>
-        <p class="small" style="margin-top:0.5rem; max-width:70ch">
+      <div class="card hedge-card fade-in">
+        <h4>Built to work regardless of Google.</h4>
+        <p class="small" style="margin-top:0.75rem; max-width:70ch; line-height:1.7">
           Yes, Google's Entity Search rollout (LA, Miami, Houston, Denver) is real—and we're positioned for it. But these systems improve your business <em>today</em>: faster response times boost any lead source. More reviews help any local SEO. Better qualification makes any pipeline more profitable. We're not betting your business on one platform.
         </p>
       </div>
@@ -223,27 +510,28 @@
     <!-- FOUNDER -->
     <section id="founder" class="container founder-section">
       <div class="founder-grid">
-        <div>
-          <p class="small" style="color:var(--gold)">THE FOUNDER</p>
+        <div class="fade-in">
+          <span class="card-label" style="margin-bottom:0.5rem">The Founder</span>
           <h2 style="margin-top:0.25rem">Full-Stack Real Estate</h2>
-          <p style="color:var(--muted); margin-top:1rem">
+          <div class="gradient-line"></div>
+          <p style="color:var(--muted); line-height:1.8">
             I've sat in every seat: product leadership at Trulia, built trust systems that processed millions of reviews, held a mortgage license and underwrote loans, worked the brokerage floor. There's no one with more cross-functional insight into how data, trust, and transactions actually connect.
           </p>
           <div class="founder-stats">
             <div class="stat">
-              <div class="stat-num" style="font-size:1.5rem">20+</div>
-              <div class="stat-label">Years in real estate tech</div>
+              <div class="stat-num" style="font-size:1.75rem">20+</div>
+              <div class="stat-label">Years in RE tech</div>
             </div>
             <div class="stat">
-              <div class="stat-num" style="font-size:1.5rem">3</div>
-              <div class="stat-label">Sides of the transaction</div>
+              <div class="stat-num" style="font-size:1.75rem">3</div>
+              <div class="stat-label">Sides of the deal</div>
             </div>
           </div>
         </div>
-        <div>
+        <div class="fade-in fade-in-delay-1">
           <div class="card">
             <h4>Why this matters</h4>
-            <p class="small" style="margin-top:0.5rem">
+            <p class="small" style="margin-top:0.75rem; line-height:1.7">
               Most vendors know one slice: the tech, the brokerage ops, or the lending. I know how they intersect. That's the difference between building a tool and building a system that actually converts.
             </p>
           </div>
@@ -253,22 +541,25 @@
 
     <!-- PILOT -->
     <section id="pilot" class="container">
-      <h2>The Pilot</h2>
-      <p class="section-lead">30 days. 5 agents. One MLS market. We measure everything.</p>
+      <div class="fade-in">
+        <h2>The Pilot</h2>
+        <div class="gradient-line"></div>
+        <p class="section-lead">30 days. 5 agents. One MLS market. We measure everything.</p>
+      </div>
 
-      <div class="grid" style="margin-top:1.5rem; max-width:700px">
-        <div class="card">
+      <div class="pilot-grid">
+        <div class="card fade-in fade-in-delay-1">
           <h4>What we're testing</h4>
-          <ul class="small" style="margin:0.75rem 0 0 0; padding-left:1.25rem; color:var(--muted)">
+          <ul class="small" style="margin:0.75rem 0 0 0; padding-left:1.25rem; color:var(--muted); line-height:1.9">
             <li>Lead→tour conversion lift vs. portal baseline</li>
             <li>Time-to-book reduction</li>
             <li>Tour→contract rate</li>
             <li>Review acquisition velocity</li>
           </ul>
         </div>
-        <div class="card">
+        <div class="card fade-in fade-in-delay-2">
           <h4>What you get</h4>
-          <ul class="small" style="margin:0.75rem 0 0 0; padding-left:1.25rem; color:var(--muted)">
+          <ul class="small" style="margin:0.75rem 0 0 0; padding-left:1.25rem; color:var(--muted); line-height:1.9">
             <li>Full AI concierge installation</li>
             <li>Review automation setup</li>
             <li>Intent algorithm calibration</li>
@@ -277,16 +568,17 @@
         </div>
       </div>
 
-      <div class="disclaimer">
+      <div class="disclaimer fade-in">
         <p><strong>Compliance note:</strong> Gravitas Index provides tools and automation. Agents and brokerages remain solely responsible for legal and regulatory compliance, including NAR settlement requirements, fair housing laws, and state-specific contract rules.</p>
       </div>
     </section>
 
     <!-- CONTACT FORM -->
     <section id="contact" class="container" style="padding-bottom:2rem">
-      <div style="max-width:480px">
+      <div class="form-section fade-in">
         <h2>Join the Pilot</h2>
-        <p class="section-lead" style="margin-bottom:1.5rem">Limited to 5 agents per market. We respond within 24 hours.</p>
+        <div class="gradient-line"></div>
+        <p class="section-lead" style="margin-bottom:1.75rem">Limited to 5 agents per market. We respond within 24 hours.</p>
 
         <form id="leadForm" action="#" method="post" novalidate>
           <input name="name" type="text" placeholder="Full name" required aria-label="Full name" />
@@ -302,8 +594,8 @@
           <input name="market" type="text" placeholder="Market (city or MLS)" aria-label="Market" />
           <input name="portal_spend" type="text" placeholder="Current monthly portal spend (optional)" aria-label="Portal spend" />
           <textarea name="notes" rows="3" placeholder="What's your biggest lead qualification pain point?" aria-label="Notes"></textarea>
-          <button type="submit" class="cta primary" style="width:100%; margin-top:0.5rem">Request Pilot Access</button>
-          <p class="muted" style="margin-top:0.75rem; text-align:center">No spam. Data used for pilot routing only.</p>
+          <button type="submit" class="cta primary" style="width:100%; margin-top:0.5rem; padding:1rem">Request Pilot Access</button>
+          <p class="small" style="margin-top:1rem; text-align:center">No spam. Data used for pilot routing only.</p>
         </form>
       </div>
     </section>
@@ -311,24 +603,84 @@
 
   <footer class="container" role="contentinfo">
     <div>
-      <a class="cta" href="mailto:partners@gravitasindex.com">partners@gravitasindex.com</a>
+      <a class="cta secondary" href="mailto:partners@gravitasindex.com">partners@gravitasindex.com</a>
     </div>
     <div style="margin-top:2rem" class="small">&copy; 2025 Gravitas Index — San Francisco</div>
   </footer>
 
   <script>
-    document.getElementById('leadForm').addEventListener('submit', function(e){
+    // Intersection Observer for fade-in animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Animated stat counters
+    const statObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseInt(el.dataset.target);
+          const prefix = el.dataset.prefix || '';
+          const suffix = el.dataset.suffix || '';
+          let current = 0;
+          const increment = target / 40;
+          const duration = 1500;
+          const stepTime = duration / 40;
+
+          const updateCounter = () => {
+            current += increment;
+            if (current < target) {
+              el.textContent = prefix + Math.floor(current) + suffix;
+              setTimeout(updateCounter, stepTime);
+            } else {
+              el.textContent = prefix + target + suffix;
+            }
+          };
+
+          updateCounter();
+          statObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.stat-num[data-target]').forEach(el => statObserver.observe(el));
+
+    // Form handler
+    document.getElementById('leadForm').addEventListener('submit', function(e) {
       e.preventDefault();
       const data = new FormData(e.target);
+      const btn = e.target.querySelector('button[type="submit"]');
+      const originalText = btn.textContent;
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+
       // Replace with your endpoint or Zapier webhook
       fetch('https://hooks.example.com/gravitas-leads', {
-        method:'POST',
+        method: 'POST',
         body: JSON.stringify(Object.fromEntries(data)),
-        headers:{'Content-Type':'application/json'}
-      }).then(()=> {
+        headers: { 'Content-Type': 'application/json' }
+      }).then(() => {
         e.target.reset();
-        alert('Thanks — we will respond within 24 hours.');
-      }).catch(()=> {
+        btn.textContent = 'Sent!';
+        setTimeout(() => {
+          btn.textContent = originalText;
+          btn.disabled = false;
+        }, 2000);
+      }).catch(() => {
+        btn.textContent = originalText;
+        btn.disabled = false;
         alert('Submission failed. Please email partners@gravitasindex.com');
       });
     });
