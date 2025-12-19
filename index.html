@@ -74,10 +74,26 @@
       color: var(--text-main);
     }
     
-    /* LOGO MARK */
-    .logo-mark { display: flex; flex-direction: column; gap: 3px; }
-    .l-bar { width: 22px; height: 2px; background: var(--text-muted); }
-    .l-bar.active { width: 22px; height: 4px; background: var(--accent); box-shadow: 0 0 10px rgba(56, 189, 248, 0.4); }
+    /* --- NEW LOGO: THE PLUMB LINE --- */
+    .logo-mark { 
+        display: flex; 
+        flex-direction: column; 
+        align-items: center; 
+        width: 20px;
+    }
+    .plumb-line { 
+        width: 1px; 
+        height: 14px; 
+        background: var(--text-muted); 
+    }
+    .plumb-weight { 
+        width: 8px; 
+        height: 8px; 
+        background: var(--accent); 
+        transform: rotate(45deg); /* Diamond shape */
+        margin-top: -1px;
+        box-shadow: 0 0 10px rgba(56, 189, 248, 0.6);
+    }
 
     nav a { 
       font-size: 0.75rem; 
@@ -338,8 +354,8 @@
     <div class="container nav-flex">
       <div class="brand">
         <div class="logo-mark">
-          <div class="l-bar"></div>
-          <div class="l-bar active"></div>
+          <div class="plumb-line"></div>
+          <div class="plumb-weight"></div>
         </div>
         GRAVITAS INDEX
       </div>
@@ -395,7 +411,8 @@
         </div>
 
         <div class="card fade-up" style="transition-delay: 0.1s">
-          <div class="sniper-crosshair"></div> <span class="card-num">02</span>
+          <div class="sniper-crosshair"></div>
+          <span class="card-num">02</span>
           <h4>Trust</h4>
           <p>
             <strong>The reviewSNIPER Protocol.</strong> We don't pray for reviews. We snipe them. Our engine identifies the exact moment of transaction closure to extract verified sentiment, creating the "Trust Signals" Google demands.
@@ -430,7 +447,8 @@
           </div>
           <div class="bio-stat">
             <span>REPUTATION ENGINE</span>
-            <span class="blue">reviewsniper</span> </div>
+            <span class="blue">reviewsniper</span>
+          </div>
           <div class="bio-stat">
             <span>TRANSACTION</span>
             <span class="blue">LICENSED REALTOR</span>
@@ -484,8 +502,8 @@
       <div>
         <div class="brand" style="margin-bottom: 1rem;">
           <div class="logo-mark">
-            <div class="l-bar"></div>
-            <div class="l-bar active"></div>
+            <div class="plumb-line"></div>
+            <div class="plumb-weight"></div>
           </div>
           GRAVITAS INDEX
         </div>
@@ -511,7 +529,6 @@
     document.getElementById('alphaForm').addEventListener('submit', (e) => {
       e.preventDefault();
       const btn = e.target.querySelector('button');
-      const originalText = btn.innerText;
       btn.innerText = "TRANSMITTING...";
       btn.style.backgroundColor = "var(--border)";
       btn.style.borderColor = "var(--border)";
