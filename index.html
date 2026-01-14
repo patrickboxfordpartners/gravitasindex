@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>GRAVITAS INDEX | The Architecture of Trust</title>
-  <meta name="description" content="Infrastructure for the Post-Portal Era. Powered by reviewSNIPER protocol." />
+  <title>GRAVITAS INDEX | Win Google's Entity Search</title>
+  <meta name="description" content="Google now ranks real estate agents by response time and reviews. Get the systems you need to claim page one." />
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500;800&family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -48,14 +48,70 @@
     a { color: inherit; text-decoration: none; transition: 0.3s; }
     .container { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--pad); }
     .mono { font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: -0.02em; }
+
+    /* Ensure monospace UI elements render with real font weights (avoid faux-bolding) */
+    .brand, .mono, .hero-pre, .btn, .sec-tag, .t-val, .t-label, .card-num, .bio-stat, .footer-col h5, .copyright {
+      font-weight: 400;
+    }
+
     .blue { color: var(--accent); }
     .serif { font-family: var(--font-serif); }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    .skip-link {
+      position: absolute;
+      top: 0.75rem;
+      left: 0.75rem;
+      z-index: 1000;
+      padding: 0.75rem 1rem;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+      transform: translateY(-200%);
+      transition: transform 0.2s ease;
+    }
+    .skip-link:focus { transform: translateY(0); outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15); }
+
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.18);
+      border-color: var(--accent);
+    }
+
+    section[id] { scroll-margin-top: 90px; }
+
+    ::selection { background: rgba(56, 189, 248, 0.25); color: var(--text-main); }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
+    }
+
     
     /* HEADER */
     header {
       padding: 1.5rem 0;
       border-bottom: 1px solid var(--border);
-      background: rgba(2, 6, 23, 0.95);
+      background: rgba(2, 6, 23, 0.85);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       position: sticky;
       top: 0;
       z-index: 100;
@@ -206,6 +262,8 @@
       border-right: 1px solid var(--border);
       position: relative;
     }
+
+    .ticker-item:last-child { border-right: none; }
     .t-val { 
       display: block; 
       font-family: var(--font-mono); 
@@ -239,6 +297,12 @@
     .btn:hover {
       border-color: var(--text-main);
       background: rgba(255,255,255,0.05);
+    }
+
+    .btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.8;
+      transform: none;
     }
     .btn.blue {
       border-color: var(--accent);
@@ -360,7 +424,7 @@
       margin-bottom: 1.5rem;
       display: block;
     }
-    .card h4 {
+    .card h3 {
       font-family: var(--font-serif);
       font-size: 1.6rem;
       margin: 0 0 1rem 0;
@@ -457,83 +521,197 @@
 
     @media(max-width: 768px) {
       .founder-split { grid-template-columns: 1fr; gap: 3rem; }
-      h1 { font-size: 3rem; }
+      .shift-content { grid-template-columns: 1fr !important; gap: 2rem !important; }
+      h1 { font-size: 2.5rem; }
       .ticker-wrap { display: block; width: 100%; }
       .ticker-item { border-right: none; border-bottom: 1px solid var(--border); width: 100%; }
       .hero { padding: 2rem 0; }
       .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
       .footer-bottom { flex-direction: column; gap: 1rem; align-items: flex-start; }
+      .timeline-bar > div { flex-direction: column; gap: 1.5rem; }
     }
   </style>
+
+  <meta name="theme-color" content="#020617" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+
+  <!-- Open Graph / Twitter (update URLs + image once domain is final) -->
+  <meta property="og:title" content="GRAVITAS INDEX | Win Google's Entity Search" />
+  <meta property="og:description" content="Google now ranks real estate agents by response time and reviews. Get the systems you need to claim page one." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/og.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="GRAVITAS INDEX | Win Google's Entity Search" />
+  <meta name="twitter:description" content="Google now ranks real estate agents by response time and reviews. Get the systems you need to claim page one." />
+  <meta name="twitter:image" content="/og.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "GRAVITAS INDEX",
+    "url": "https://gravitasindex.com/",
+    "email": "partners@gravitasindex.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "345 California St, Suite 600",
+      "addressLocality": "San Francisco",
+      "addressRegion": "CA",
+      "postalCode": "94104",
+      "addressCountry": "US"
+    }
+  }
+  </script>
+
 </head>
-<body>
+<body id="top">
+
+  <a class="skip-link" href="#main">Skip to content</a>
 
   <header>
     <div class="container nav-flex">
-      <div class="brand">
+      <a class="brand" href="#top" aria-label="GRAVITAS INDEX home">
         <div class="logo-monogram"></div>
         <div>
           <span class="brand-heavy">GRAVITAS</span>
           <span class="brand-light">index</span>
         </div>
-      </div>
-      <nav>
-        <a href="#thesis">Thesis</a>
-        <a href="#execution">Execution</a>
+      </a>
+      <nav aria-label="Primary">
+        <a href="#shift">The Shift</a>
+        <a href="#thesis">The System</a>
+        <a href="#execution">Why Us</a>
         <a href="#alpha">Access</a>
       </nav>
     </div>
   </header>
 
-  <main>
+  <main id="main">
     <section class="container hero">
-      <div class="hero-pre">SYSTEM STATUS: ONLINE // PROTOCOL: SNIPER_V4</div>
-      <h1>Stop Renting Leads.<br><span>Own The Infrastructure.</span></h1>
+      <div class="hero-pre">ENTITY SEARCH IS LIVE — THE WINDOW IS CLOSING</div>
+      <h1>You're Paying Zillow $30K a Year<br><span>For Leads That Don't Close.</span></h1>
       <p class="lead">
-        The "Portal Era" is ending. We install the Velocity, Trust, and Capital systems required to survive the shift to Entity Search.
+        The average agent spends $2,500/month on portal leads with a 2% close rate. That's $30K annually for maybe six deals—while Zillow builds their brand on your listings.
+      </p>
+      <p class="lead" style="margin-top: -2rem;">
+        Google's Entity Search is rolling out now. Homes are becoming searchable objects. Agents are being ranked by response time and reviews. The agents who move fast will own the first page. The ones who wait will keep writing checks to Zillow.
       </p>
 
       <div class="ticker-wrap">
         <div class="ticker-item">
+          <span class="t-val blue">$30K+</span>
+          <span class="t-label">Annual Portal Spend (Avg)</span>
+        </div>
+        <div class="ticker-item">
+          <span class="t-val">2%</span>
+          <span class="t-label">Portal Lead Close Rate</span>
+        </div>
+        <div class="ticker-item">
           <span class="t-val blue">&lt;60s</span>
-          <span class="t-label">Response Latency</span>
-        </div>
-        <div class="ticker-item">
-          <span class="t-val">100%</span>
-          <span class="t-label">Tour Qualification</span>
-        </div>
-        <div class="ticker-item">
-          <span class="t-val">AUTO</span>
-          <span class="t-label">Contract Compliance</span>
+          <span class="t-label">Response Time Google Measures</span>
         </div>
       </div>
       
       <div>
-        <a href="#alpha" class="btn blue">Request Alpha Access</a>
+        <a href="#shift" class="btn blue">See What's Coming</a>
+      </div>
+    </section>
+
+    <section id="shift" class="container">
+      <div class="sec-header">
+        <span class="sec-tag">00 // THE SHIFT</span>
+        <h2>Google Is About to Rank You.<br><span class="serif" style="color: var(--text-muted); font-style: italic;">Whether You're Ready or Not.</span></h2>
+      </div>
+
+      <div class="shift-content" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;">
+        <div>
+          <h3 style="font-family: var(--font-serif); font-size: 1.4rem; margin-bottom: 1.5rem; font-weight: 400;">What is Entity Search?</h3>
+          <p style="color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.8;">
+            Right now, Google shows you ten blue links. You search "homes for sale in Denver," you get Zillow, Redfin, Realtor.com. The portals win. You pay for scraps.
+          </p>
+          <p style="color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.8;">
+            Entity Search changes the game. Instead of links, Google displays the <em>home itself</em>—photos, price, beds, baths, structured data—directly in search results. And next to every listing: the agent's name, response time, and review score.
+          </p>
+          <p style="color: var(--text-main); margin-bottom: 1.5rem; line-height: 1.8;">
+            <strong>This is happening now.</strong> Google piloted Entity Search in LA, Miami, Houston, and Denver throughout 2025. National rollout is underway. The ranking factors are already being measured.
+          </p>
+        </div>
+
+        <div>
+          <h3 style="font-family: var(--font-serif); font-size: 1.4rem; margin-bottom: 1.5rem; font-weight: 400;">Two Metrics Decide Who Wins</h3>
+          
+          <div style="border-left: 2px solid var(--accent); padding-left: 1.5rem; margin-bottom: 2rem;">
+            <h4 style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent); margin-bottom: 0.75rem; letter-spacing: 0.05em;">01 — RESPONSE VELOCITY</h4>
+            <p style="color: var(--text-muted); line-height: 1.7;">
+              Google measures how fast you respond to inquiries. Not hours. Not minutes. <em>Seconds.</em> Agents who respond in under 60 seconds get priority placement. The ones who take 4 hours to check their email disappear.
+            </p>
+          </div>
+
+          <div style="border-left: 2px solid var(--accent); padding-left: 1.5rem; margin-bottom: 2rem;">
+            <h4 style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent); margin-bottom: 0.75rem; letter-spacing: 0.05em;">02 — TRUST SIGNAL DENSITY</h4>
+            <p style="color: var(--text-muted); line-height: 1.7;">
+              Your Google Business Profile reviews become your ranking factor. Not just quantity—velocity, recency, and verification. 47 five-star reviews from the last 90 days outranks 200 reviews from 2019.
+            </p>
+          </div>
+
+          <p style="color: var(--text-muted); line-height: 1.8; font-size: 0.95rem;">
+            <strong style="color: var(--text-main);">The portals know this is coming.</strong> Why do you think Zillow is pushing Flex so hard? They're locking in agent dependency before the ground shifts. Once buyers find listings directly through Google, the portal tollbooth disappears.
+          </p>
+        </div>
+      </div>
+
+      <div class="timeline-bar" style="margin-top: 4rem; padding: 2rem; background: var(--panel); border: 1px solid var(--border);">
+        <h4 style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent); margin-bottom: 1.5rem; letter-spacing: 0.1em;">ENTITY SEARCH TIMELINE</h4>
+        <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+          <div style="text-align: center; flex: 1; min-width: 150px;">
+            <span style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted); display: block;">Q1 2025</span>
+            <span style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-muted);">Pilot Markets Announced</span>
+          </div>
+          <div style="text-align: center; flex: 1; min-width: 150px;">
+            <span style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted); display: block;">Q2–Q3 2025</span>
+            <span style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-muted);">Pilot Market Testing</span>
+          </div>
+          <div style="text-align: center; flex: 1; min-width: 150px;">
+            <span style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted); display: block;">Q4 2025</span>
+            <span style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-muted);">National Rollout Begins</span>
+          </div>
+          <div style="text-align: center; flex: 1; min-width: 150px; position: relative;">
+            <span style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent); display: block;">NOW</span>
+            <span style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent);">Full Integration Underway</span>
+            <div style="position: absolute; top: -8px; right: 10px; width: 8px; height: 8px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 10px var(--accent);"></div>
+          </div>
+        </div>
       </div>
     </section>
 
     <section id="thesis" class="container">
       <div class="sec-header">
-        <span class="sec-tag">01 // THE MECHANISM</span>
-        <h2>Optimization for<br>the Entity Layer.</h2>
+        <span class="sec-tag">01 // THE SYSTEM</span>
+        <h2>Three Systems. One Infrastructure.<br><span class="serif" style="color: var(--text-muted); font-style: italic;">Built for What's Next.</span></h2>
       </div>
 
       <div class="grid-3">
         <div class="card">
           <span class="card-num">01</span>
-          <h4>Velocity</h4>
+          <h3>Velocity</h3>
           <p>
-            <strong>The Executive Gatekeeper.</strong> Modeled after a British Chief of Staff. It answers instantly (0ms latency), qualifies rigorously, and guards your calendar against low-intent traffic.
+            <strong>The Sub-60-Second Response Engine.</strong> When a lead hits your website at 11:47 PM, they get a response at 11:47 PM. Not a form confirmation—a conversation. Our AI concierge qualifies intent, answers property questions, and books showings while you sleep.
+          </p>
+          <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--accent);">
+            Google's Entity Search will measure this. We make sure you win.
           </p>
         </div>
 
         <div class="card">
           <div class="capture-frame"></div>
           <span class="card-num">02</span>
-          <h4>Trust</h4>
+          <h3>Trust</h3>
           <p>
-            <strong>The reviewSNIPER Protocol.</strong> We don't pray for reviews. We engineer the capture. Our engine syncs with the closing table to verify and publish client sentiment before the transaction cools.
+            <strong>The Review Capture Protocol.</strong> We don't hope for reviews. We engineer them. The reviewSNIPER system triggers within 2 hours of closing—when satisfaction peaks and the experience is fresh. One tap from SMS to published review.
+          </p>
+          <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--accent);">
+            Your review velocity becomes your ranking velocity.
           </p>
           
           <div class="signal-card">
@@ -542,20 +720,23 @@
                   <div class="stars">★★★★★</div>
               </div>
               <div class="signal-body">
-                  "The most professional transaction I've experienced. The data transparency was unmatched..."
+                  "The most professional transaction I've experienced. Responded instantly, knew the market cold, made the whole process seamless."
               </div>
               <div class="signal-meta">
-                  <span class="verified-badge">✓ Verified Asset</span>
-                  <span>T-Minus 2hrs from Close</span>
+                  <span class="verified-badge">✓ Verified</span>
+                  <span>2 hrs post-close</span>
               </div>
           </div>
         </div>
 
         <div class="card">
           <span class="card-num">03</span>
-          <h4>Capital</h4>
+          <h3>Capital</h3>
           <p>
-            <strong>The Capital Audit.</strong> We quantify intent before booking. By verifying liquidity, credit awareness, and contingency risk tolerance, we ensure 100% of tours are transaction-ready.
+            <strong>The Qualification Firewall.</strong> Before anyone gets on your calendar, they answer three questions: Are you pre-approved? What's your timeline? Are you working with another agent?
+          </p>
+          <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--text-muted);">
+            No more driving across town for a "buyer" who can't get a loan. Every tour is transaction-ready.
           </p>
         </div>
       </div>
@@ -564,10 +745,16 @@
     <section id="execution" class="container">
       <div class="founder-split">
         <div class="bio-block">
-          <span class="sec-tag">02 // THE ARCHITECT</span>
-          <h2>The Unified Theory<br>of Real Estate.</h2>
-          <p style="margin-top: 2rem; color: var(--text-muted); font-size: 1.1rem;">
-            Most founders have blind spots. They know code but not closing. Or sales but not underwriting. I have vertically integrated the stack.
+          <span class="sec-tag">02 // WHY US</span>
+          <h2>I've Seen This Movie Before.<br><span class="serif" style="color: var(--text-muted); font-style: italic;">From the Inside.</span></h2>
+          <p style="margin-top: 2rem; color: var(--text-muted); font-size: 1.05rem; line-height: 1.8;">
+            I was at Trulia during the first portal war. I watched agents become dependent on lead sources they didn't control—and I watched what happened when the terms changed.
+          </p>
+          <p style="margin-top: 1rem; color: var(--text-muted); font-size: 1.05rem; line-height: 1.8;">
+            I've also sat on both sides of the closing table—as the agent and as the lender. I know why deals die at underwriting, where leads leak in the funnel, and what actually moves the needle on conversion. I've held the open house. I've run the comps. I've explained to a buyer why their DTI killed the deal.
+          </p>
+          <p style="margin-top: 1rem; color: var(--text-main); font-size: 1.05rem; line-height: 1.8;">
+            Most people building real estate tech have never originated a loan or written an offer. They're engineers guessing at agent pain. <strong>I've lived it.</strong>
           </p>
           <a href="#alpha" class="btn">Partner With Me</a>
         </div>
@@ -579,7 +766,7 @@
           </div>
           <div class="bio-stat">
             <span>REPUTATION ENGINE</span>
-            <span class="blue">reviewSNIPER</span>
+            <span class="blue">reviewSNIPER (FOUNDER)</span>
           </div>
           <div class="bio-stat">
             <span>TRANSACTION</span>
@@ -587,7 +774,7 @@
           </div>
           <div class="bio-stat">
             <span>CAPITAL</span>
-            <span class="blue">MORTGAGE FOUNDER</span>
+            <span class="blue">LICENSED MORTGAGE ORIGINATOR</span>
           </div>
         </div>
       </div>
@@ -595,35 +782,63 @@
 
     <section id="alpha" class="container" style="border-bottom: none;">
       <div class="sec-header">
-        <span class="sec-tag">03 // INITIATION</span>
-        <h2>Request Alpha Access</h2>
-        <p class="mono" style="margin-top:1rem; color: var(--text-muted);">
-          LIMITED TO 5 PARTNERS PER MARKET.
+        <span class="sec-tag">03 // EARLY ACCESS</span>
+        <h2>First-Mover Advantage.<br><span class="serif" style="color: var(--text-muted); font-style: italic;">Limited to 5 Agents Per Market.</span></h2>
+        <p style="margin-top:1.5rem; color: var(--text-muted); font-size: 1.05rem; max-width: 600px; line-height: 1.7;">
+          Entity Search rewards the agents who move first. The ones building review velocity and response systems right now are claiming page-one real estate while everyone else figures out what happened.
+        </p>
+        <p style="margin-top:1rem; color: var(--text-muted); font-size: 1.05rem; max-width: 600px; line-height: 1.7;">
+          We're onboarding 5 agents per market. Once slots fill, we move to the waitlist.
+        </p>
+        <p class="mono" style="margin-top:1.5rem; color: var(--accent); font-size: 0.8rem; letter-spacing: 0.1em;">
+          PRIORITY MARKETS: LOS ANGELES • MIAMI • HOUSTON • DENVER • SAN FRANCISCO
         </p>
       </div>
 
       <div style="max-width: 600px;">
         <form id="alphaForm">
-          <div class="grid-3" style="gap: 1rem; margin-bottom: 0;">
-            <input type="text" placeholder="NAME" required>
-            <input type="email" placeholder="EMAIL" required>
-          </div>
-          <input type="text" placeholder="MARKET / MLS" required>
-          <select>
-            <option value="" disabled selected>ROLE</option>
-            <option>Broker / Owner</option>
-            <option>Team Lead</option>
-            <option>High-Volume Agent</option>
-            <option>Investor</option>
-          </select>
-          <textarea rows="3" placeholder="CURRENT PAIN POINT (OPTIONAL)"></textarea>
-          
-          <button type="submit" class="btn blue" style="width: 100%;">Submit Application</button>
-          
-          <p class="mono" style="font-size: 0.7rem; color: #475569; margin-top: 1.5rem;">
-            DATA PRIVACY: ENCRYPTED. COMPLIANCE: AGENT RESPONSIBLE FOR LOCAL REGULATION.
-          </p>
-        </form>
+  <div class="grid-3" style="gap: 1rem; margin-bottom: 0;">
+    <div>
+      <label class="sr-only" for="alphaName">Name</label>
+      <input id="alphaName" name="name" type="text" placeholder="NAME" autocomplete="name" spellcheck="false" required>
+    </div>
+    <div>
+      <label class="sr-only" for="alphaEmail">Email</label>
+      <input id="alphaEmail" name="email" type="email" placeholder="EMAIL" autocomplete="email" spellcheck="false" required>
+    </div>
+  </div>
+
+  <label class="sr-only" for="alphaMarket">Market / MLS</label>
+  <select id="alphaMarket" name="market" required>
+    <option value="" disabled selected>SELECT YOUR MARKET</option>
+    <option>Los Angeles</option>
+    <option>Miami</option>
+    <option>Houston</option>
+    <option>Denver</option>
+    <option>San Francisco</option>
+    <option>Other (Waitlist)</option>
+  </select>
+
+  <label class="sr-only" for="alphaRole">Role</label>
+  <select id="alphaRole" name="role" required>
+    <option value="" disabled selected>ROLE</option>
+    <option>Broker / Owner</option>
+    <option>Team Lead</option>
+    <option>High-Volume Agent</option>
+    <option>Investor</option>
+  </select>
+
+  <label class="sr-only" for="alphaPain">Current pain point</label>
+  <textarea id="alphaPain" name="pain" rows="3" placeholder="WHAT'S YOUR BIGGEST LEAD GEN FRUSTRATION? (OPTIONAL)"></textarea>
+
+  <button id="alphaSubmit" type="submit" class="btn blue" style="width: 100%;">Request Early Access</button>
+
+  <p id="formStatus" class="mono" style="font-size: 0.75rem; color: #94a3b8; margin-top: 1rem;" aria-live="polite"></p>
+
+  <p class="mono" style="font-size: 0.7rem; color: #475569; margin-top: 1.5rem;">
+    YOUR DATA STAYS YOURS. NO SPAM. NO SELLING YOUR INFO.
+  </p>
+</form>
       </div>
     </section>
 
@@ -641,7 +856,7 @@
             </div>
           </div>
           <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; max-width: 300px; margin-bottom: 1.5rem;">
-            Building the financial infrastructure for the next generation of real estate search.
+            Preparing agents for Google's Entity Search. Response velocity. Review density. The systems that will determine who wins.
           </p>
           
           <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);">
@@ -653,16 +868,17 @@
 
         <div class="footer-col">
           <h5>Platform</h5>
-          <a href="#thesis" class="footer-link">Velocity (AI)</a>
+          <a href="#shift" class="footer-link">The Shift (Entity Search)</a>
+          <a href="#thesis" class="footer-link">Velocity (AI Response)</a>
           <a href="#thesis" class="footer-link">Trust (reviewSNIPER)</a>
-          <a href="#thesis" class="footer-link">Capital (Audit)</a>
+          <a href="#thesis" class="footer-link">Capital (Qualification)</a>
         </div>
 
         <div class="footer-col">
           <h5>Company</h5>
-          <a href="#execution" class="footer-link">The Architect</a>
-          <a href="mailto:partners@gravitasindex.com" class="footer-link">Contact</a>
-          <a href="#alpha" class="footer-link">Partner Program</a>
+          <a href="#execution" class="footer-link">Why Us</a>
+          <a href="/cdn-cgi/l/email-protection#2e5e4f5c5a404b5c5d6e495c4f58475a4f5d47404a4b56004d4143" class="footer-link">Contact</a>
+          <a href="#alpha" class="footer-link">Early Access</a>
         </div>
 
         <div class="footer-col">
@@ -676,26 +892,38 @@
 
       <div class="footer-bottom">
         <span class="copyright">&copy; 2025 GRAVITAS INDEX. ALL RIGHTS RESERVED. SAN FRANCISCO.</span>
-        <span class="copyright">POWERED BY <a href="https://reviewsniper.app" style="color: var(--accent); border-bottom: none;">REVIEWSNIPER.APP</a></span>
+        <span class="copyright">POWERED BY <a href="https://reviewsniper.app" target="_blank" rel="noopener noreferrer" style="color: var(--accent); border-bottom: none;">REVIEWSNIPER.APP</a></span>
       </div>
     </div>
   </footer>
 
-  <script>
-    document.getElementById('alphaForm').addEventListener('submit', (e) => {
-      e.preventDefault();
-      const btn = e.target.querySelector('button');
-      btn.innerText = "TRANSMITTING...";
-      btn.style.backgroundColor = "var(--border)";
-      btn.style.borderColor = "var(--border)";
-      
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  document.getElementById('alphaForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+    const btn = document.getElementById('alphaSubmit');
+    const status = document.getElementById('formStatus');
+
+    // Guard against double-submits
+    if (btn.disabled) return;
+
+    btn.disabled = true;
+    btn.innerText = "TRANSMITTING...";
+    btn.style.backgroundColor = "var(--border)";
+    btn.style.borderColor = "var(--border)";
+    btn.style.color = "var(--text-main)";
+    status.textContent = "Encrypting payload… establishing channel…";
+
+    setTimeout(() => {
+      btn.innerText = "RECEIVED // TICKET #4029";
+      btn.style.backgroundColor = "var(--accent)";
+      btn.style.color = "#000";
+      status.textContent = "Application received. Expect a response within 24–48 hours.";
+      form.reset();
+
+      // Re-enable after a short delay so the confirmation reads clearly
       setTimeout(() => {
-        btn.innerText = "RECEIVED // TICKET #4029";
-        btn.style.backgroundColor = "var(--accent)";
-        btn.style.color = "#000";
-        e.target.reset();
-      }, 1500);
-    });
-  </script>
-</body>
-</html>
+        btn.disabled = false;
+        btn.innerText = "Submit Application";
+        btn.style.backgroundColor = "transparent
