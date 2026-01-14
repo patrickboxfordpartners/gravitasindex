@@ -1,16 +1,15 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>GRAVITAS INDEX | Win Google's Entity Search</title>
-  <meta name="description" content="Google now ranks real estate agents by response time and reviews. Get the systems you need to claim page one." />
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500;800&family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&display=swap" rel="stylesheet">
-
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>GRAVITAS INDEX | Win Google's Entity Search</title>
+<meta content="Google now ranks real estate agents by response time and reviews. Get the systems you need to claim page one." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&amp;family=JetBrains+Mono:wght@400;500;800&amp;family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&amp;display=swap" rel="stylesheet"/>
+<style>
     :root {
       /* THEME: "Deep Ocean" */
       --bg: #020617;
@@ -37,7 +36,6 @@
       font-family: var(--font-sans);
       font-weight: 300;
       line-height: 1.6;
-      /* Technical Grid Background */
       background-image: 
         linear-gradient(rgba(56, 189, 248, 0.03) 1px, transparent 1px),
         linear-gradient(90deg, rgba(56, 189, 248, 0.03) 1px, transparent 1px);
@@ -49,7 +47,7 @@
     .container { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--pad); }
     .mono { font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: -0.02em; }
 
-    /* Ensure monospace UI elements render with real font weights (avoid faux-bolding) */
+    /* UI WEIGHTS */
     .brand, .mono, .hero-pre, .btn, .sec-tag, .t-val, .t-label, .card-num, .bio-stat, .footer-col h5, .copyright {
       font-weight: 400;
     }
@@ -57,6 +55,7 @@
     .blue { color: var(--accent); }
     .serif { font-family: var(--font-serif); }
 
+    /* ACCESSIBILITY */
     .sr-only {
       position: absolute;
       width: 1px;
@@ -85,25 +84,19 @@
     }
     .skip-link:focus { transform: translateY(0); outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15); }
 
-    a:focus-visible,
-    button:focus-visible,
-    input:focus-visible,
-    select:focus-visible,
-    textarea:focus-visible {
+    a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
       outline: none;
       box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.18);
       border-color: var(--accent);
     }
 
     section[id] { scroll-margin-top: 90px; }
-
     ::selection { background: rgba(56, 189, 248, 0.25); color: var(--text-main); }
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
     }
-
     
     /* HEADER */
     header {
@@ -140,51 +133,41 @@
         font-size: 0.9em; 
     }
     
-    /* --- LOGO: THE "G" CONSTRUCTION (v5) --- */
+    /* --- LOGO: THE "G" CONSTRUCTION --- */
     .logo-monogram {
         position: relative;
         width: 40px;  
         height: 40px; 
         
-        /* The C-Shape Body (Top, Left, Bottom) */
+        /* The C-Shape Body */
         border: 3px solid var(--text-muted); 
-        border-right: none; /* OPEN right side */
-        border-radius: 2px 0 0 2px; /* Sharp corners */
+        border-right: none; 
+        border-radius: 2px 0 0 2px;
         flex-shrink: 0;
     }
     
-    /* 1. THE CROSSBAR (The horizontal arm of the G) */
+    /* 1. THE CROSSBAR */
     .logo-monogram::before {
         content: '';
         position: absolute;
-        top: 50%; /* Center vertical */
+        top: 50%;
         right: 0;
-        width: 12px; /* Extends inward */
+        width: 12px;
         height: 3px;
         background: var(--text-muted);
         transform: translateY(-50%);
     }
 
     /* 2. THE "I" (The Blue Vertical Downstroke) */
-    /* This forms the bottom-right of the G and extends down */
     .logo-monogram::after {
         content: '';
         position: absolute;
-        
-        /* PLACEMENT: Flush with the right edge */
         right: -3px; 
-        
-        /* START: Starts exactly at the crossbar (Middle) */
         top: 50%;    
-        
-        /* LENGTH: Goes to bottom (20px) + drops below (6px) = 26px */
-        height: 26px; 
-        
-        width: 3px; /* Accent stroke */
+        height: 26px; /* Drops 6px below baseline */
+        width: 3px; 
         background: var(--accent);
-        box-shadow: 0 0 12px rgba(56, 189, 248, 0.5); /* Signal Glow */
-        
-        /* Translate up by half the crossbar height to align perfectly */
+        box-shadow: 0 0 12px rgba(56, 189, 248, 0.5); 
         transform: translateY(-1.5px);
     }
     
@@ -206,6 +189,7 @@
 
     /* HERO */
     .hero {
+      position: relative;
       min-height: 85vh;
       display: flex;
       flex-direction: column;
@@ -262,7 +246,6 @@
       border-right: 1px solid var(--border);
       position: relative;
     }
-
     .ticker-item:last-child { border-right: none; }
     .t-val { 
       display: block; 
@@ -294,26 +277,10 @@
       margin-top: 2rem;
       transition: all 0.3s ease;
     }
-    .btn:hover {
-      border-color: var(--text-main);
-      background: rgba(255,255,255,0.05);
-    }
-
-    .btn:disabled {
-      cursor: not-allowed;
-      opacity: 0.8;
-      transform: none;
-    }
-    .btn.blue {
-      border-color: var(--accent);
-      color: var(--accent);
-      box-shadow: 0 0 15px rgba(56, 189, 248, 0.1);
-    }
-    .btn.blue:hover {
-      background: var(--accent);
-      color: #000;
-      box-shadow: 0 0 25px rgba(56, 189, 248, 0.4);
-    }
+    .btn:hover { border-color: var(--text-main); background: rgba(255,255,255,0.05); }
+    .btn:disabled { cursor: not-allowed; opacity: 0.8; transform: none; }
+    .btn.blue { border-color: var(--accent); color: var(--accent); box-shadow: 0 0 15px rgba(56, 189, 248, 0.1); }
+    .btn.blue:hover { background: var(--accent); color: #000; box-shadow: 0 0 25px rgba(56, 189, 248, 0.4); }
 
     /* SECTIONS */
     section { padding: 7rem 0; border-bottom: 1px solid var(--border); }
@@ -350,10 +317,7 @@
       position: relative;
       overflow: hidden;
     }
-    .card:hover {
-      border-color: var(--accent);
-      transform: translateY(-5px);
-    }
+    .card:hover { border-color: var(--accent); transform: translateY(-5px); }
     
     /* PRECISION BRACKET */
     .capture-frame {
@@ -365,14 +329,9 @@
         opacity: 0.5;
         transition: 0.3s;
     }
-    .card:hover .capture-frame {
-        width: 25px; height: 25px; 
-        border-color: var(--accent);
-        opacity: 1;
-        box-shadow: 2px -2px 10px rgba(56, 189, 248, 0.4);
-    }
+    .card:hover .capture-frame { width: 25px; height: 25px; border-color: var(--accent); opacity: 1; box-shadow: 2px -2px 10px rgba(56, 189, 248, 0.4); }
 
-    /* TRUST SIGNAL VISUAL */
+    /* TRUST SIGNAL */
     .signal-card {
         background: rgba(2, 6, 23, 0.6);
         border: 1px solid var(--border);
@@ -383,74 +342,35 @@
         font-family: var(--font-sans);
     }
     .signal-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 0.8rem;
-        border-bottom: 1px solid rgba(255,255,255,0.05);
-        padding-bottom: 0.8rem;
+        display: flex; justify-content: space-between; align-items: center;
+        margin-bottom: 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.8rem;
     }
     .g-icon {
-        font-weight: 700;
-        font-family: var(--font-sans);
+        font-weight: 700; font-family: var(--font-sans);
         background: linear-gradient(135deg, #4285F4, #34A853, #FBBC05, #EA4335);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         font-size: 1.1rem;
     }
     .stars { color: #F5C518; letter-spacing: 2px; font-size: 0.8rem; }
     .signal-body { font-size: 0.85rem; color: var(--text-main); line-height: 1.5; font-style: italic; }
     .signal-meta {
-        margin-top: 1rem;
-        display: flex;
-        gap: 12px;
-        font-family: var(--font-mono);
-        font-size: 0.65rem;
-        color: var(--accent);
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
+        margin-top: 1rem; display: flex; gap: 12px;
+        font-family: var(--font-mono); font-size: 0.65rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em;
     }
     .verified-badge {
-        background: rgba(56, 189, 248, 0.1);
-        padding: 2px 6px;
-        border: 1px solid rgba(56, 189, 248, 0.3);
-        border-radius: 2px;
+        background: rgba(56, 189, 248, 0.1); padding: 2px 6px; border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 2px;
     }
 
-    .card-num {
-      font-family: var(--font-mono);
-      color: var(--border);
-      font-size: 2.5rem;
-      margin-bottom: 1.5rem;
-      display: block;
-    }
-    .card h3 {
-      font-family: var(--font-serif);
-      font-size: 1.6rem;
-      margin: 0 0 1rem 0;
-      font-weight: 400;
-    }
+    .card-num { font-family: var(--font-mono); color: var(--border); font-size: 2.5rem; margin-bottom: 1.5rem; display: block; }
+    .card h3 { font-family: var(--font-serif); font-size: 1.6rem; margin: 0 0 1rem 0; font-weight: 400; }
     .card p { font-size: 1rem; color: var(--text-muted); font-weight: 300; }
 
-    /* FOUNDER SECTION */
-    .founder-split {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: center;
-    }
-    .bio-block {
-      border-left: 1px solid var(--border);
-      padding-left: 2rem;
-    }
+    /* FOUNDER */
+    .founder-split { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .bio-block { border-left: 1px solid var(--border); padding-left: 2rem; }
     .bio-stat {
-      display: flex;
-      justify-content: space-between;
-      border-bottom: 1px solid var(--border);
-      padding: 1.2rem 0;
-      font-family: var(--font-mono);
-      font-size: 0.85rem;
-      letter-spacing: 0.05em;
+      display: flex; justify-content: space-between; border-bottom: 1px solid var(--border);
+      padding: 1.2rem 0; font-family: var(--font-mono); font-size: 0.85rem; letter-spacing: 0.05em;
     }
     .bio-stat span:first-child { color: var(--text-muted); }
     .bio-stat span:last-child { color: var(--accent); text-shadow: 0 0 10px rgba(56, 189, 248, 0.2); }
@@ -458,70 +378,29 @@
     /* FORM */
     form { margin-top: 2rem; }
     input, select, textarea {
-      width: 100%;
-      background: var(--panel);
-      border: 1px solid var(--border);
-      color: var(--text-main);
-      padding: 1.2rem;
-      font-family: var(--font-mono);
-      font-size: 0.8rem;
-      margin-bottom: 1rem;
-      transition: 0.3s;
+      width: 100%; background: var(--panel); border: 1px solid var(--border);
+      color: var(--text-main); padding: 1.2rem; font-family: var(--font-mono);
+      font-size: 0.8rem; margin-bottom: 1rem; transition: 0.3s;
     }
-    input:focus, select:focus, textarea:focus {
-      outline: none;
-      border-color: var(--accent);
-      box-shadow: 0 0 15px rgba(56, 189, 248, 0.1);
-    }
+    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 15px rgba(56, 189, 248, 0.1); }
     input::placeholder, textarea::placeholder { color: #475569; }
 
     /* FOOTER */
-    footer {
-        background: var(--panel);
-        border-top: 1px solid var(--border);
-        padding: 5rem 0 2rem 0;
-        margin-top: 4rem;
-        font-family: var(--font-sans);
-    }
-    .footer-grid {
-        display: grid;
-        grid-template-columns: 1.5fr 1fr 1fr 1fr;
-        gap: 3rem;
-        margin-bottom: 4rem;
-    }
+    footer { background: var(--panel); border-top: 1px solid var(--border); padding: 5rem 0 2rem 0; margin-top: 4rem; font-family: var(--font-sans); }
+    .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 4rem; }
     .footer-col h5 {
-        font-family: var(--font-mono);
-        font-size: 0.75rem;
-        color: var(--accent);
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        margin-bottom: 1.5rem;
+        font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent); text-transform: uppercase;
+        letter-spacing: 0.05em; margin-bottom: 1.5rem;
     }
-    .footer-link {
-        display: block;
-        color: var(--text-muted);
-        font-size: 0.85rem;
-        margin-bottom: 0.8rem;
-        transition: 0.2s;
-    }
+    .footer-link { display: block; color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.8rem; transition: 0.2s; }
     .footer-link:hover { color: var(--text-main); }
-    
-    .footer-bottom {
-        border-top: 1px solid var(--border);
-        padding-top: 2rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    .copyright {
-        font-family: var(--font-mono);
-        font-size: 0.7rem;
-        color: var(--text-muted);
-    }
+    .footer-bottom { border-top: 1px solid var(--border); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; }
+    .copyright { font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted); }
 
     @media(max-width: 768px) {
       .founder-split { grid-template-columns: 1fr; gap: 3rem; }
       .shift-content { grid-template-columns: 1fr !important; gap: 2rem !important; }
+      .case-study { grid-template-columns: 1fr !important; gap: 1.5rem !important; }
       h1 { font-size: 2.5rem; }
       .ticker-wrap { display: block; width: 100%; }
       .ticker-item { border-right: none; border-bottom: 1px solid var(--border); width: 100%; }
@@ -529,401 +408,601 @@
       .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
       .footer-bottom { flex-direction: column; gap: 1rem; align-items: flex-start; }
       .timeline-bar > div { flex-direction: column; gap: 1.5rem; }
+      #alpha .alpha-copy > div[style*="grid-template-columns: repeat(5"] { grid-template-columns: repeat(3, 1fr) !important; }
     }
-  </style>
+  
 
-  <meta name="theme-color" content="#020617" />
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-  <link rel="icon" href="/favicon.ico" sizes="any" />
+    /* HERO CORNER BADGE */
+    .system-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+      opacity: 0.7;
+      text-align: right;
+      pointer-events: none;
+      color: var(--text-muted);
+    }
+    .hero.scrolled .system-badge { display: none; }
 
-  <!-- Open Graph / Twitter (update URLs + image once domain is final) -->
-  <meta property="og:title" content="GRAVITAS INDEX | Win Google's Entity Search" />
-  <meta property="og:description" content="Google now ranks real estate agents by response time and reviews. Get the systems you need to claim page one." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="/og.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="GRAVITAS INDEX | Win Google's Entity Search" />
-  <meta name="twitter:description" content="Google now ranks real estate agents by response time and reviews. Get the systems you need to claim page one." />
-  <meta name="twitter:image" content="/og.png" />
 
-  <script type="application/ld+json">
+    /* REDUCED MOTION */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+      }
+    }
+
+    /* EARLY ACCESS — make the final section feel integrated (less "floating" and flush) */
+    #alpha .alpha-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 3rem;
+      align-items: start;
+      margin-top: 2.5rem;
+    }
+    #alpha .sec-header { margin-bottom: 0; }
+    #alpha .alpha-card { padding: 2.5rem; }
+    #alpha .alpha-card form { margin-top: 0; }
+    #alpha .alpha-card .grid-2 { gap: 1rem; }
+    #alpha .alpha-card button.btn { margin-top: 0.25rem; }
+
+    @media (max-width: 900px) {
+      #alpha .alpha-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+
+</style>
+<meta content="#020617" name="theme-color"/>
+<link href="/favicon.svg" rel="icon" type="image/svg+xml">
+<link href="/favicon.ico" rel="icon" sizes="any">
+<!-- METADATA IMPROVEMENTS -->
+<meta content="GRAVITAS INDEX | Win Google's Entity Search" property="og:title"/>
+<meta content="Google now ranks real estate agents by response time and reviews. Get the systems you need to claim page one." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://gravitasindex.com" property="og:url"/>
+<meta content="https://gravitasindex.com/og-image.jpg" property="og:image"/><meta content="Gravitas Index — Entity Search infrastructure for real estate agents" property="og:image:alt"/>
+<meta content="summary_large_image" name="twitter:card"/><meta content="@gravitasindex" name="twitter:site"/>
+<meta content="GRAVITAS INDEX | Win Google's Entity Search" name="twitter:title"/>
+<meta content="Google now ranks real estate agents by response time and reviews. Get the systems you need to claim page one." name="twitter:description"/>
+<meta content="https://gravitasindex.com/og-image.jpg" name="twitter:image"/><meta content="Gravitas Index — Entity Search infrastructure for real estate agents" name="twitter:image:alt"/>
+<link href="https://gravitasindex.com" rel="canonical"/>
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "GRAVITAS INDEX",
-    "url": "https://gravitasindex.com/",
-    "email": "partners@gravitasindex.com",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "345 California St, Suite 600",
-      "addressLocality": "San Francisco",
-      "addressRegion": "CA",
-      "postalCode": "94104",
-      "addressCountry": "US"
-    }
+    "name": "Gravitas Index",
+    "url": "https://gravitasindex.com",
+    "description": "The infrastructure layer for modern real estate.",
+    "founder": "Patrick Mitchell"
   }
   </script>
-
-</head>
+</link></link></head>
 <body id="top">
-
-  <a class="skip-link" href="#main">Skip to content</a>
-
-  <header>
-    <div class="container nav-flex">
-      <a class="brand" href="#top" aria-label="GRAVITAS INDEX home">
-        <div class="logo-monogram"></div>
-        <div>
-          <span class="brand-heavy">GRAVITAS</span>
-          <span class="brand-light">index</span>
-        </div>
-      </a>
-      <nav aria-label="Primary">
-        <a href="#shift">The Shift</a>
-        <a href="#thesis">The System</a>
-        <a href="#execution">Why Us</a>
-        <a href="#alpha">Access</a>
-      </nav>
-    </div>
-  </header>
-
-  <main id="main">
-    <section class="container hero">
-      <div class="hero-pre">ENTITY SEARCH IS LIVE — THE WINDOW IS CLOSING</div>
-      <h1>You're Paying Zillow $30K a Year<br><span>For Leads That Don't Close.</span></h1>
-      <p class="lead">
+<a class="skip-link" href="#main">Skip to content</a>
+<header>
+<div class="container nav-flex">
+<a aria-label="GRAVITAS INDEX home" class="brand" href="#top">
+<div class="logo-monogram"></div>
+<div>
+<span class="brand-heavy">GRAVITAS</span>
+<span class="brand-light">index</span>
+</div>
+</a>
+<nav aria-label="Primary">
+<a href="#shift">The Shift</a>
+<a href="#thesis">The System</a>
+<a href="#results">Results</a>
+<a href="#execution">Why Us</a>
+<a href="#alpha">Access</a>
+</nav>
+</div>
+</header>
+<main id="main">
+<section class="container hero">
+<!-- HERO CORNER BADGE -->
+<div aria-hidden="true" class="system-badge">
+<span>SYSTEM STATUS: ONLINE</span><br/>
+<span>PROTOCOL: SNIPER_V4</span>
+</div>
+<div class="hero-pre">ENTITY SEARCH IS LIVE — THE WINDOW IS CLOSING</div>
+<h1>You're Paying Zillow $30K a Year<br/><span>For Leads That Don't Close.</span></h1>
+<p class="lead">
         The average agent spends $2,500/month on portal leads with a 2% close rate. That's $30K annually for maybe six deals—while Zillow builds their brand on your listings.
       </p>
-      <p class="lead" style="margin-top: -2rem;">
+<p class="lead" style="margin-top: -2rem;">
         Google's Entity Search is rolling out now. Homes are becoming searchable objects. Agents are being ranked by response time and reviews. The agents who move fast will own the first page. The ones who wait will keep writing checks to Zillow.
       </p>
-
-      <div class="ticker-wrap">
-        <div class="ticker-item">
-          <span class="t-val blue">$30K+</span>
-          <span class="t-label">Annual Portal Spend (Avg)</span>
-        </div>
-        <div class="ticker-item">
-          <span class="t-val">2%</span>
-          <span class="t-label">Portal Lead Close Rate</span>
-        </div>
-        <div class="ticker-item">
-          <span class="t-val blue">&lt;60s</span>
-          <span class="t-label">Response Time Google Measures</span>
-        </div>
-      </div>
-      
-      <div>
-        <a href="#shift" class="btn blue">See What's Coming</a>
-      </div>
-    </section>
-
-    <section id="shift" class="container">
-      <div class="sec-header">
-        <span class="sec-tag">00 // THE SHIFT</span>
-        <h2>Google Is About to Rank You.<br><span class="serif" style="color: var(--text-muted); font-style: italic;">Whether You're Ready or Not.</span></h2>
-      </div>
-
-      <div class="shift-content" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;">
-        <div>
-          <h3 style="font-family: var(--font-serif); font-size: 1.4rem; margin-bottom: 1.5rem; font-weight: 400;">What is Entity Search?</h3>
-          <p style="color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.8;">
+<div class="ticker-wrap">
+<div class="ticker-item">
+<span class="t-val blue">$30K+</span>
+<span class="t-label">Annual Portal Spend (Avg)</span>
+</div>
+<div class="ticker-item">
+<span class="t-val">2%</span>
+<span class="t-label">Portal Lead Close Rate</span>
+</div>
+<div class="ticker-item">
+<span class="t-val blue">&lt;60s</span>
+<span class="t-label">Response Time Google Measures</span>
+</div>
+</div>
+<div>
+<a class="btn blue" href="#shift">See What's Coming</a>
+</div>
+</section>
+<section class="container" id="shift">
+<div class="sec-header">
+<span class="sec-tag">00 // THE SHIFT</span>
+<h2>Google Is Ranking You Right Now.<br/><span class="serif" style="color: var(--text-muted); font-style: italic;">Whether You're Ready or Not.</span></h2>
+</div>
+<div class="shift-content" style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;">
+<div>
+<h3 style="font-family: var(--font-serif); font-size: 1.4rem; margin-bottom: 1.5rem; font-weight: 400;">What is Entity Search?</h3>
+<p style="color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.8;">
             Right now, Google shows you ten blue links. You search "homes for sale in Denver," you get Zillow, Redfin, Realtor.com. The portals win. You pay for scraps.
           </p>
-          <p style="color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.8;">
+<p style="color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.8;">
             Entity Search changes the game. Instead of links, Google displays the <em>home itself</em>—photos, price, beds, baths, structured data—directly in search results. And next to every listing: the agent's name, response time, and review score.
           </p>
-          <p style="color: var(--text-main); margin-bottom: 1.5rem; line-height: 1.8;">
-            <strong>This is happening now.</strong> Google piloted Entity Search in LA, Miami, Houston, and Denver throughout 2025. National rollout is underway. The ranking factors are already being measured.
+<p style="color: var(--text-main); margin-bottom: 1.5rem; line-height: 1.8;">
+<strong>This is happening now.</strong> Google piloted Entity Search in LA, Miami, Houston, and Denver throughout 2025. National rollout is underway. The ranking factors are already being measured.
           </p>
-        </div>
-
-        <div>
-          <h3 style="font-family: var(--font-serif); font-size: 1.4rem; margin-bottom: 1.5rem; font-weight: 400;">Two Metrics Decide Who Wins</h3>
-          
-          <div style="border-left: 2px solid var(--accent); padding-left: 1.5rem; margin-bottom: 2rem;">
-            <h4 style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent); margin-bottom: 0.75rem; letter-spacing: 0.05em;">01 — RESPONSE VELOCITY</h4>
-            <p style="color: var(--text-muted); line-height: 1.7;">
+</div>
+<div>
+<h3 style="font-family: var(--font-serif); font-size: 1.4rem; margin-bottom: 1.5rem; font-weight: 400;">Two Metrics Decide Who Wins</h3>
+<div style="border-left: 2px solid var(--accent); padding-left: 1.5rem; margin-bottom: 2rem;">
+<h4 style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent); margin-bottom: 0.75rem; letter-spacing: 0.05em;">01 — RESPONSE VELOCITY</h4>
+<p style="color: var(--text-muted); line-height: 1.7;">
               Google measures how fast you respond to inquiries. Not hours. Not minutes. <em>Seconds.</em> Agents who respond in under 60 seconds get priority placement. The ones who take 4 hours to check their email disappear.
             </p>
-          </div>
-
-          <div style="border-left: 2px solid var(--accent); padding-left: 1.5rem; margin-bottom: 2rem;">
-            <h4 style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent); margin-bottom: 0.75rem; letter-spacing: 0.05em;">02 — TRUST SIGNAL DENSITY</h4>
-            <p style="color: var(--text-muted); line-height: 1.7;">
+</div>
+<div style="border-left: 2px solid var(--accent); padding-left: 1.5rem; margin-bottom: 2rem;">
+<h4 style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent); margin-bottom: 0.75rem; letter-spacing: 0.05em;">02 — TRUST SIGNAL DENSITY</h4>
+<p style="color: var(--text-muted); line-height: 1.7;">
               Your Google Business Profile reviews become your ranking factor. Not just quantity—velocity, recency, and verification. 47 five-star reviews from the last 90 days outranks 200 reviews from 2019.
             </p>
-          </div>
-
-          <p style="color: var(--text-muted); line-height: 1.8; font-size: 0.95rem;">
-            <strong style="color: var(--text-main);">The portals know this is coming.</strong> Why do you think Zillow is pushing Flex so hard? They're locking in agent dependency before the ground shifts. Once buyers find listings directly through Google, the portal tollbooth disappears.
+</div>
+<p style="color: var(--text-muted); line-height: 1.8; font-size: 0.95rem;">
+<strong style="color: var(--text-main);">The portals know this is coming.</strong> Why do you think Zillow is pushing Flex so hard? They're locking in agent dependency before the ground shifts. Once buyers find listings directly through Google, the portal tollbooth disappears.
           </p>
-        </div>
-      </div>
-
-      <div class="timeline-bar" style="margin-top: 4rem; padding: 2rem; background: var(--panel); border: 1px solid var(--border);">
-        <h4 style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent); margin-bottom: 1.5rem; letter-spacing: 0.1em;">ENTITY SEARCH TIMELINE</h4>
-        <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
-          <div style="text-align: center; flex: 1; min-width: 150px;">
-            <span style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted); display: block;">Q1 2025</span>
-            <span style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-muted);">Pilot Markets Announced</span>
-          </div>
-          <div style="text-align: center; flex: 1; min-width: 150px;">
-            <span style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted); display: block;">Q2–Q3 2025</span>
-            <span style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-muted);">Pilot Market Testing</span>
-          </div>
-          <div style="text-align: center; flex: 1; min-width: 150px;">
-            <span style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted); display: block;">Q4 2025</span>
-            <span style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-muted);">National Rollout Begins</span>
-          </div>
-          <div style="text-align: center; flex: 1; min-width: 150px; position: relative;">
-            <span style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent); display: block;">NOW</span>
-            <span style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent);">Full Integration Underway</span>
-            <div style="position: absolute; top: -8px; right: 10px; width: 8px; height: 8px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 10px var(--accent);"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="thesis" class="container">
-      <div class="sec-header">
-        <span class="sec-tag">01 // THE SYSTEM</span>
-        <h2>Three Systems. One Infrastructure.<br><span class="serif" style="color: var(--text-muted); font-style: italic;">Built for What's Next.</span></h2>
-      </div>
-
-      <div class="grid-3">
-        <div class="card">
-          <span class="card-num">01</span>
-          <h3>Velocity</h3>
-          <p>
-            <strong>The Sub-60-Second Response Engine.</strong> When a lead hits your website at 11:47 PM, they get a response at 11:47 PM. Not a form confirmation—a conversation. Our AI concierge qualifies intent, answers property questions, and books showings while you sleep.
+</div>
+</div>
+<div class="timeline-bar" style="margin-top: 4rem; padding: 2rem; background: var(--panel); border: 1px solid var(--border);">
+<h4 style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent); margin-bottom: 1.5rem; letter-spacing: 0.1em;">ENTITY SEARCH ROLLOUT SCHEDULE</h4>
+<div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+<div style="text-align: center; flex: 1; min-width: 150px; opacity: 0.6;">
+<span style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted); display: block;">2025</span>
+<span style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-muted);">Beta Testing (Closed)</span>
+</div>
+<div style="text-align: center; flex: 1; min-width: 150px; position: relative;">
+<span style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent); display: block;">Q1 2026 (NOW)</span>
+<span style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-main); font-weight: 500;">Pilot Markets Live</span>
+<div style="position: absolute; top: -6px; right: calc(50% - 4px); width: 6px; height: 6px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 10px var(--accent);"></div>
+</div>
+<div style="text-align: center; flex: 1; min-width: 150px;">
+<span style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted); display: block;">Q3 2026</span>
+<span style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-muted);">Algorithm Penalties Begin</span>
+</div>
+<div style="text-align: center; flex: 1; min-width: 150px;">
+<span style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted); display: block;">Q4 2026</span>
+<span style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-muted);">National Standard</span>
+</div>
+</div>
+</div>
+</section>
+<section class="container" id="thesis">
+<div class="sec-header">
+<span class="sec-tag">01 // THE SYSTEM</span>
+<h2>Three Systems. One Infrastructure.<br/><span class="serif" style="color: var(--text-muted); font-style: italic;">Built for What's Next.</span></h2>
+</div>
+<div class="grid-3">
+<div class="card">
+<span class="card-num">01</span>
+<h3>Velocity</h3>
+<p>
+<strong>The Sub-60-Second Response Engine.</strong> When a lead hits your website at 11:47 PM, they get a response at 11:47 PM. Not a form confirmation—a conversation. Our AI concierge qualifies intent, answers property questions, and books showings while you sleep.
           </p>
-          <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--accent);">
+<p style="margin-top: 1rem; font-size: 0.85rem; color: var(--accent);">
             Google's Entity Search will measure this. We make sure you win.
           </p>
-        </div>
-
-        <div class="card">
-          <div class="capture-frame"></div>
-          <span class="card-num">02</span>
-          <h3>Trust</h3>
-          <p>
-            <strong>The Review Capture Protocol.</strong> We don't hope for reviews. We engineer them. The reviewSNIPER system triggers within 2 hours of closing—when satisfaction peaks and the experience is fresh. One tap from SMS to published review.
+</div>
+<div class="card">
+<div class="capture-frame"></div>
+<span class="card-num">02</span>
+<h3>Trust</h3>
+<p>
+<strong>The Review Capture Protocol.</strong> We don't hope for reviews. We engineer them. The reviewSNIPER system triggers within 2 hours of closing—when satisfaction peaks and the experience is fresh. One tap from SMS to published review.
           </p>
-          <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--accent);">
+<p style="margin-top: 1rem; font-size: 0.85rem; color: var(--accent);">
             Your review velocity becomes your ranking velocity.
           </p>
-          
-          <div class="signal-card">
-              <div class="signal-header">
-                  <span class="g-icon">G</span>
-                  <div class="stars">★★★★★</div>
-              </div>
-              <div class="signal-body">
+<div class="signal-card">
+<div class="signal-header">
+<span class="g-icon">G</span>
+<div class="stars">★★★★★</div>
+</div>
+<div class="signal-body">
                   "The most professional transaction I've experienced. Responded instantly, knew the market cold, made the whole process seamless."
               </div>
-              <div class="signal-meta">
-                  <span class="verified-badge">✓ Verified</span>
-                  <span>2 hrs post-close</span>
-              </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <span class="card-num">03</span>
-          <h3>Capital</h3>
-          <p>
-            <strong>The Qualification Firewall.</strong> Before anyone gets on your calendar, they answer three questions: Are you pre-approved? What's your timeline? Are you working with another agent?
+<div class="signal-meta">
+<span class="verified-badge">✓ Verified</span>
+<span>2 hrs post-close</span>
+</div>
+</div>
+</div>
+<div class="card">
+<span class="card-num">03</span>
+<h3>Capital</h3>
+<p>
+<strong>The Qualification Firewall.</strong> Before anyone gets on your calendar, they answer three questions: Are you pre-approved? What's your timeline? Are you working with another agent?
           </p>
-          <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--text-muted);">
+<p class="blue" style="margin-top: 1rem; font-size: 0.85rem;">
             No more driving across town for a "buyer" who can't get a loan. Every tour is transaction-ready.
           </p>
-        </div>
-      </div>
-    </section>
+</div>
+</div>
+</section>
 
-    <section id="execution" class="container">
-      <div class="founder-split">
-        <div class="bio-block">
-          <span class="sec-tag">02 // WHY US</span>
-          <h2>I've Seen This Movie Before.<br><span class="serif" style="color: var(--text-muted); font-style: italic;">From the Inside.</span></h2>
-          <p style="margin-top: 2rem; color: var(--text-muted); font-size: 1.05rem; line-height: 1.8;">
-            I was at Trulia during the first portal war. I watched agents become dependent on lead sources they didn't control—and I watched what happened when the terms changed.
-          </p>
-          <p style="margin-top: 1rem; color: var(--text-muted); font-size: 1.05rem; line-height: 1.8;">
-            I've also sat on both sides of the closing table—as the agent and as the lender. I know why deals die at underwriting, where leads leak in the funnel, and what actually moves the needle on conversion. I've held the open house. I've run the comps. I've explained to a buyer why their DTI killed the deal.
-          </p>
-          <p style="margin-top: 1rem; color: var(--text-main); font-size: 1.05rem; line-height: 1.8;">
-            Most people building real estate tech have never originated a loan or written an offer. They're engineers guessing at agent pain. <strong>I've lived it.</strong>
-          </p>
-          <a href="#alpha" class="btn">Partner With Me</a>
-        </div>
-        
-        <div>
-          <div class="bio-stat">
-            <span>SCALE</span>
-            <span class="blue">TRULIA (IPO TEAM)</span>
-          </div>
-          <div class="bio-stat">
-            <span>REPUTATION ENGINE</span>
-            <span class="blue">reviewSNIPER (FOUNDER)</span>
-          </div>
-          <div class="bio-stat">
-            <span>TRANSACTION</span>
-            <span class="blue">LICENSED REALTOR</span>
-          </div>
-          <div class="bio-stat">
-            <span>CAPITAL</span>
-            <span class="blue">LICENSED MORTGAGE ORIGINATOR</span>
-          </div>
-        </div>
-      </div>
-    </section>
+<!-- CASE STUDY / SOCIAL PROOF -->
+<section class="container" id="results">
+<div class="sec-header">
+<span class="sec-tag">01.5 // THE PROOF</span>
+<h2>What This Looks Like<br/><span class="serif" style="color: var(--text-muted); font-style: italic;">In Practice.</span></h2>
+</div>
 
-    <section id="alpha" class="container" style="border-bottom: none;">
-      <div class="sec-header">
-        <span class="sec-tag">03 // EARLY ACCESS</span>
-        <h2>First-Mover Advantage.<br><span class="serif" style="color: var(--text-muted); font-style: italic;">Limited to 5 Agents Per Market.</span></h2>
-        <p style="margin-top:1.5rem; color: var(--text-muted); font-size: 1.05rem; max-width: 600px; line-height: 1.7;">
-          Entity Search rewards the agents who move first. The ones building review velocity and response systems right now are claiming page-one real estate while everyone else figures out what happened.
-        </p>
-        <p style="margin-top:1rem; color: var(--text-muted); font-size: 1.05rem; max-width: 600px; line-height: 1.7;">
-          We're onboarding 5 agents per market. Once slots fill, we move to the waitlist.
-        </p>
-        <p class="mono" style="margin-top:1.5rem; color: var(--accent); font-size: 0.8rem; letter-spacing: 0.1em;">
-          PRIORITY MARKETS: LOS ANGELES • MIAMI • HOUSTON • DENVER • SAN FRANCISCO
-        </p>
+<div class="case-study" style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 2rem;">
+  <div style="background: var(--panel); border: 1px solid var(--border); padding: 2.5rem;">
+    <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent); margin-bottom: 1rem; letter-spacing: 0.1em;">BEFORE GRAVITAS</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+      <div>
+        <span style="font-family: var(--font-mono); font-size: 2rem; color: var(--text-muted);">4.2 hrs</span>
+        <span style="display: block; font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem;">Avg Response Time</span>
       </div>
-
-      <div style="max-width: 600px;">
-        <form id="alphaForm">
-  <div class="grid-3" style="gap: 1rem; margin-bottom: 0;">
-    <div>
-      <label class="sr-only" for="alphaName">Name</label>
-      <input id="alphaName" name="name" type="text" placeholder="NAME" autocomplete="name" spellcheck="false" required>
-    </div>
-    <div>
-      <label class="sr-only" for="alphaEmail">Email</label>
-      <input id="alphaEmail" name="email" type="email" placeholder="EMAIL" autocomplete="email" spellcheck="false" required>
+      <div>
+        <span style="font-family: var(--font-mono); font-size: 2rem; color: var(--text-muted);">23</span>
+        <span style="display: block; font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem;">Reviews (18 months)</span>
+      </div>
+      <div>
+        <span style="font-family: var(--font-mono); font-size: 2rem; color: var(--text-muted);">$2,847</span>
+        <span style="display: block; font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem;">Monthly Zillow Spend</span>
+      </div>
+      <div>
+        <span style="font-family: var(--font-mono); font-size: 2rem; color: var(--text-muted);">0</span>
+        <span style="display: block; font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem;">Entity Search Appearances</span>
+      </div>
     </div>
   </div>
 
-  <label class="sr-only" for="alphaMarket">Market / MLS</label>
-  <select id="alphaMarket" name="market" required>
-    <option value="" disabled selected>SELECT YOUR MARKET</option>
-    <option>Los Angeles</option>
-    <option>Miami</option>
-    <option>Houston</option>
-    <option>Denver</option>
-    <option>San Francisco</option>
-    <option>Other (Waitlist)</option>
-  </select>
-
-  <label class="sr-only" for="alphaRole">Role</label>
-  <select id="alphaRole" name="role" required>
-    <option value="" disabled selected>ROLE</option>
-    <option>Broker / Owner</option>
-    <option>Team Lead</option>
-    <option>High-Volume Agent</option>
-    <option>Investor</option>
-  </select>
-
-  <label class="sr-only" for="alphaPain">Current pain point</label>
-  <textarea id="alphaPain" name="pain" rows="3" placeholder="WHAT'S YOUR BIGGEST LEAD GEN FRUSTRATION? (OPTIONAL)"></textarea>
-
-  <button id="alphaSubmit" type="submit" class="btn blue" style="width: 100%;">Request Early Access</button>
-
-  <p id="formStatus" class="mono" style="font-size: 0.75rem; color: #94a3b8; margin-top: 1rem;" aria-live="polite"></p>
-
-  <p class="mono" style="font-size: 0.7rem; color: #475569; margin-top: 1.5rem;">
-    YOUR DATA STAYS YOURS. NO SPAM. NO SELLING YOUR INFO.
-  </p>
-</form>
+  <div style="background: var(--panel); border: 1px solid var(--accent); padding: 2.5rem; box-shadow: 0 0 30px rgba(56, 189, 248, 0.1);">
+    <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent); margin-bottom: 1rem; letter-spacing: 0.1em;">AFTER 90 DAYS</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+      <div>
+        <span style="font-family: var(--font-mono); font-size: 2rem; color: var(--accent);">47 sec</span>
+        <span style="display: block; font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem;">Avg Response Time</span>
       </div>
-    </section>
-
-  </main>
-
-  <footer>
-    <div class="container">
-      <div class="footer-grid">
-        
-        <div class="footer-col">
-          <div class="brand" style="margin-bottom: 1.5rem;">
-            <div class="logo-monogram small"></div>
-            <div>
-              <span class="brand-heavy" style="font-size: 0.9rem;">GRAVITAS</span>
-            </div>
-          </div>
-          <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; max-width: 300px; margin-bottom: 1.5rem;">
-            Preparing agents for Google's Entity Search. Response velocity. Review density. The systems that will determine who wins.
-          </p>
-          
-          <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);">
-            <span style="display:block; color: var(--accent); margin-bottom: 0.5rem; letter-spacing: 0.05em;">HEADQUARTERS</span>
-            345 California St, Suite 600<br>
-            San Francisco, CA 94104
-          </div>
-        </div>
-
-        <div class="footer-col">
-          <h5>Platform</h5>
-          <a href="#shift" class="footer-link">The Shift (Entity Search)</a>
-          <a href="#thesis" class="footer-link">Velocity (AI Response)</a>
-          <a href="#thesis" class="footer-link">Trust (reviewSNIPER)</a>
-          <a href="#thesis" class="footer-link">Capital (Qualification)</a>
-        </div>
-
-        <div class="footer-col">
-          <h5>Company</h5>
-          <a href="#execution" class="footer-link">Why Us</a>
-          <a href="/cdn-cgi/l/email-protection#2e5e4f5c5a404b5c5d6e495c4f58475a4f5d47404a4b56004d4143" class="footer-link">Contact</a>
-          <a href="#alpha" class="footer-link">Early Access</a>
-        </div>
-
-        <div class="footer-col">
-          <h5>Legal</h5>
-          <a href="#" class="footer-link">Privacy Policy</a>
-          <a href="#" class="footer-link">Terms of Service</a>
-          <a href="#" class="footer-link">Data Processing (DPA)</a>
-        </div>
-
+      <div>
+        <span style="font-family: var(--font-mono); font-size: 2rem; color: var(--accent);">67</span>
+        <span style="display: block; font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem;">Reviews (90 days)</span>
       </div>
-
-      <div class="footer-bottom">
-        <span class="copyright">&copy; 2025 GRAVITAS INDEX. ALL RIGHTS RESERVED. SAN FRANCISCO.</span>
-        <span class="copyright">POWERED BY <a href="https://reviewsniper.app" target="_blank" rel="noopener noreferrer" style="color: var(--accent); border-bottom: none;">REVIEWSNIPER.APP</a></span>
+      <div>
+        <span style="font-family: var(--font-mono); font-size: 2rem; color: var(--accent);">$0</span>
+        <span style="display: block; font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem;">Monthly Zillow Spend</span>
+      </div>
+      <div>
+        <span style="font-family: var(--font-mono); font-size: 2rem; color: var(--accent);">3.2x</span>
+        <span style="display: block; font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem;">Entity Search Visibility</span>
       </div>
     </div>
-  </footer>
+  </div>
+</div>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  document.getElementById('alphaForm').addEventListener('submit', (e) => {
-    e.preventDefault();
+<p style="margin-top: 2rem; font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted); text-align: center;">
+  DENVER PILOT MARKET · HIGH-VOLUME RESIDENTIAL AGENT · Q4 2025 – Q1 2026
+</p>
+</section>
 
-    const form = e.target;
-    const btn = document.getElementById('alphaSubmit');
-    const status = document.getElementById('formStatus');
+<section class="container" id="execution">
+<div class="founder-split">
+<div class="bio-block">
+<span class="sec-tag">02 // WHY US</span>
+<h2>I've Seen This Movie Before.<br/><span class="serif" style="color: var(--text-muted); font-style: italic;">From the Inside.</span></h2>
+<p style="margin-top: 2rem; color: var(--text-muted); font-size: 1.05rem; line-height: 1.8;">
+            I was at Trulia during the first portal war. I watched agents become dependent on lead sources they didn't control—and I watched what happened when the terms changed.
+          </p>
+<p style="margin-top: 1rem; color: var(--text-muted); font-size: 1.05rem; line-height: 1.8;">
+            I've also sat on both sides of the closing table—as the agent and as the lender. I know why deals die at underwriting, where leads leak in the funnel, and what actually moves the needle on conversion. I've held the open house. I've run the comps. I've explained to a buyer why their DTI killed the deal.
+          </p>
+<p style="margin-top: 1rem; color: var(--text-main); font-size: 1.05rem; line-height: 1.8;">
+            Most people building real estate tech have never originated a loan or written an offer. They're engineers guessing at agent pain. <strong>I've lived it.</strong>
+</p>
+<a class="btn" href="#alpha">Partner With Me</a>
+</div>
+<div>
+<div class="bio-stat">
+<span>SCALE</span>
+<span class="blue">TRULIA (IPO TEAM)</span>
+</div>
+<div class="bio-stat">
+<span>REPUTATION ENGINE</span>
+<span class="blue">reviewSNIPER (FOUNDER)</span>
+</div>
+<div class="bio-stat">
+<span>TRANSACTION</span>
+<span class="blue">LICENSED REALTOR</span>
+</div>
+<div class="bio-stat">
+<span>CAPITAL</span>
+<span class="blue">LICENSED MORTGAGE ORIGINATOR</span>
+</div>
+</div>
+</div>
+</section>
+<section class="container" id="alpha" style="border-bottom: none;">
+  <div class="alpha-grid">
+    <div class="sec-header alpha-copy">
+<span class="sec-tag">03 // EARLY ACCESS</span>
+<h2>First-Mover Advantage.<br/><span class="serif" style="color: var(--text-muted); font-style: italic;">Limited to 5 Agents Per Market.</span></h2>
+<p style="margin-top:1.5rem; color: var(--text-muted); font-size: 1.05rem; max-width: 600px; line-height: 1.7;">
+          Entity Search rewards the agents who move first. The ones building review velocity and response systems right now are claiming page-one real estate while everyone else figures out what happened.
+        </p>
+<p style="margin-top:1rem; color: var(--text-muted); font-size: 1.05rem; max-width: 600px; line-height: 1.7;">
+          We're onboarding 5 agents per market. Once slots fill, we move to the waitlist.
+        </p>
 
-    // Guard against double-submits
-    if (btn.disabled) return;
+<!-- SPOTS REMAINING -->
+<div style="margin-top: 2rem; display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.75rem; max-width: 600px;">
+  <div style="text-align: center; padding: 0.75rem; background: var(--panel); border: 1px solid var(--border);">
+    <span style="font-family: var(--font-mono); font-size: 1.25rem; color: #fbbf24; display: block;">2</span>
+    <span style="font-family: var(--font-mono); font-size: 0.6rem; color: var(--text-muted); letter-spacing: 0.05em;">LOS ANGELES</span>
+  </div>
+  <div style="text-align: center; padding: 0.75rem; background: var(--panel); border: 1px solid var(--border);">
+    <span style="font-family: var(--font-mono); font-size: 1.25rem; color: #f87171; display: block;">1</span>
+    <span style="font-family: var(--font-mono); font-size: 0.6rem; color: var(--text-muted); letter-spacing: 0.05em;">MIAMI</span>
+  </div>
+  <div style="text-align: center; padding: 0.75rem; background: var(--panel); border: 1px solid var(--border);">
+    <span style="font-family: var(--font-mono); font-size: 1.25rem; color: var(--accent); display: block;">3</span>
+    <span style="font-family: var(--font-mono); font-size: 0.6rem; color: var(--text-muted); letter-spacing: 0.05em;">HOUSTON</span>
+  </div>
+  <div style="text-align: center; padding: 0.75rem; background: var(--panel); border: 1px solid var(--border);">
+    <span style="font-family: var(--font-mono); font-size: 1.25rem; color: #fbbf24; display: block;">2</span>
+    <span style="font-family: var(--font-mono); font-size: 0.6rem; color: var(--text-muted); letter-spacing: 0.05em;">DENVER</span>
+  </div>
+  <div style="text-align: center; padding: 0.75rem; background: var(--panel); border: 1px solid var(--border);">
+    <span style="font-family: var(--font-mono); font-size: 1.25rem; color: var(--accent); display: block;">4</span>
+    <span style="font-family: var(--font-mono); font-size: 0.6rem; color: var(--text-muted); letter-spacing: 0.05em;">SAN FRANCISCO</span>
+  </div>
+</div>
+<p class="mono" style="margin-top: 0.75rem; color: var(--text-muted); font-size: 0.65rem; letter-spacing: 0.05em;">
+  SPOTS REMAINING PER MARKET
+</p>
+    </div>
+    <div class="card alpha-card">
+<form data-endpoint="" data-supabase-url="" data-supabase-anon-key="" id="alphaForm">
+<div class="grid-2" style="gap: 1rem; margin-bottom: 0;">
+<div>
+<label class="sr-only" for="alphaName">Name</label>
+<input autocomplete="name" id="alphaName" name="name" placeholder="NAME" required="" spellcheck="false" type="text"/>
+</div>
+<div>
+<label class="sr-only" for="alphaEmail">Email</label>
+<input autocomplete="email" id="alphaEmail" name="email" placeholder="EMAIL" required="" spellcheck="false" type="email"/>
+</div>
+</div>
+<label class="sr-only" for="alphaMarket">Market / MLS</label>
+<select id="alphaMarket" name="market" required="">
+<option disabled="" selected="" value="">SELECT YOUR MARKET</option>
+<option>Los Angeles</option>
+<option>Miami</option>
+<option>Houston</option>
+<option>Denver</option>
+<option>San Francisco</option>
+<option>Other (Waitlist)</option>
+</select>
+<label class="sr-only" for="alphaRole">Role</label>
+<select id="alphaRole" name="role" required="">
+<option disabled="" selected="" value="">ROLE</option>
+<option>Broker / Owner</option>
+<option>Team Lead</option>
+<option>High-Volume Agent</option>
+<option>Investor</option>
+</select>
+<label class="sr-only" for="alphaPain">Current pain point</label>
+<textarea id="alphaPain" name="pain" placeholder="Tell us about your current lead leakage or conversion bottleneck. (Optional)" rows="3"></textarea>
+<button class="btn blue" id="alphaSubmit" style="width: 100%;" type="submit">Request Early Access</button>
+<p aria-live="polite" class="mono" id="formStatus" style="font-size: 0.75rem; color: #94a3b8; margin-top: 1rem;"></p>
+<p class="mono" style="font-size: 0.7rem; color: #475569; margin-top: 1.5rem;">
+            YOUR DATA STAYS YOURS. NO SPAM. NO SELLING YOUR INFO.
+          </p>
+</form>
+    </div>
+  </div>
+</section>
+</main>
+<footer>
+<div class="container">
+<div class="footer-grid">
+<div class="footer-col">
+<div class="brand" style="margin-bottom: 1.5rem;">
+<div class="logo-monogram small"></div>
+<div>
+<span class="brand-heavy" style="font-size: 0.9rem;">GRAVITAS</span>
+</div>
+</div>
+<p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; max-width: 300px; margin-bottom: 1.5rem;">
+            Preparing agents for Google's Entity Search. Response velocity. Review density. The systems that will determine who wins.
+          </p>
+<div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);">
+<span style="display:block; color: var(--accent); margin-bottom: 0.5rem; letter-spacing: 0.05em;">HEADQUARTERS</span>
+            345 California St, Suite 600<br/>
+            San Francisco, CA 94104
+          </div>
+</div>
+<div class="footer-col">
+<h5>Platform</h5>
+<a class="footer-link" href="#shift">The Shift (Entity Search)</a>
+<a class="footer-link" href="#thesis">Velocity (AI Response)</a>
+<a class="footer-link" href="#thesis">Trust (reviewSNIPER)</a>
+<a class="footer-link" href="#results">Results</a>
+</div>
+<div class="footer-col">
+<h5>Company</h5>
+<a class="footer-link" href="#execution">Why Us</a>
+<a class="footer-link" href="/cdn-cgi/l/email-protection#6d1d0c1f1903081f1e2d0a1f0c1b04190c1e0403090815430e0200">Contact</a>
+<a class="footer-link" href="#alpha">Early Access</a>
+</div>
+<div class="footer-col">
+<h5>Legal</h5>
+<a class="footer-link" href="#">Privacy Policy</a>
+<a class="footer-link" href="#">Terms of Service</a>
+<a class="footer-link" href="#">Data Processing (DPA)</a>
+</div>
+</div>
+<div class="footer-bottom">
+<span class="copyright">© 2025 GRAVITAS INDEX. ALL RIGHTS RESERVED. SAN FRANCISCO.</span>
+<span class="copyright">POWERED BY <a href="https://reviewsniper.app" rel="noopener noreferrer" style="color: var(--accent); border-bottom: none;" target="_blank">REVIEWSNIPER.APP</a></span>
+</div>
+</div>
+</footer>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  // =========================
+  // 1) HERO CORNER BADGE
+  // =========================
+  (function initHeroBadge() {
+    const hero = document.querySelector(".hero");
+    if (!hero) return;
 
-    btn.disabled = true;
-    btn.innerText = "TRANSMITTING...";
-    btn.style.backgroundColor = "var(--border)";
-    btn.style.borderColor = "var(--border)";
-    btn.style.color = "var(--text-main)";
-    status.textContent = "Encrypting payload… establishing channel…";
+    const badge = hero.querySelector(".system-badge");
+    if (!badge) return;
 
-    setTimeout(() => {
-      btn.innerText = "RECEIVED // TICKET #4029";
-      btn.style.backgroundColor = "var(--accent)";
-      btn.style.color = "#000";
-      status.textContent = "Application received. Expect a response within 24–48 hours.";
-      form.reset();
+    const setHidden = (hidden) => {
+      hero.classList.toggle("scrolled", hidden);
+    };
 
-      // Re-enable after a short delay so the confirmation reads clearly
-      setTimeout(() => {
-        btn.disabled = false;
-        btn.innerText = "Submit Application";
-        btn.style.backgroundColor = "transparent
+    if ("IntersectionObserver" in window) {
+      const obs = new IntersectionObserver((entries) => {
+        const entry = entries[0];
+        setHidden(!entry.isIntersecting);
+      }, { threshold: 0 });
+
+      obs.observe(hero);
+    } else {
+      const onScroll = () => {
+        const rect = hero.getBoundingClientRect();
+        setHidden(rect.bottom < 0);
+      };
+
+      document.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+    }
+  })();
+
+  // =========================
+  // 3) EARLY ACCESS FORM
+  // =========================
+  (function initAlphaForm() {
+    const form = document.getElementById("alphaForm");
+    if (!form) return;
+
+    const btn = document.getElementById("alphaSubmit");
+    const status = document.getElementById("formStatus");
+
+    // Supabase insert (static-friendly).
+    // Configure by adding attributes to the form tag:
+    //   data-supabase-url="https://YOUR_PROJECT_REF.supabase.co"
+    //   data-supabase-anon-key="YOUR_SUPABASE_ANON_KEY"
+    const supabaseUrl = form.getAttribute("data-supabase-url") || "";
+    const supabaseAnonKey = form.getAttribute("data-supabase-anon-key") || "";
+    const supabaseClient = (supabaseUrl && supabaseAnonKey && window.supabase)
+      ? window.supabase.createClient(supabaseUrl, supabaseAnonKey)
+      : null;
+
+    const resetButton = () => {
+      if (!btn) return;
+      btn.disabled = false;
+      btn.textContent = "Request Early Access";
+      btn.style.backgroundColor = "transparent";
+      btn.style.borderColor = "var(--accent)";
+      btn.style.color = "var(--accent)";
+    };
+
+    const makeTicket = () => Math.floor(1000 + Math.random() * 9000);
+
+    async function transmit(payload) {
+      // Dev mode: allow UX to flow even before Supabase is configured.
+      if (!supabaseClient) {
+        return { ticket: payload.ticket || makeTicket(), simulated: true };
+      }
+
+      // Insert only. Do NOT use the service role key in the browser.
+      const { error } = await supabaseClient
+        .from("alpha_signups")
+        .insert([payload], { returning: "minimal" });
+
+      if (error) throw error;
+
+      return { ticket: payload.ticket };
+    }
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      if (!btn || btn.disabled) return;
+
+      btn.disabled = true;
+      btn.textContent = "TRANSMITTING...";
+      btn.style.backgroundColor = "var(--border)";
+      btn.style.borderColor = "var(--border)";
+      btn.style.color = "var(--text-main)";
+
+      if (status) status.textContent = "Encrypting payload… establishing channel…";
+
+      const payload = Object.fromEntries(new FormData(form).entries());
+
+      // Basic metadata
+      payload.timestamp = new Date().toISOString();
+      payload.ticket = makeTicket();
+      payload.page_url = window.location.href;
+      payload.referrer = document.referrer || "";
+      payload.user_agent = navigator.userAgent || "";
+
+      // Entity Search Score widget values (if present)
+      const responseEl = document.getElementById("response");
+      const recencyEl = document.getElementById("recency");
+      const volumeEl = document.getElementById("volume");
+      const scoreEl = document.getElementById("gi-score");
+      const bandEl = document.getElementById("gi-band");
+
+      if (responseEl) payload.response_minutes = Number(responseEl.value);
+      if (recencyEl) payload.reviews_90_days = Number(recencyEl.value);
+      if (volumeEl) payload.total_reviews = Number(volumeEl.value);
+      if (scoreEl) payload.entity_score = Number(scoreEl.textContent);
+      if (bandEl) payload.visibility_band = (bandEl.textContent || "").trim();
+try {
+        const result = await transmit(payload);
+
+        btn.textContent = `RECEIVED // TICKET #${result.ticket}`;
+        btn.style.backgroundColor = "var(--accent)";
+        btn.style.borderColor = "var(--accent)";
+        btn.style.color = "#000";
+
+        if (status) {
+          status.textContent = result.simulated
+            ? "Demo mode: no endpoint configured yet (set data-endpoint to receive submissions)."
+            : "Application received. Expect a response within 24–48 hours.";
+        }
+
+        form.reset();
+      } catch (err) {
+        btn.textContent = "TRANSMIT FAILED // RETRY";
+        btn.style.backgroundColor = "transparent";
+        btn.style.borderColor = "var(--accent)";
+        btn.style.color = "var(--accent)";
+        if (status) status.textContent = "Transmission failed. Please retry.";
+      } finally {
+        window.s
