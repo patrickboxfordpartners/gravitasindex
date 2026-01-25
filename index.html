@@ -1222,35 +1222,52 @@
 </section>
 </main>
 <!-- UNIFIED FOOTER -->
-<footer style="background: var(--bg); border-top: 1px solid var(--border); padding: 2.5rem 0;">
-  <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
+<footer>
+  <div class="footer-grid">
     
-    <!-- Logo -->
-    <a class="brand" href="/" style="font-size: 1rem;">
-      <div class="logo-monogram" style="width: 32px; height: 32px; border-width: 2px;">
-        <style>
-          .logo-monogram[style*="32px"]::before { width: 10px; height: 2px; }
-          .logo-monogram[style*="32px"]::after { height: 20px; width: 2px; right: -2px; }
-        </style>
+    <!-- Brand Column -->
+    <div class="footer-brand">
+      <a class="brand" href="/">
+        <div class="logo-monogram"></div>
+        <div>
+          <span class="brand-heavy">GRAVITAS</span>
+          <span class="brand-light">index</span>
+        </div>
+      </a>
+      <div class="footer-badge">A BOXFORD PARTNERS COMPANY</div>
+      <div class="footer-contact">
+        <p>📍 345 California St, Suite 600<br>San Francisco, CA 94104</p>
+        <p>✉️ <a href="mailto:hello@boxfordpartners.com">hello@boxfordpartners.com</a></p>
       </div>
-      <div>
-        <span class="brand-heavy" style="font-size: 0.85rem;">GRAVITAS</span>
-        <span class="brand-light" style="font-size: 0.75rem;">index</span>
-      </div>
-    </a>
-    
-    <!-- Copyright -->
-    <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.03em;">
-      © 2026 Boxford Partners. All rights reserved.
-    </span>
-    
-    <!-- Links -->
-    <div style="display: flex; gap: 2rem;">
-      <a href="/privacy.html" style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.03em;">Privacy</a>
-      <a href="/terms.html" style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.03em;">Terms</a>
-      <a href="mailto:patrick@gravitasindex.com" style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.03em;">Support</a>
     </div>
     
+    <!-- Platform -->
+    <div class="footer-col">
+      <h4>PLATFORM</h4>
+      <a href="/how-it-works.html">How It Works</a>
+      <a href="/faq.html">FAQ</a>
+      <a href="/#alpha">Early Access</a>
+    </div>
+    
+    <!-- Company -->
+    <div class="footer-col">
+      <h4>COMPANY</h4>
+      <a href="https://boxfordpartners.com">About</a>
+      <a href="mailto:patrick@gravitasindex.com">Support</a>
+      <a href="mailto:patrick@gravitasindex.com">Contact</a>
+    </div>
+    
+    <!-- Legal -->
+    <div class="footer-col">
+      <h4>LEGAL</h4>
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/terms.html">Terms of Service</a>
+    </div>
+    
+  </div>
+  
+  <div class="footer-bottom">
+    <span>© 2026 Boxford Partners LLC. All rights reserved.</span>
   </div>
 </footer>
 
