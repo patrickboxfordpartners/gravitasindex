@@ -1221,52 +1221,37 @@
   </div>
 </section>
 </main>
-<footer>
-<div class="container">
-<div class="footer-grid">
-<div class="footer-brand">
-<a class="brand" href="#top">
-<div class="logo-monogram small"></div>
-<div>
-<span class="brand-heavy" style="font-size: 0.9rem;">GRAVITAS</span>
-<span class="brand-light">index</span>
-</div>
-</a>
-<p class="footer-tagline">
-            Preparing agents for Google's Entity Search. Response velocity. Review density. The systems that will determine who wins.
-          </p>
-</div>
-<div class="footer-col">
-<h4>Platform</h4>
-<a href="#shift">The Shift (Entity Search)</a>
-<a href="#thesis">Velocity (AI Response)</a>
-<a href="#thesis">Trust (reviewSNIPER)</a>
-<a href="#results">Results</a>
-<a href="/how-it-works.html">How It Works</a>
-</div>
-<div class="footer-col">
-<h4>Company</h4>
-<a href="#execution">Why Us</a>
-<a href="mailto:patrick@gravitasindex.com">Contact</a>
-<a href="#alpha">Early Access</a>
-<a href="/faq.html">FAQ</a>
-</div>
-<div class="footer-col">
-<h4>Contact</h4>
-<p>
-            345 California St, Suite 600<br/>
-            San Francisco, CA 94104
-          </p>
-<a href="mailto:hello@gravitasindex.com">hello@gravitasindex.com</a>
-</div>
-</div>
-<div class="footer-bottom">
-<span>© 2026 GRAVITAS INDEX. ALL RIGHTS RESERVED.</span>
-<div class="footer-links">
-<span>POWERED BY <a href="https://reviewsniper.app" rel="noopener noreferrer" style="color: var(--accent);" target="_blank">BOXFORDPARTNERS.COM</a></span>
-</div>
-</div>
-</div>
+<!-- UNIFIED FOOTER -->
+<footer style="background: var(--bg); border-top: 1px solid var(--border); padding: 2.5rem 0;">
+  <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
+    
+    <!-- Logo -->
+    <a class="brand" href="/" style="font-size: 1rem;">
+      <div class="logo-monogram" style="width: 32px; height: 32px; border-width: 2px;">
+        <style>
+          .logo-monogram[style*="32px"]::before { width: 10px; height: 2px; }
+          .logo-monogram[style*="32px"]::after { height: 20px; width: 2px; right: -2px; }
+        </style>
+      </div>
+      <div>
+        <span class="brand-heavy" style="font-size: 0.85rem;">GRAVITAS</span>
+        <span class="brand-light" style="font-size: 0.75rem;">index</span>
+      </div>
+    </a>
+    
+    <!-- Copyright -->
+    <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.03em;">
+      © 2026 Boxford Partners. All rights reserved.
+    </span>
+    
+    <!-- Links -->
+    <div style="display: flex; gap: 2rem;">
+      <a href="/privacy.html" style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.03em;">Privacy</a>
+      <a href="/terms.html" style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.03em;">Terms</a>
+      <a href="mailto:patrick@gravitasindex.com" style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.03em;">Support</a>
+    </div>
+    
+  </div>
 </footer>
 
 <!-- Supabase -->
