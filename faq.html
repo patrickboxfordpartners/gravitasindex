@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>FAQ | GRAVITAS INDEX</title>
+<meta content="Common questions about Gravitas Index, Entity Search, and how the AI concierge system works." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&amp;family=JetBrains+Mono:wght@400;500;800&amp;family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&amp;display=swap" rel="stylesheet"/>
+<style>
+    :root {
+      --bg: #020617;
+      --panel: #0f172a;
+      --border: #1e293b;
+      --text-main: #f1f5f9;
+      --text-muted: #64748b;
+      --accent: #38bdf8;
+      --max-w: 800px;
+      --pad: 2rem;
+      
+      --font-serif: 'Playfair Display', serif;
+      --font-sans: 'Inter', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      font-weight: 300;
+      line-height: 1.6;
+      background-image: 
+        linear-gradient(rgba(56, 189, 248, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(56, 189, 248, 0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    a { color: inherit; text-decoration: none; transition: 0.3s; }
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--pad); }
+    
+    /* HEADER */
+    header {
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--border);
+      background: rgba(2, 6, 23, 0.85);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-flex { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; padding: 0 var(--pad); }
+    
+    /* BRAND */
+    .brand {
+      font-family: var(--font-mono);
+      font-size: 1.2rem; 
+      display: flex;
+      align-items: center;
+      gap: 18px; 
+      color: var(--text-main);
+      line-height: 1;
+    }
+    .brand-heavy {
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+    }
+    .brand-light {
+        font-weight: 300;
+        color: var(--text-muted);
+        text-transform: lowercase;
+        font-size: 0.9em; 
+    }
+    
+    .logo-monogram {
+        position: relative;
+        width: 40px;  
+        height: 40px; 
+        border: 3px solid var(--text-muted); 
+        border-right: none; 
+        border-radius: 2px 0 0 2px;
+        flex-shrink: 0;
+    }
+    
+    .logo-monogram::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: 0;
+        width: 12px;
+        height: 3px;
+        background: var(--text-muted);
+        transform: translateY(-50%);
+    }
+
+    .logo-monogram::after {
+        content: '';
+        position: absolute;
+        right: -3px; 
+        top: 50%;    
+        height: 26px;
+        width: 3px; 
+        background: var(--accent);
+        box-shadow: 0 0 12px rgba(56, 189, 248, 0.5); 
+        transform: translateY(-1.5px);
+    }
+
+    nav a { 
+      font-size: 0.75rem; 
+      color: var(--text-muted); 
+      margin-left: 2rem; 
+      text-transform: uppercase; 
+      letter-spacing: 0.05em;
+      font-weight: 500;
+    }
+    nav a:hover { color: var(--accent); }
+
+    /* PAGE HEADER */
+    .page-header {
+      padding: 4rem 0 3rem;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .page-header h1 {
+      font-family: var(--font-serif);
+      font-size: 2.5rem;
+      font-weight: 400;
+      margin: 0 0 1rem 0;
+    }
+    
+    .page-header p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 600px;
+    }
+    
+    .sec-tag { 
+      font-family: var(--font-mono); 
+      color: var(--accent); 
+      font-size: 0.8rem; 
+      margin-bottom: 1rem; 
+      display: block; 
+      letter-spacing: 0.1em;
+    }
+
+    /* FAQ CONTENT */
+    .faq-section {
+      padding: 3rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .faq-section:last-of-type {
+      border-bottom: none;
+    }
+    
+    .faq-section h2 {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin: 0 0 2rem 0;
+    }
+    
+    .faq-item {
+      margin-bottom: 2rem;
+    }
+    
+    .faq-item:last-child {
+      margin-bottom: 0;
+    }
+    
+    .faq-item h3 {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      font-weight: 400;
+      margin: 0 0 0.75rem 0;
+      color: var(--text-main);
+    }
+    
+    .faq-item p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.7;
+      margin: 0;
+    }
+    
+    .faq-item p + p {
+      margin-top: 1rem;
+    }
+    
+    .faq-item strong {
+      color: var(--text-main);
+    }
+
+    /* CTA SECTION */
+    .cta-section {
+      padding: 4rem 0;
+      text-align: center;
+    }
+    
+    .cta-section h2 {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      font-weight: 400;
+      margin: 0 0 1rem 0;
+    }
+    
+    .cta-section p {
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 1.1rem 2.5rem;
+      background: transparent;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .btn:hover { 
+      background: var(--accent); 
+      color: #000; 
+      box-shadow: 0 0 25px rgba(56, 189, 248, 0.4); 
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--bg);
+      color: white;
+      padding: 40px 0;
+      border-top: 1px solid var(--border);
+    }
+    
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 var(--pad);
+    }
+    
+    .footer-content span {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+    
+    .footer-content a {
+      color: var(--accent);
+    }
+    
+    .footer-content a:hover {
+      color: var(--text-main);
+    }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      :root {
+        --pad: 1.25rem;
+      }
+      
+      nav { display: none; }
+      
+      .page-header {
+        padding: 2.5rem 0 2rem;
+      }
+      
+      .page-header h1 {
+        font-size: 1.75rem;
+      }
+      
+      .faq-section {
+        padding: 2rem 0;
+      }
+      
+      .faq-item h3 {
+        font-size: 1.15rem;
+      }
+      
+      .footer-content {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+    }
+</style>
+<link href="/favicon.svg" rel="icon" type="image/svg+xml">
+<link href="/favicon.ico" rel="icon" sizes="any">
+</head>
+<body>
+
+<header>
+  <div class="nav-flex">
+    <a class="brand" href="/">
+      <div class="logo-monogram"></div>
+      <div>
+        <span class="brand-heavy">GRAVITAS</span>
+        <span class="brand-light">index</span>
+      </div>
+    </a>
+    <nav>
+      <a href="/#shift">The Shift</a>
+      <a href="/#thesis">The System</a>
+      <a href="/#alpha">Access</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <div class="page-header">
+      <span class="sec-tag">COMMON QUESTIONS</span>
+      <h1>Frequently Asked Questions</h1>
+      <p>Everything you need to know about Gravitas Index, Entity Search, and how the system works.</p>
+    </div>
+
+    <!-- ENTITY SEARCH -->
+    <section class="faq-section">
+      <h2>About Entity Search</h2>
+      
+      <div class="faq-item">
+        <h3>What if Google doesn't fully roll out Entity Search?</h3>
+        <p>Fair question. Here's the thing: even if Entity Search stalls, everything we build still works. The AI concierge improves your response time and qualification rate regardless. The review engine builds your Google Business Profile regardless. These are table-stakes systems that pay for themselves even without Entity Search.</p>
+        <p>But the signals are clear. Google has been piloting this in LA, Miami, Houston, and Denver throughout 2025. The structured data standards are published. The ranking factors are already being measured. We're not betting on a rumor — we're building for a shift that's already underway.</p>
+      </div>
+      
+      <div class="faq-item">
+        <h3>How do you know response time affects ranking?</h3>
+        <p>Google has explicitly stated that "merchant responsiveness" is a ranking factor in local search. They've been measuring response times through Google Business Profile messaging for years. Entity Search extends this to real estate — properties become searchable objects, and agent responsiveness becomes a visible metric.</p>
+        <p>Even setting aside ranking, the data on response time and conversion is unambiguous: leads contacted within 5 minutes are 21x more likely to convert than leads contacted after 30 minutes. Speed wins regardless of what Google does.</p>
+      </div>
+    </section>
+
+    <!-- THE SYSTEM -->
+    <section class="faq-section">
+      <h2>About the System</h2>
+      
+      <div class="faq-item">
+        <h3>Do I have to set this up myself?</h3>
+        <p><strong>No. This is done-for-you.</strong> We don't hand you a login and wish you luck. We configure the AI concierge, train it on your market, install it on your website, and set up the review capture system. You hand us the keys, we hand you a working system.</p>
+        <p>Most agents are live within 7 days of signing up.</p>
+      </div>
+      
+      <div class="faq-item">
+        <h3>What do I actually get in week one?</h3>
+        <p>By the end of your first week, you'll have:</p>
+        <p>• AI concierge installed and responding to leads 24/7<br>
+        • Qualification flow configured (budget, timeline, pre-approval, exclusivity)<br>
+        • Review capture system armed and ready to fire post-close<br>
+        • Notification system set up (email + push to your phone)<br>
+        • 90-day action plan for building review velocity</p>
+      </div>
+      
+      <div class="faq-item">
+        <h3>Does the AI actually know my market?</h3>
+        <p>We train it on your specific market, your service area, and your listings. It knows what neighborhoods you cover, what price points are realistic, and when to escalate vs. when to handle something itself.</p>
+        <p>It's not a generic chatbot. It's configured to represent you.</p>
+      </div>
+      
+      <div class="faq-item">
+        <h3>What happens when someone asks something the AI can't handle?</h3>
+        <p>It hands off gracefully. If a question is outside its scope, it captures the person's contact info and promises a callback within a specific timeframe. You get notified immediately. No lead falls through the cracks, and no visitor gets a frustrating dead end.</p>
+      </div>
+      
+      <div class="faq-item">
+        <h3>Does this replace my CRM?</h3>
+        <p>No. Gravitas Index is the front door — it qualifies leads and captures information before they hit your CRM. We integrate with your existing systems, not replace them. Think of it as the layer that makes sure only qualified leads reach your pipeline.</p>
+      </div>
+    </section>
+
+    <!-- COMPLIANCE & SAFETY -->
+    <section class="faq-section">
+      <h2>Compliance & Safety</h2>
+      
+      <div class="faq-item">
+        <h3>What about Fair Housing? Can the AI get me in trouble?</h3>
+        <p><strong>This is one of our primary design priorities.</strong> The AI is explicitly trained to deflect Fair Housing traps — questions about "safe neighborhoods," school quality framed as demographic questions, or anything that could be construed as steering.</p>
+        <p>When someone asks "Is this a safe neighborhood for families?" the AI redirects to objective resources (crime statistics, school rating websites) without characterizing the neighborhood. It protects your license better than most junior agents would.</p>
+      </div>
+      
+      <div class="faq-item">
+        <h3>Is the review capture system compliant?</h3>
+        <p>Yes. We follow Google's guidelines exactly: no review gating (filtering out negative reviews), no incentives for reviews, and no fake or purchased reviews. We simply make it frictionless for happy clients to share their experience at the optimal moment — within hours of closing, when satisfaction peaks.</p>
+      </div>
+      
+      <div class="faq-item">
+        <h3>Who owns the data?</h3>
+        <p>You do. Lead information, conversation logs, review data — it's all yours. We don't sell your data, we don't use it for other clients, and if you leave, you take everything with you.</p>
+      </div>
+    </section>
+
+    <!-- PRICING & COMMITMENT -->
+    <section class="faq-section">
+      <h2>Pricing & Commitment</h2>
+      
+      <div class="faq-item">
+        <h3>What does it cost?</h3>
+        <p><strong>Solo Agent:</strong> $1,500 setup + $500/month<br>
+        <strong>Team (up to 4 agents):</strong> $1,500 setup + $1,750/month</p>
+        <p>For context: that's 10-20% of what most agents pay Zillow annually — and these leads are exclusive to you, not shared with three other agents.</p>
+      </div>
+      
+      <div class="faq-item">
+        <h3>Is there a long-term contract?</h3>
+        <p>No. We do a 90-day initial commitment so we have time to demonstrate results, but after that you're month-to-month. If it's not working, you can walk away. We'd rather earn your business every month than lock you into something that isn't delivering.</p>
+      </div>
+      
+      <div class="faq-item">
+        <h3>Why the setup fee?</h3>
+        <p>Two reasons. First, it covers real work — we're configuring, training, and installing a custom system for your specific market and business. Second, it filters out tire-kickers. The agents who invest in setup are serious about results, which means we can focus our energy on clients who will actually use the system.</p>
+      </div>
+      
+      <div class="faq-item">
+        <h3>What's the "5 agents per market" limit about?</h3>
+        <p>We cap enrollment to avoid overlap. If two agents in the same neighborhood are using the same system, it dilutes the advantage. By limiting spots, we ensure each client has meaningful competitive separation. Once a market fills, we move to a waitlist.</p>
+      </div>
+    </section>
+
+    <!-- GETTING STARTED -->
+    <section class="faq-section">
+      <h2>Getting Started</h2>
+      
+      <div class="faq-item">
+        <h3>How do I see the AI in action before committing?</h3>
+        <p>Click the chat bubble on any page of this site and say "show me." The AI will walk you through a live demo — you'll experience exactly what your leads experience, including how it handles time-wasters, Fair Housing questions, and qualified buyers. It's the product, not a video.</p>
+      </div>
+      
+      <div class="faq-item">
+        <h3>What's the onboarding process?</h3>
+        <p><strong>Day 1:</strong> Discovery call — we learn your market, your service area, and your current workflow.<br>
+        <strong>Days 2-5:</strong> We build and configure your system.<br>
+        <strong>Days 6-7:</strong> We install on your website and go live.<br>
+        <strong>Week 2+:</strong> We monitor, optimize, and you start capturing reviews.</p>
+      </div>
+      
+      <div class="faq-item">
+        <h3>I'm interested. What's the next step?</h3>
+        <p>Request early access on the homepage, or book a 15-minute call directly: <a href="https://cal.com/gravitasindex" style="color: var(--accent);">cal.com/gravitasindex</a></p>
+        <p>We'll confirm availability in your market, answer any remaining questions, and get you scheduled for onboarding if it's a fit.</p>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+      <h2>Still have questions?</h2>
+      <p>Chat with us directly — click the bubble in the corner.</p>
+      <a class="btn" href="/">Back to Home</a>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-content">
+    <span>© 2026 GRAVITAS INDEX. ALL RIGHTS RESERVED.</span>
+    <span><a href="/">Home</a> · <a href="mailto:patrick@gravitasindex.com">Contact</a></span>
+  </div>
+</footer>
+
+<!-- Intercom Fin Chatbot -->
+<script>
+  window.intercomSettings = {
+    api_base: "https://api-iam.intercom.io",
+    app_id: "a92l2ygb",
+  };
+</script>
+<script>
+  (function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/a92l2ygb';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(document.readyState==='complete'){l();}else if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+</html>
