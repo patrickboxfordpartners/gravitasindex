@@ -16,7 +16,7 @@
       --text-main: #f1f5f9;
       --text-muted: #64748b;
       --accent: #38bdf8;
-      --max-w: 900px;
+      --max-w: 1100px;
       --pad: 2rem;
       
       --font-serif: 'Playfair Display', serif;
@@ -54,7 +54,7 @@
       top: 0;
       z-index: 100;
     }
-    .nav-flex { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; padding: 0 var(--pad); }
+    .nav-flex { display: flex; justify-content: space-between; align-items: center; }
     
     /* BRAND */
     .brand {
@@ -122,103 +122,186 @@
     nav a:hover { color: var(--accent); }
 
     /* PAGE HEADER */
-    .page-header {
-      padding: 4rem 0 3rem;
+    .page-hero {
+      padding: 5rem 0;
       border-bottom: 1px solid var(--border);
-    }
-    
-    .page-header h1 {
-      font-family: var(--font-serif);
-      font-size: 2.5rem;
-      font-weight: 400;
-      margin: 0 0 1rem 0;
-    }
-    
-    .page-header p {
-      color: var(--text-muted);
-      font-size: 1.1rem;
-      max-width: 650px;
     }
     
     .sec-tag { 
       font-family: var(--font-mono); 
       color: var(--accent); 
       font-size: 0.8rem; 
-      margin-bottom: 1rem; 
+      margin-bottom: 1.5rem; 
       display: block; 
       letter-spacing: 0.1em;
+      font-weight: 400;
+    }
+    
+    h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 400;
+      margin: 0 0 1.5rem 0;
+      line-height: 1.1;
+    }
+    
+    h1 span {
+      color: var(--text-muted);
+      font-style: italic;
+    }
+    
+    .page-hero p {
+      color: var(--text-muted);
+      font-size: 1.15rem;
+      max-width: 650px;
+      line-height: 1.7;
     }
 
     /* SECTIONS */
-    .content-section {
-      padding: 4rem 0;
+    section {
+      padding: 5rem 0;
       border-bottom: 1px solid var(--border);
     }
     
-    .content-section:last-of-type {
-      border-bottom: none;
+    .sec-header {
+      margin-bottom: 3rem;
     }
     
-    .content-section h2 {
+    h2 {
       font-family: var(--font-serif);
-      font-size: 1.8rem;
+      font-size: 2rem;
       font-weight: 400;
-      margin: 0 0 1.5rem 0;
+      margin: 0;
+    }
+
+    /* CARDS */
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      padding: 2rem;
+      position: relative;
+      transition: 0.3s;
     }
     
-    .content-section h3 {
+    .card:hover {
+      border-color: var(--accent);
+    }
+    
+    /* Capture frame */
+    .capture-frame {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      width: 16px;
+      height: 16px;
+      border-top: 2px solid var(--border);
+      border-right: 2px solid var(--border);
+      opacity: 0.5;
+      transition: 0.3s;
+    }
+    
+    .card:hover .capture-frame {
+      width: 20px;
+      height: 20px;
+      border-color: var(--accent);
+      opacity: 1;
+    }
+
+    /* FLOW STEPS */
+    .flow-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .flow-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      position: relative;
+      transition: 0.3s;
+    }
+    
+    .flow-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+    }
+    
+    .flow-card::after {
+      content: '→';
+      position: absolute;
+      right: -1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--border);
+      font-size: 1.2rem;
       font-family: var(--font-mono);
-      font-size: 0.85rem;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin: 2.5rem 0 1rem 0;
     }
     
-    .content-section h3:first-of-type {
-      margin-top: 0;
+    .flow-card:last-child::after {
+      display: none;
     }
     
-    .content-section p {
-      color: var(--text-muted);
-      font-size: 1rem;
-      line-height: 1.7;
-      margin: 0 0 1rem 0;
+    .flow-num {
+      font-family: var(--font-mono);
+      font-size: 2rem;
+      color: var(--border);
+      margin-bottom: 1rem;
+      font-weight: 400;
     }
     
-    .content-section p:last-child {
-      margin-bottom: 0;
-    }
-    
-    .content-section strong {
+    .flow-label {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
       color: var(--text-main);
     }
 
     /* TIMELINE */
     .timeline {
-      margin: 2rem 0;
+      margin-top: 2rem;
     }
     
-    .timeline-item {
+    .timeline-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
       display: grid;
-      grid-template-columns: 100px 1fr;
-      gap: 2rem;
-      padding: 1.5rem 0;
-      border-bottom: 1px solid var(--border);
+      grid-template-columns: 120px 1fr;
+      margin-bottom: 1rem;
+      transition: 0.3s;
     }
     
-    .timeline-item:last-child {
-      border-bottom: none;
+    .timeline-card:last-child {
+      margin-bottom: 0;
+    }
+    
+    .timeline-card:hover {
+      border-color: var(--accent);
     }
     
     .timeline-label {
-      font-family: var(--font-mono);
-      font-size: 0.8rem;
-      color: var(--accent);
-      letter-spacing: 0.05em;
+      background: rgba(56, 189, 248, 0.05);
+      border-right: 1px solid var(--border);
+      padding: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     
-    .timeline-content h4 {
+    .timeline-label span {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-align: center;
+    }
+    
+    .timeline-content {
+      padding: 1.5rem 2rem;
+    }
+    
+    .timeline-content h3 {
       font-family: var(--font-serif);
       font-size: 1.2rem;
       font-weight: 400;
@@ -227,75 +310,35 @@
     }
     
     .timeline-content p {
-      margin: 0;
+      color: var(--text-muted);
       font-size: 0.95rem;
+      line-height: 1.6;
+      margin: 0;
     }
 
-    /* FLOW DIAGRAM */
-    .flow-steps {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
-      margin: 2rem 0;
-    }
-    
-    .flow-step {
+    /* DELIVERABLES */
+    .deliverables-card {
       background: var(--panel);
       border: 1px solid var(--border);
-      padding: 1.5rem;
-      text-align: center;
-      position: relative;
+      padding: 2.5rem;
+      margin-top: 2rem;
     }
     
-    .flow-step::after {
-      content: '→';
-      position: absolute;
-      right: -0.75rem;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--border);
-      font-size: 1.2rem;
-    }
-    
-    .flow-step:last-child::after {
-      display: none;
-    }
-    
-    .flow-step-num {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      color: var(--accent);
-      letter-spacing: 0.1em;
-      margin-bottom: 0.75rem;
-    }
-    
-    .flow-step-label {
-      font-family: var(--font-serif);
-      font-size: 1rem;
-      color: var(--text-main);
-    }
-
-    /* DELIVERABLES LIST */
-    .deliverables {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      padding: 2rem;
-      margin: 2rem 0;
-    }
-    
-    .deliverables h4 {
+    .deliverables-header {
       font-family: var(--font-mono);
       font-size: 0.75rem;
       color: var(--accent);
       letter-spacing: 0.1em;
-      margin: 0 0 1.5rem 0;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
     }
     
     .deliverable-item {
       display: flex;
       align-items: flex-start;
       gap: 1rem;
-      padding: 0.75rem 0;
+      padding: 1rem 0;
       border-bottom: 1px solid var(--border);
     }
     
@@ -307,13 +350,14 @@
     .deliverable-check {
       color: var(--accent);
       font-size: 1rem;
-      line-height: 1.5;
+      line-height: 1.6;
+      flex-shrink: 0;
     }
     
     .deliverable-text {
       color: var(--text-muted);
       font-size: 0.95rem;
-      line-height: 1.5;
+      line-height: 1.6;
     }
     
     .deliverable-text strong {
@@ -321,64 +365,113 @@
     }
 
     /* QUALIFICATION FLOW */
-    .qual-flow {
-      margin: 2rem 0;
+    .qual-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 2rem;
     }
     
-    .qual-step {
+    .qual-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
       display: grid;
-      grid-template-columns: 40px 1fr;
-      gap: 1.5rem;
-      padding: 1.25rem 0;
-      border-bottom: 1px solid var(--border);
+      grid-template-columns: 60px 1fr;
+      transition: 0.3s;
     }
     
-    .qual-step:last-child {
-      border-bottom: none;
+    .qual-card:hover {
+      border-color: var(--accent);
     }
     
     .qual-num {
+      background: rgba(56, 189, 248, 0.05);
+      border-right: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-family: var(--font-mono);
       font-size: 1.5rem;
       color: var(--border);
     }
     
+    .qual-card:hover .qual-num {
+      color: var(--accent);
+    }
+    
     .qual-content {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      line-height: 1.6;
+      padding: 1.25rem 1.5rem;
     }
     
     .qual-content strong {
       color: var(--text-main);
       display: block;
       margin-bottom: 0.25rem;
+      font-weight: 500;
+    }
+    
+    .qual-content p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin: 0;
     }
     
     .qual-outcome {
       font-family: var(--font-mono);
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       color: var(--accent);
       margin-top: 0.5rem;
       display: inline-block;
+      letter-spacing: 0.05em;
+    }
+
+    /* TWO COLUMN */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-top: 2rem;
+    }
+    
+    .two-col h3 {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      margin-bottom: 1.5rem;
+    }
+    
+    .two-col p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+    
+    .two-col p:last-child {
+      margin-bottom: 0;
+    }
+    
+    .two-col strong {
+      color: var(--text-main);
     }
 
     /* CTA SECTION */
     .cta-section {
-      padding: 4rem 0;
+      padding: 5rem 0;
       text-align: center;
+      border-bottom: none;
     }
     
     .cta-section h2 {
-      font-family: var(--font-serif);
-      font-size: 2rem;
-      font-weight: 400;
-      margin: 0 0 1rem 0;
+      margin-bottom: 1rem;
     }
     
     .cta-section p {
       color: var(--text-muted);
       margin-bottom: 2rem;
+      font-size: 1.1rem;
       max-width: 500px;
       margin-left: auto;
       margin-right: auto;
@@ -388,7 +481,6 @@
       display: flex;
       gap: 1rem;
       justify-content: center;
-      flex-wrap: wrap;
     }
     
     .btn {
@@ -403,6 +495,7 @@
       letter-spacing: 0.1em;
       cursor: pointer;
       transition: all 0.3s ease;
+      font-weight: 400;
     }
     .btn:hover { 
       border-color: var(--text-main);
@@ -411,6 +504,7 @@
     .btn.primary {
       border-color: var(--accent);
       color: var(--accent);
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.1);
     }
     .btn.primary:hover { 
       background: var(--accent); 
@@ -421,8 +515,7 @@
     /* FOOTER */
     footer {
       background: var(--bg);
-      color: white;
-      padding: 40px 0;
+      padding: 3rem 0;
       border-top: 1px solid var(--border);
     }
     
@@ -430,23 +523,30 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 var(--pad);
     }
     
     .footer-content span {
-      font-size: 13px;
+      font-size: 0.8rem;
       color: var(--text-muted);
       font-family: var(--font-mono);
+      letter-spacing: 0.05em;
     }
     
-    .footer-content a {
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+    }
+    
+    .footer-links a {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    .footer-links a:hover {
       color: var(--accent);
-    }
-    
-    .footer-content a:hover {
-      color: var(--text-main);
     }
 
     /* MOBILE */
@@ -457,53 +557,69 @@
       
       nav { display: none; }
       
-      .page-header {
-        padding: 2.5rem 0 2rem;
+      .page-hero {
+        padding: 3rem 0;
       }
       
-      .page-header h1 {
-        font-size: 1.75rem;
+      h1 {
+        font-size: 2rem;
       }
       
-      .content-section {
-        padding: 2.5rem 0;
+      .page-hero p {
+        font-size: 1rem;
       }
       
-      .content-section h2 {
+      section {
+        padding: 3rem 0;
+      }
+      
+      h2 {
         font-size: 1.5rem;
       }
       
-      .timeline-item {
+      .flow-grid {
         grid-template-columns: 1fr;
-        gap: 0.5rem;
+        gap: 1rem;
       }
       
-      .flow-steps {
-        grid-template-columns: 1fr;
-        gap: 0.75rem;
-      }
-      
-      .flow-step::after {
+      .flow-card::after {
         content: '↓';
-        position: absolute;
         right: auto;
-        bottom: -0.6rem;
+        bottom: -0.75rem;
         left: 50%;
         top: auto;
         transform: translateX(-50%);
       }
       
-      .flow-step:last-child::after {
-        display: none;
-      }
-      
-      .deliverables {
+      .flow-card {
         padding: 1.5rem;
       }
       
-      .qual-step {
-        grid-template-columns: 30px 1fr;
-        gap: 1rem;
+      .timeline-card {
+        grid-template-columns: 1fr;
+      }
+      
+      .timeline-label {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        padding: 1rem;
+      }
+      
+      .timeline-content {
+        padding: 1.25rem;
+      }
+      
+      .deliverables-card {
+        padding: 1.5rem;
+      }
+      
+      .qual-card {
+        grid-template-columns: 50px 1fr;
+      }
+      
+      .two-col {
+        grid-template-columns: 1fr;
+        gap: 2rem;
       }
       
       .cta-buttons {
@@ -517,8 +633,14 @@
       
       .footer-content {
         flex-direction: column;
-        gap: 1rem;
+        gap: 1.5rem;
         text-align: center;
+      }
+      
+      .footer-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem 1.5rem;
       }
     }
 </style>
@@ -528,7 +650,7 @@
 <body>
 
 <header>
-  <div class="nav-flex">
+  <div class="container nav-flex">
     <a class="brand" href="/">
       <div class="logo-monogram"></div>
       <div>
@@ -547,87 +669,106 @@
 
 <main>
   <div class="container">
-    <div class="page-header">
+    
+    <!-- PAGE HERO -->
+    <section class="page-hero">
       <span class="sec-tag">THE OPERATOR PLAYBOOK</span>
-      <h1>How It Works</h1>
-      <p>A complete breakdown of the Gravitas Index system — from signup to live. No black boxes. No mystery. Here's exactly what happens and what you get.</p>
-    </div>
+      <h1>How It Works.<br/><span>No Black Boxes.</span></h1>
+      <p>A complete breakdown of the Gravitas Index system — from signup to live. Here's exactly what happens and what you get.</p>
+    </section>
 
     <!-- OVERVIEW -->
-    <section class="content-section">
-      <h2>The 30-Second Version</h2>
+    <section>
+      <div class="sec-header">
+        <span class="sec-tag">00 // OVERVIEW</span>
+        <h2>The 30-Second Version</h2>
+      </div>
       
-      <div class="flow-steps">
-        <div class="flow-step">
-          <div class="flow-step-num">01</div>
-          <div class="flow-step-label">Discovery</div>
+      <div class="flow-grid">
+        <div class="flow-card">
+          <div class="flow-num">01</div>
+          <div class="flow-label">Discovery</div>
         </div>
-        <div class="flow-step">
-          <div class="flow-step-num">02</div>
-          <div class="flow-step-label">Build</div>
+        <div class="flow-card">
+          <div class="flow-num">02</div>
+          <div class="flow-label">Build</div>
         </div>
-        <div class="flow-step">
-          <div class="flow-step-num">03</div>
-          <div class="flow-step-label">Install</div>
+        <div class="flow-card">
+          <div class="flow-num">03</div>
+          <div class="flow-label">Install</div>
         </div>
-        <div class="flow-step">
-          <div class="flow-step-num">04</div>
-          <div class="flow-step-label">Optimize</div>
+        <div class="flow-card">
+          <div class="flow-num">04</div>
+          <div class="flow-label">Optimize</div>
         </div>
       </div>
       
-      <p>You tell us about your market and your business. We build and configure your AI concierge. We install it on your website. Then we optimize based on real conversations. Most agents are live within 7 days.</p>
+      <p style="margin-top: 2rem; color: var(--text-muted); font-size: 1.05rem; line-height: 1.7;">You tell us about your market and your business. We build and configure your AI concierge. We install it on your website. Then we optimize based on real conversations. Most agents are live within 7 days.</p>
       
-      <p><strong>This is done-for-you.</strong> You don't configure anything. You don't write prompts. You don't troubleshoot integrations. You hand us the keys — we hand you a system that works.</p>
+      <p style="color: var(--text-main); font-size: 1.05rem; line-height: 1.7;"><strong>This is done-for-you.</strong> You don't configure anything. You don't write prompts. You don't troubleshoot integrations. You hand us the keys — we hand you a system that works.</p>
     </section>
 
-    <!-- ONBOARDING TIMELINE -->
-    <section class="content-section">
-      <h2>Onboarding Timeline</h2>
+    <!-- ONBOARDING -->
+    <section>
+      <div class="sec-header">
+        <span class="sec-tag">01 // ONBOARDING</span>
+        <h2>The Timeline</h2>
+      </div>
       
       <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-label">DAY 1</div>
+        <div class="timeline-card">
+          <div class="timeline-label">
+            <span>DAY 1</span>
+          </div>
           <div class="timeline-content">
-            <h4>Discovery Call</h4>
+            <h3>Discovery Call</h3>
             <p>30-minute call to understand your market, your service area, your current workflow, and your goals. We learn what makes your business unique so we can configure the AI to represent you accurately.</p>
           </div>
         </div>
         
-        <div class="timeline-item">
-          <div class="timeline-label">DAYS 2–5</div>
+        <div class="timeline-card">
+          <div class="timeline-label">
+            <span>DAYS 2–5</span>
+          </div>
           <div class="timeline-content">
-            <h4>Build & Configure</h4>
+            <h3>Build & Configure</h3>
             <p>We build your AI concierge from scratch. We train it on your market, your price points, your neighborhoods. We configure the qualification flow, the handoff rules, and the review capture system. We test every scenario.</p>
           </div>
         </div>
         
-        <div class="timeline-item">
-          <div class="timeline-label">DAYS 6–7</div>
+        <div class="timeline-card">
+          <div class="timeline-label">
+            <span>DAYS 6–7</span>
+          </div>
           <div class="timeline-content">
-            <h4>Install & Go Live</h4>
+            <h3>Install & Go Live</h3>
             <p>We install the system on your website. We verify everything works. We set up your notification preferences (email, push, or both). You're live and responding to leads 24/7.</p>
           </div>
         </div>
         
-        <div class="timeline-item">
-          <div class="timeline-label">WEEK 2+</div>
+        <div class="timeline-card">
+          <div class="timeline-label">
+            <span>WEEK 2+</span>
+          </div>
           <div class="timeline-content">
-            <h4>Monitor & Optimize</h4>
+            <h3>Monitor & Optimize</h3>
             <p>We review conversation logs, identify edge cases, and continuously improve. As you close deals, we arm the review capture system. Your response velocity and review velocity start climbing.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- WHAT YOU GET -->
-    <section class="content-section">
-      <h2>What You Get</h2>
+    <!-- DELIVERABLES -->
+    <section>
+      <div class="sec-header">
+        <span class="sec-tag">02 // DELIVERABLES</span>
+        <h2>What You Get</h2>
+      </div>
       
-      <p>By the end of week one, you have a complete system installed and working. Here's exactly what's included:</p>
+      <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.7;">By the end of week one, you have a complete system installed and working. Here's exactly what's included:</p>
       
-      <div class="deliverables">
-        <h4>DELIVERABLES — FIRST 7 DAYS</h4>
+      <div class="deliverables-card">
+        <div class="deliverables-header">FIRST 7 DAYS — COMPLETE SYSTEM</div>
         
         <div class="deliverable-item">
           <span class="deliverable-check">✓</span>
@@ -671,122 +812,125 @@
       </div>
     </section>
 
-    <!-- AI CONCIERGE DEEP DIVE -->
-    <section class="content-section">
-      <h2>The AI Concierge</h2>
+    <!-- AI CONCIERGE -->
+    <section>
+      <div class="sec-header">
+        <span class="sec-tag">03 // THE AI CONCIERGE</span>
+        <h2>The Qualification Engine</h2>
+      </div>
       
-      <p>This isn't a chatbot that says "Thanks for your message! Someone will be in touch." It's a trained professional that qualifies leads, answers questions, and books appointments — at 2am on a Sunday.</p>
+      <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.7; margin-bottom: 2rem;">This isn't a chatbot that says "Thanks for your message! Someone will be in touch." It's a trained professional that qualifies leads, answers questions, and books appointments — at 2am on a Sunday.</p>
       
-      <h3>The Qualification Flow</h3>
+      <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.7; margin-bottom: 2rem;">Every lead goes through a structured qualification process. The AI earns the right to ask hard questions by being helpful first:</p>
       
-      <p>Every lead goes through a structured qualification process. The AI earns the right to ask hard questions by being helpful first:</p>
-      
-      <div class="qual-flow">
-        <div class="qual-step">
+      <div class="qual-grid">
+        <div class="qual-card">
           <div class="qual-num">01</div>
           <div class="qual-content">
             <strong>Area & Property Type</strong>
-            "What area are you looking in?" — Confirms they're in your service area. If not, captures info for referral.
-            <span class="qual-outcome">→ Service area match or referral capture</span>
+            <p>"What area are you looking in?" — Confirms they're in your service area. If not, captures info for referral.</p>
+            <span class="qual-outcome">→ SERVICE AREA MATCH OR REFERRAL CAPTURE</span>
           </div>
         </div>
         
-        <div class="qual-step">
+        <div class="qual-card">
           <div class="qual-num">02</div>
           <div class="qual-content">
             <strong>Budget Range</strong>
-            "What's your budget range?" — Filters out dreamers and mismatched expectations early.
-            <span class="qual-outcome">→ Realistic expectation check</span>
+            <p>"What's your budget range?" — Filters out dreamers and mismatched expectations early.</p>
+            <span class="qual-outcome">→ REALISTIC EXPECTATION CHECK</span>
           </div>
         </div>
         
-        <div class="qual-step">
+        <div class="qual-card">
           <div class="qual-num">03</div>
           <div class="qual-content">
             <strong>Current Agent Relationship</strong>
-            "Are you currently working with another agent?" — If yes, exits gracefully. No poaching, no awkwardness.
-            <span class="qual-outcome">→ Exclusivity confirmed or graceful exit</span>
+            <p>"Are you currently working with another agent?" — If yes, exits gracefully. No poaching, no awkwardness.</p>
+            <span class="qual-outcome">→ EXCLUSIVITY CONFIRMED OR GRACEFUL EXIT</span>
           </div>
         </div>
         
-        <div class="qual-step">
+        <div class="qual-card">
           <div class="qual-num">04</div>
           <div class="qual-content">
             <strong>Pre-Approval Status</strong>
-            "Are you pre-approved for financing?" — Framed as competitive advantage with sellers, not interrogation.
-            <span class="qual-outcome">→ Transaction-readiness confirmed</span>
+            <p>"Are you pre-approved for financing?" — Framed as competitive advantage with sellers, not interrogation.</p>
+            <span class="qual-outcome">→ TRANSACTION-READINESS CONFIRMED</span>
           </div>
         </div>
         
-        <div class="qual-step">
+        <div class="qual-card">
           <div class="qual-num">05</div>
           <div class="qual-content">
             <strong>Timeline</strong>
-            "What's your timeline for buying?" — Identifies urgency level and prioritizes accordingly.
-            <span class="qual-outcome">→ Priority tier assigned</span>
+            <p>"What's your timeline for buying?" — Identifies urgency level and prioritizes accordingly.</p>
+            <span class="qual-outcome">→ PRIORITY TIER ASSIGNED</span>
           </div>
         </div>
         
-        <div class="qual-step">
+        <div class="qual-card">
           <div class="qual-num">06</div>
           <div class="qual-content">
             <strong>Agency Agreement & Booking</strong>
-            "Cool if I send over our agency agreement?" — Captures commitment before scheduling.
-            <span class="qual-outcome">→ Agreement sent, appointment booked</span>
+            <p>"Cool if I send over our agency agreement?" — Captures commitment before scheduling.</p>
+            <span class="qual-outcome">→ AGREEMENT SENT, APPOINTMENT BOOKED</span>
           </div>
         </div>
       </div>
       
-      <p>By the time a lead reaches your calendar, you know: they're in your area, they have realistic expectations, they're not working with someone else, they're pre-approved (or working on it), and they've agreed to work with you.</p>
+      <p style="margin-top: 2rem; color: var(--text-main); font-size: 1.05rem; line-height: 1.7;">By the time a lead reaches your calendar, you know: they're in your area, they have realistic expectations, they're not working with someone else, they're pre-approved (or working on it), and they've agreed to work with you.</p>
       
-      <p><strong>That's not a lead. That's an appointment.</strong></p>
-      
-      <h3>What It Handles</h3>
-      
-      <p><strong>Buyer inquiries</strong> — Full qualification flow, property questions, scheduling.</p>
-      <p><strong>Seller inquiries</strong> — Immediate escalation. Timeline, motivation, and contact info captured. You get notified instantly.</p>
-      <p><strong>Time wasters</strong> — Politely filtered. Unrealistic expectations get redirected without wasting your time.</p>
-      <p><strong>Fair Housing traps</strong> — "Safe neighborhood" questions get deflected to objective resources. Your license stays protected.</p>
-      <p><strong>Out-of-area leads</strong> — Captured for referrals. Info collected, introduction offered. You get the 25% fee.</p>
-      <p><strong>After-hours coverage</strong> — 11pm on a Tuesday? 6am on a Sunday? Covered. No lead waits until you wake up.</p>
+      <p style="color: var(--accent); font-size: 1.1rem; font-weight: 500;">That's not a lead. That's an appointment.</p>
     </section>
 
     <!-- REVIEW SYSTEM -->
-    <section class="content-section">
-      <h2>The Review Capture System</h2>
+    <section>
+      <div class="sec-header">
+        <span class="sec-tag">04 // REVIEW CAPTURE</span>
+        <h2>The Trust Engine</h2>
+      </div>
       
-      <p>Reviews don't happen by accident. They happen by design. The reviewSNIPER system makes capturing five-star reviews automatic.</p>
+      <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.7; margin-bottom: 2rem;">Reviews don't happen by accident. They happen by design. The reviewSNIPER system makes capturing five-star reviews automatic.</p>
       
-      <h3>How It Works</h3>
-      
-      <p><strong>Trigger:</strong> After you close a deal, you fire the review request with one tap. (Or set it to fire automatically when you mark a conversation as closed.)</p>
-      
-      <p><strong>Timing:</strong> The request goes out within 2 hours of closing — when satisfaction peaks and the experience is fresh. Not a week later when they've forgotten.</p>
-      
-      <p><strong>Delivery:</strong> SMS. Not email that goes to spam. A text message they'll actually see.</p>
-      
-      <p><strong>Friction:</strong> None. One tap takes them directly to your Google Business Profile review form. No searching, no extra clicks, no excuses.</p>
-      
-      <h3>Why It Matters</h3>
-      
-      <p>Google's Entity Search weighs review <em>velocity</em> — not just total count. 47 reviews from the last 90 days outranks 200 reviews from 2019. Recency matters. Frequency matters. Verification matters.</p>
-      
-      <p>The agents building review velocity now are the ones who will own the first page when Entity Search goes national.</p>
+      <div class="two-col">
+        <div>
+          <h3>HOW IT WORKS</h3>
+          <p><strong>Trigger:</strong> After you close a deal, you fire the review request with one tap. (Or set it to fire automatically when you mark a conversation as closed.)</p>
+          <p><strong>Timing:</strong> The request goes out within 2 hours of closing — when satisfaction peaks and the experience is fresh.</p>
+          <p><strong>Delivery:</strong> SMS. Not email that goes to spam. A text message they'll actually see.</p>
+          <p><strong>Friction:</strong> None. One tap takes them directly to your Google Business Profile review form.</p>
+        </div>
+        
+        <div>
+          <h3>WHY IT MATTERS</h3>
+          <p>Google's Entity Search weighs review <em>velocity</em> — not just total count.</p>
+          <p>47 reviews from the last 90 days outranks 200 reviews from 2019. Recency matters. Frequency matters. Verification matters.</p>
+          <p><strong>The agents building review velocity now are the ones who will own the first page when Entity Search goes national.</strong></p>
+        </div>
+      </div>
     </section>
 
     <!-- ONGOING -->
-    <section class="content-section">
-      <h2>Ongoing Support</h2>
+    <section style="border-bottom: none;">
+      <div class="sec-header">
+        <span class="sec-tag">05 // ONGOING</span>
+        <h2>Continuous Support</h2>
+      </div>
       
-      <p>This isn't a "set it and forget it" product. We're in the trenches with you.</p>
+      <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.7; margin-bottom: 2rem;">This isn't a "set it and forget it" product. We're in the trenches with you.</p>
       
-      <p><strong>Conversation monitoring</strong> — We review logs, identify patterns, and continuously improve the AI's responses.</p>
-      
-      <p><strong>Edge case handling</strong> — When something new comes up, we train for it. Your system gets smarter over time.</p>
-      
-      <p><strong>Performance reporting</strong> — Monthly check-ins on response metrics, qualification rates, and review velocity.</p>
-      
-      <p><strong>Direct access</strong> — Questions? Issues? You have Patrick's direct line. No support tickets. No waiting.</p>
+      <div class="two-col">
+        <div>
+          <p><strong>Conversation monitoring</strong> — We review logs, identify patterns, and continuously improve the AI's responses.</p>
+          <p><strong>Edge case handling</strong> — When something new comes up, we train for it. Your system gets smarter over time.</p>
+        </div>
+        
+        <div>
+          <p><strong>Performance reporting</strong> — Monthly check-ins on response metrics, qualification rates, and review velocity.</p>
+          <p><strong>Direct access</strong> — Questions? Issues? You have Patrick's direct line. No support tickets. No waiting.</p>
+        </div>
+      </div>
     </section>
 
     <!-- CTA -->
@@ -798,13 +942,18 @@
         <a class="btn" href="/faq.html">Read the FAQ</a>
       </div>
     </section>
+    
   </div>
 </main>
 
 <footer>
-  <div class="footer-content">
-    <span>© 2026 GRAVITAS INDEX. ALL RIGHTS RESERVED.</span>
-    <span><a href="/">Home</a> · <a href="/faq.html">FAQ</a> · <a href="mailto:patrick@gravitasindex.com">Contact</a></span>
+  <div class="container footer-content">
+    <span>© 2026 GRAVITAS INDEX</span>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/faq.html">FAQ</a>
+      <a href="mailto:patrick@gravitasindex.com">Contact</a>
+    </div>
   </div>
 </footer>
 
