@@ -1,1 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Terms of Service | GRAVITAS INDEX</title>
+<meta content="Terms of Service for Gravitas Index. The agreement governing your use of our services." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&amp;family=JetBrains+Mono:wght@400;500;800&amp;family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&amp;display=swap" rel="stylesheet"/>
+<style>
+    :root {
+      --bg: #020617;
+      --panel: #0f172a;
+      --border: #1e293b;
+      --text-main: #f1f5f9;
+      --text-muted: #64748b;
+      --accent: #38bdf8;
+      --warning: #f59e0b;
+      --max-w: 900px;
+      --pad: 2rem;
+      
+      --font-serif: 'Playfair Display', serif;
+      --font-sans: 'Inter', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
 
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      font-weight: 300;
+      line-height: 1.6;
+      background-image: 
+        linear-gradient(rgba(56, 189, 248, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(56, 189, 248, 0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    a { color: inherit; text-decoration: none; transition: 0.3s; }
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--pad); }
+    
+    /* HEADER */
+    header {
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--border);
+      background: rgba(2, 6, 23, 0.85);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-flex { display: flex; justify-content: space-between; align-items: center; }
+    
+    /* BRAND */
+    .brand {
+      font-family: var(--font-mono);
+      font-size: 1.2rem; 
+      display: flex;
+      align-items: center;
+      gap: 18px; 
+      color: var(--text-main);
+      line-height: 1;
+    }
+    .brand-heavy {
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+    }
+    .brand-light {
+        font-weight: 300;
+        color: var(--text-muted);
+        text-transform: lowercase;
+        font-size: 0.9em; 
+    }
+    
+    .logo-monogram {
+        position: relative;
+        width: 40px;  
+        height: 40px; 
+        border: 3px solid var(--text-muted); 
+        border-right: none; 
+        border-radius: 2px 0 0 2px;
+        flex-shrink: 0;
+    }
+    
+    .logo-monogram::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: 0;
+        width: 12px;
+        height: 3px;
+        background: var(--text-muted);
+        transform: translateY(-50%);
+    }
+
+    .logo-monogram::after {
+        content: '';
+        position: absolute;
+        right: -3px; 
+        top: 50%;    
+        height: 26px;
+        width: 3px; 
+        background: var(--accent);
+        box-shadow: 0 0 12px rgba(56, 189, 248, 0.5); 
+        transform: translateY(-1.5px);
+    }
+
+    nav a { 
+      font-size: 0.75rem; 
+      color: var(--text-muted); 
+      margin-left: 2rem; 
+      text-transform: uppercase; 
+      letter-spacing: 0.05em;
+      font-weight: 500;
+    }
+    nav a:hover { color: var(--accent); }
+
+    /* PAGE HEADER */
+    .page-hero {
+      padding: 5rem 0;
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
+    
+    h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 400;
+      margin: 0 0 1rem 0;
+      line-height: 1.1;
+    }
+    
+    .last-updated {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* CONTENT */
+    .content-section {
+      padding: 4rem 0;
+    }
+    
+    .content-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      padding: 3rem;
+    }
+    
+    .content-card h2 {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      font-weight: 400;
+      margin: 2.5rem 0 1.25rem 0;
+      color: var(--text-main);
+    }
+    
+    .content-card h2:first-of-type {
+      margin-top: 0;
+    }
+    
+    .content-card h3 {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+      margin: 1.5rem 0 0.75rem 0;
+      font-weight: 500;
+    }
+    
+    .content-card p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.8;
+      margin: 0 0 1rem 0;
+    }
+    
+    .content-card ul {
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.8;
+      margin: 0 0 1.5rem 0;
+      padding-left: 1.5rem;
+    }
+    
+    .content-card li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .content-card strong {
+      color: var(--text-main);
+    }
+    
+    .content-card a {
+      color: var(--accent);
+    }
+    
+    .content-card a:hover {
+      text-decoration: underline;
+    }
+    
+    .highlight-box {
+      background: rgba(56, 189, 248, 0.05);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    
+    .highlight-box p {
+      margin: 0;
+    }
+    
+    .warning-box {
+      background: rgba(245, 158, 11, 0.05);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--warning);
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    
+    .warning-box p {
+      margin: 0;
+      color: var(--text-muted);
+    }
+    
+    .disclaimer-box {
+      background: rgba(56, 189, 248, 0.02);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    
+    .disclaimer-box p {
+      font-size: 0.9rem;
+      margin: 0 0 0.75rem 0;
+    }
+    
+    .disclaimer-box p:last-child {
+      margin-bottom: 0;
+    }
+    
+    .disclaimer-box ul {
+      font-size: 0.9rem;
+      margin: 0.75rem 0;
+    }
+    
+    .acceptance-box {
+      background: var(--accent);
+      color: #000;
+      padding: 2rem;
+      margin: 2.5rem 0 0 0;
+      text-align: center;
+    }
+    
+    .acceptance-box p {
+      color: #000;
+      font-weight: 500;
+      font-size: 1.05rem;
+      margin: 0;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 4rem var(--pad) 2rem;
+    }
+    
+    .footer-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 3rem;
+    }
+    
+    .footer-brand .brand {
+      margin-bottom: 1.25rem;
+    }
+    
+    .footer-badge {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      padding: 0.4rem 0.75rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 1.5rem;
+    }
+    
+    .footer-contact p {
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      line-height: 1.6;
+      margin: 0 0 0.5rem 0;
+    }
+    
+    .footer-contact a {
+      color: var(--text-muted);
+    }
+    
+    .footer-contact a:hover {
+      color: var(--accent);
+    }
+    
+    .footer-col {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    
+    .footer-col h4 {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-main);
+      letter-spacing: 0.1em;
+      margin: 0 0 0.5rem 0;
+      font-weight: 500;
+    }
+    
+    .footer-col a {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+    
+    .footer-col a:hover {
+      color: var(--accent);
+    }
+    
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 3rem auto 0;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+    
+    .footer-bottom span {
+      color: var(--text-muted);
+      font-size: 0.875rem;
+    }
+
+    /* MOBILE */
+    @media (max-width: 900px) {
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 2.5rem;
+      }
+      
+      .footer-brand {
+        grid-column: 1 / -1;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      :root {
+        --pad: 1.25rem;
+      }
+      
+      nav { display: none; }
+      
+      .page-hero {
+        padding: 3rem 0;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+      
+      .content-section {
+        padding: 2rem 0;
+      }
+      
+      .content-card {
+        padding: 1.5rem;
+      }
+      
+      .content-card h2 {
+        font-size: 1.25rem;
+      }
+      
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+      }
+      
+      .footer-brand {
+        grid-column: auto;
+      }
+      
+      .footer-brand .brand {
+        justify-content: center;
+      }
+      
+      .footer-col {
+        align-items: center;
+      }
+    }
+</style>
+<link href="/favicon.svg" rel="icon" type="image/svg+xml">
+<link href="/favicon.ico" rel="icon" sizes="any">
+</head>
+<body>
+
+<header>
+  <div class="container nav-flex">
+    <a class="brand" href="/">
+      <div class="logo-monogram"></div>
+      <div>
+        <span class="brand-heavy">GRAVITAS</span>
+        <span class="brand-light">index</span>
+      </div>
+    </a>
+    <nav>
+      <a href="/#shift">The Shift</a>
+      <a href="/#thesis">The System</a>
+      <a href="/how-it-works.html">How It Works</a>
+      <a href="/faq.html">FAQ</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+      <h1>Terms of Service</h1>
+      <p class="last-updated">Last updated: January 25, 2026</p>
+    </section>
+
+    <!-- CONTENT -->
+    <section class="content-section">
+      <div class="content-card">
+        
+        <h2>1. Agreement to Terms</h2>
+        <p>These Terms of Service ("Terms") govern your access to and use of Gravitas Index, a product of Boxford Partners LLC ("Boxford Partners," "we," "us," or "our"). By engaging our services or using our products, you ("Client," "you," or "your") agree to be bound by these Terms.</p>
+        <p>If you are entering into these Terms on behalf of a company or other legal entity, you represent that you have the authority to bind such entity to these Terms.</p>
+        
+        <h2>2. Services Overview</h2>
+        
+        <h3>2.1 Gravitas Index Services</h3>
+        <p>Gravitas Index provides AI-powered lead qualification and review management services for real estate professionals, including but not limited to:</p>
+        <ul>
+          <li>AI concierge installation and configuration</li>
+          <li>Lead qualification workflow design and implementation</li>
+          <li>Review capture and management systems</li>
+          <li>Google Business Profile optimization support</li>
+          <li>Ongoing monitoring and optimization</li>
+        </ul>
+        
+        <h3>2.2 Service Delivery Model</h3>
+        <p>Our typical engagement follows a structured approach:</p>
+        <ul>
+          <li><strong>Discovery Phase:</strong> Assessment of your market, business, and current workflow</li>
+          <li><strong>Build Phase:</strong> Configuration and training of your AI concierge</li>
+          <li><strong>Launch Phase:</strong> Installation and go-live on your website</li>
+          <li><strong>Optimization Phase:</strong> Ongoing monitoring and improvements</li>
+        </ul>
+        
+        <h2>3. Fees and Payment</h2>
+        
+        <h3>3.1 Pricing Structure</h3>
+        <ul>
+          <li><strong>Solo Agent:</strong> $1,500 setup + $500/month</li>
+          <li><strong>Team (up to 4 agents):</strong> $1,500 setup + $1,750/month</li>
+          <li><strong>Enterprise/Brokerage:</strong> Custom pricing</li>
+        </ul>
+        
+        <h3>3.2 Payment Terms</h3>
+        <ul>
+          <li>Setup fees are due before work begins</li>
+          <li>Monthly subscriptions are billed in advance on the first of each month</li>
+          <li>We accept major credit cards and ACH transfers</li>
+        </ul>
+        
+        <h3>3.3 Late Payment</h3>
+        <p>Invoices not paid within 30 days of the invoice date will accrue interest at 1.5% per month (18% annually) or the maximum rate permitted by law, whichever is lower. We reserve the right to suspend services for accounts more than 30 days past due.</p>
+        
+        <h2>4. Client Responsibilities</h2>
+        <p>You agree to:</p>
+        <ul>
+          <li>Provide timely access to necessary systems and accounts (website, Google Business Profile, etc.)</li>
+          <li>Respond to requests for information within agreed timeframes</li>
+          <li>Provide accurate and complete information about your business and market</li>
+          <li>Review and approve AI concierge responses and configurations</li>
+          <li>Maintain compliance with all applicable real estate regulations, including Fair Housing laws</li>
+          <li>Notify us promptly of any issues or concerns</li>
+        </ul>
+        
+        <div class="warning-box">
+          <p><strong>Important:</strong> Delays caused by failure to meet these responsibilities may result in timeline extensions and additional fees.</p>
+        </div>
+        
+        <h2>5. Intellectual Property Rights</h2>
+        
+        <h3>5.1 Our Property</h3>
+        <p>We retain all rights to:</p>
+        <ul>
+          <li>Our proprietary AI systems, methodologies, and software</li>
+          <li>General knowledge, techniques, and frameworks developed through our work</li>
+          <li>The Gravitas Index brand, trademarks, and materials</li>
+        </ul>
+        
+        <h3>5.2 Your Property</h3>
+        <p>You retain all rights to:</p>
+        <ul>
+          <li>Your business data, customer information, and lead records</li>
+          <li>Your brand, trademarks, and marketing materials</li>
+          <li>Custom content created specifically for your business</li>
+        </ul>
+        
+        <h3>5.3 License Grant</h3>
+        <p>We grant you a non-exclusive, non-transferable license to use our AI concierge system for your internal business purposes during your active subscription.</p>
+        
+        <h2>6. Confidentiality</h2>
+        <p>Both parties agree to protect confidential information disclosed during the engagement. This includes business plans, customer data, pricing, and proprietary methodologies.</p>
+        <p>We will not share your information with competitors or use it for purposes other than providing our services to you.</p>
+        
+        <h2>7. Warranties and Disclaimers</h2>
+        
+        <h3>7.1 Our Warranties</h3>
+        <p>We warrant that:</p>
+        <ul>
+          <li>Services will be performed in a professional and workmanlike manner</li>
+          <li>We have the right to provide the services</li>
+          <li>The AI concierge will be configured according to agreed specifications</li>
+        </ul>
+        
+        <h3>7.2 Disclaimer</h3>
+        <div class="disclaimer-box">
+          <p><strong>EXCEPT AS EXPRESSLY PROVIDED ABOVE, ALL SERVICES ARE PROVIDED "AS IS" WITHOUT WARRANTIES OF ANY KIND.</strong></p>
+          <p>We do not warrant that services will be uninterrupted or error-free, that results will meet your specific requirements, or that third-party integrations will remain functional indefinitely.</p>
+        </div>
+        
+        <h3>7.3 Third-Party Services</h3>
+        <p>We are not responsible for the performance, availability, or changes to third-party platforms (e.g., Google, Intercom, review platforms). We will make reasonable efforts to maintain compatibility but cannot guarantee functionality if third parties modify their systems.</p>
+        
+        <h2>8. Limitation of Liability</h2>
+        <div class="disclaimer-box">
+          <p><strong>TO THE MAXIMUM EXTENT PERMITTED BY LAW, OUR TOTAL LIABILITY ARISING OUT OF OR RELATED TO THESE TERMS SHALL NOT EXCEED THE AMOUNTS PAID BY YOU TO US IN THE TWELVE (12) MONTHS PRECEDING THE EVENT GIVING RISE TO LIABILITY.</strong></p>
+          <p><strong>IN NO EVENT SHALL WE BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING BUT NOT LIMITED TO:</strong></p>
+          <ul>
+            <li>Loss of profits, revenue, or business opportunities</li>
+            <li>Loss of data or cost of procurement of substitute services</li>
+            <li>Business interruption</li>
+            <li>Loss of goodwill or reputation</li>
+          </ul>
+        </div>
+        
+        <h2>9. Term and Termination</h2>
+        
+        <h3>9.1 Initial Term</h3>
+        <p>The initial commitment is 90 days from your go-live date. After the initial term, your subscription continues month-to-month.</p>
+        
+        <h3>9.2 Termination</h3>
+        <p>After the initial 90-day period, either party may terminate with 30 days' written notice. You remain responsible for payment through the end of your notice period.</p>
+        
+        <h3>9.3 Effect of Termination</h3>
+        <p>Upon termination:</p>
+        <ul>
+          <li>Your access to the AI concierge system will be deactivated</li>
+          <li>We will provide you with your lead and conversation data upon request</li>
+          <li>You must pay all outstanding fees</li>
+          <li>Confidentiality obligations survive termination</li>
+        </ul>
+        
+        <h2>10. General Provisions</h2>
+        
+        <h3>10.1 Governing Law</h3>
+        <p>These Terms shall be governed by the laws of the State of California, without regard to conflict of law provisions. Any disputes shall be resolved in the state or federal courts located in San Francisco County, California.</p>
+        
+        <h3>10.2 Amendments</h3>
+        <p>We may modify these Terms by providing 30 days' notice via email. Continued use of services after the effective date constitutes acceptance.</p>
+        
+        <h3>10.3 Assignment</h3>
+        <p>You may not assign these Terms without our prior written consent. We may assign these Terms in connection with a merger, acquisition, or sale of assets.</p>
+        
+        <h3>10.4 Entire Agreement</h3>
+        <p>These Terms constitute the entire agreement between the parties and supersede all prior understandings.</p>
+        
+        <h2>11. Contact Information</h2>
+        <p>For questions about these Terms, please contact:</p>
+        <div class="highlight-box">
+          <p><strong>Gravitas Index</strong><br>
+          A Boxford Partners Company<br>
+          345 California St, Suite 600<br>
+          San Francisco, CA 94104<br>
+          Email: <a href="mailto:legal@gravitasindex.com">legal@gravitasindex.com</a></p>
+        </div>
+        
+        <div class="acceptance-box">
+          <p>By engaging our services or using our software, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service.</p>
+        </div>
+        
+      </div>
+    </section>
+    
+  </div>
+</main>
+
+<footer>
+  <div class="footer-grid">
+    
+    <!-- Brand Column -->
+    <div class="footer-brand">
+      <a class="brand" href="/">
+        <div class="logo-monogram"></div>
+        <div>
+          <span class="brand-heavy">GRAVITAS</span>
+          <span class="brand-light">index</span>
+        </div>
+      </a>
+      <div class="footer-badge">A BOXFORD PARTNERS COMPANY</div>
+      <div class="footer-contact">
+        <p>📍 345 California St, Suite 600<br>San Francisco, CA 94104</p>
+        <p>✉️ <a href="mailto:hello@boxfordpartners.com">hello@boxfordpartners.com</a></p>
+      </div>
+    </div>
+    
+    <!-- Platform -->
+    <div class="footer-col">
+      <h4>PLATFORM</h4>
+      <a href="/how-it-works.html">How It Works</a>
+      <a href="/faq.html">FAQ</a>
+      <a href="/#alpha">Early Access</a>
+    </div>
+    
+    <!-- Company -->
+    <div class="footer-col">
+      <h4>COMPANY</h4>
+      <a href="https://boxfordpartners.com">About</a>
+      <a href="mailto:patrick@gravitasindex.com">Support</a>
+      <a href="mailto:patrick@gravitasindex.com">Contact</a>
+    </div>
+    
+    <!-- Legal -->
+    <div class="footer-col">
+      <h4>LEGAL</h4>
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/terms.html">Terms of Service</a>
+    </div>
+    
+  </div>
+  
+  <div class="footer-bottom">
+    <span>© 2026 Boxford Partners LLC. All rights reserved.</span>
+  </div>
+</footer>
+
+<!-- Intercom Fin Chatbot -->
+<script>
+  window.intercomSettings = {
+    api_base: "https://api-iam.intercom.io",
+    app_id: "a92l2ygb",
+  };
+</script>
+<script>
+  (function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/a92l2ygb';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(document.readyState==='complete'){l();}else if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+</html>
