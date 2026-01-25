@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>How It Works | GRAVITAS INDEX</title>
+<meta content="A complete breakdown of the Gravitas Index system: AI concierge, review capture, onboarding, and what you get." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&amp;family=JetBrains+Mono:wght@400;500;800&amp;family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&amp;display=swap" rel="stylesheet"/>
+<style>
+    :root {
+      --bg: #020617;
+      --panel: #0f172a;
+      --border: #1e293b;
+      --text-main: #f1f5f9;
+      --text-muted: #64748b;
+      --accent: #38bdf8;
+      --max-w: 900px;
+      --pad: 2rem;
+      
+      --font-serif: 'Playfair Display', serif;
+      --font-sans: 'Inter', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      font-weight: 300;
+      line-height: 1.6;
+      background-image: 
+        linear-gradient(rgba(56, 189, 248, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(56, 189, 248, 0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    a { color: inherit; text-decoration: none; transition: 0.3s; }
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--pad); }
+    
+    /* HEADER */
+    header {
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--border);
+      background: rgba(2, 6, 23, 0.85);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-flex { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; padding: 0 var(--pad); }
+    
+    /* BRAND */
+    .brand {
+      font-family: var(--font-mono);
+      font-size: 1.2rem; 
+      display: flex;
+      align-items: center;
+      gap: 18px; 
+      color: var(--text-main);
+      line-height: 1;
+    }
+    .brand-heavy {
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+    }
+    .brand-light {
+        font-weight: 300;
+        color: var(--text-muted);
+        text-transform: lowercase;
+        font-size: 0.9em; 
+    }
+    
+    .logo-monogram {
+        position: relative;
+        width: 40px;  
+        height: 40px; 
+        border: 3px solid var(--text-muted); 
+        border-right: none; 
+        border-radius: 2px 0 0 2px;
+        flex-shrink: 0;
+    }
+    
+    .logo-monogram::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: 0;
+        width: 12px;
+        height: 3px;
+        background: var(--text-muted);
+        transform: translateY(-50%);
+    }
+
+    .logo-monogram::after {
+        content: '';
+        position: absolute;
+        right: -3px; 
+        top: 50%;    
+        height: 26px;
+        width: 3px; 
+        background: var(--accent);
+        box-shadow: 0 0 12px rgba(56, 189, 248, 0.5); 
+        transform: translateY(-1.5px);
+    }
+
+    nav a { 
+      font-size: 0.75rem; 
+      color: var(--text-muted); 
+      margin-left: 2rem; 
+      text-transform: uppercase; 
+      letter-spacing: 0.05em;
+      font-weight: 500;
+    }
+    nav a:hover { color: var(--accent); }
+
+    /* PAGE HEADER */
+    .page-header {
+      padding: 4rem 0 3rem;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .page-header h1 {
+      font-family: var(--font-serif);
+      font-size: 2.5rem;
+      font-weight: 400;
+      margin: 0 0 1rem 0;
+    }
+    
+    .page-header p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 650px;
+    }
+    
+    .sec-tag { 
+      font-family: var(--font-mono); 
+      color: var(--accent); 
+      font-size: 0.8rem; 
+      margin-bottom: 1rem; 
+      display: block; 
+      letter-spacing: 0.1em;
+    }
+
+    /* SECTIONS */
+    .content-section {
+      padding: 4rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .content-section:last-of-type {
+      border-bottom: none;
+    }
+    
+    .content-section h2 {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      font-weight: 400;
+      margin: 0 0 1.5rem 0;
+    }
+    
+    .content-section h3 {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin: 2.5rem 0 1rem 0;
+    }
+    
+    .content-section h3:first-of-type {
+      margin-top: 0;
+    }
+    
+    .content-section p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.7;
+      margin: 0 0 1rem 0;
+    }
+    
+    .content-section p:last-child {
+      margin-bottom: 0;
+    }
+    
+    .content-section strong {
+      color: var(--text-main);
+    }
+
+    /* TIMELINE */
+    .timeline {
+      margin: 2rem 0;
+    }
+    
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 2rem;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .timeline-item:last-child {
+      border-bottom: none;
+    }
+    
+    .timeline-label {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+    }
+    
+    .timeline-content h4 {
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      font-weight: 400;
+      margin: 0 0 0.5rem 0;
+      color: var(--text-main);
+    }
+    
+    .timeline-content p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+
+    /* FLOW DIAGRAM */
+    .flow-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    
+    .flow-step {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      position: relative;
+    }
+    
+    .flow-step::after {
+      content: '→';
+      position: absolute;
+      right: -0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--border);
+      font-size: 1.2rem;
+    }
+    
+    .flow-step:last-child::after {
+      display: none;
+    }
+    
+    .flow-step-num {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      margin-bottom: 0.75rem;
+    }
+    
+    .flow-step-label {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      color: var(--text-main);
+    }
+
+    /* DELIVERABLES LIST */
+    .deliverables {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      padding: 2rem;
+      margin: 2rem 0;
+    }
+    
+    .deliverables h4 {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      margin: 0 0 1.5rem 0;
+    }
+    
+    .deliverable-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .deliverable-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    
+    .deliverable-check {
+      color: var(--accent);
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+    
+    .deliverable-text {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    
+    .deliverable-text strong {
+      color: var(--text-main);
+    }
+
+    /* QUALIFICATION FLOW */
+    .qual-flow {
+      margin: 2rem 0;
+    }
+    
+    .qual-step {
+      display: grid;
+      grid-template-columns: 40px 1fr;
+      gap: 1.5rem;
+      padding: 1.25rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .qual-step:last-child {
+      border-bottom: none;
+    }
+    
+    .qual-num {
+      font-family: var(--font-mono);
+      font-size: 1.5rem;
+      color: var(--border);
+    }
+    
+    .qual-content {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    
+    .qual-content strong {
+      color: var(--text-main);
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+    
+    .qual-outcome {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent);
+      margin-top: 0.5rem;
+      display: inline-block;
+    }
+
+    /* CTA SECTION */
+    .cta-section {
+      padding: 4rem 0;
+      text-align: center;
+    }
+    
+    .cta-section h2 {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      font-weight: 400;
+      margin: 0 0 1rem 0;
+    }
+    
+    .cta-section p {
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 1.1rem 2.5rem;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .btn:hover { 
+      border-color: var(--text-main);
+      background: rgba(255,255,255,0.05);
+    }
+    .btn.primary {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .btn.primary:hover { 
+      background: var(--accent); 
+      color: #000; 
+      box-shadow: 0 0 25px rgba(56, 189, 248, 0.4); 
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--bg);
+      color: white;
+      padding: 40px 0;
+      border-top: 1px solid var(--border);
+    }
+    
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 var(--pad);
+    }
+    
+    .footer-content span {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+    
+    .footer-content a {
+      color: var(--accent);
+    }
+    
+    .footer-content a:hover {
+      color: var(--text-main);
+    }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      :root {
+        --pad: 1.25rem;
+      }
+      
+      nav { display: none; }
+      
+      .page-header {
+        padding: 2.5rem 0 2rem;
+      }
+      
+      .page-header h1 {
+        font-size: 1.75rem;
+      }
+      
+      .content-section {
+        padding: 2.5rem 0;
+      }
+      
+      .content-section h2 {
+        font-size: 1.5rem;
+      }
+      
+      .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+      }
+      
+      .flow-steps {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+      
+      .flow-step::after {
+        content: '↓';
+        position: absolute;
+        right: auto;
+        bottom: -0.6rem;
+        left: 50%;
+        top: auto;
+        transform: translateX(-50%);
+      }
+      
+      .flow-step:last-child::after {
+        display: none;
+      }
+      
+      .deliverables {
+        padding: 1.5rem;
+      }
+      
+      .qual-step {
+        grid-template-columns: 30px 1fr;
+        gap: 1rem;
+      }
+      
+      .cta-buttons {
+        flex-direction: column;
+      }
+      
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+      
+      .footer-content {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+    }
+</style>
+<link href="/favicon.svg" rel="icon" type="image/svg+xml">
+<link href="/favicon.ico" rel="icon" sizes="any">
+</head>
+<body>
+
+<header>
+  <div class="nav-flex">
+    <a class="brand" href="/">
+      <div class="logo-monogram"></div>
+      <div>
+        <span class="brand-heavy">GRAVITAS</span>
+        <span class="brand-light">index</span>
+      </div>
+    </a>
+    <nav>
+      <a href="/#shift">The Shift</a>
+      <a href="/#thesis">The System</a>
+      <a href="/faq.html">FAQ</a>
+      <a href="/#alpha">Access</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <div class="page-header">
+      <span class="sec-tag">THE OPERATOR PLAYBOOK</span>
+      <h1>How It Works</h1>
+      <p>A complete breakdown of the Gravitas Index system — from signup to live. No black boxes. No mystery. Here's exactly what happens and what you get.</p>
+    </div>
+
+    <!-- OVERVIEW -->
+    <section class="content-section">
+      <h2>The 30-Second Version</h2>
+      
+      <div class="flow-steps">
+        <div class="flow-step">
+          <div class="flow-step-num">01</div>
+          <div class="flow-step-label">Discovery</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step-num">02</div>
+          <div class="flow-step-label">Build</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step-num">03</div>
+          <div class="flow-step-label">Install</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step-num">04</div>
+          <div class="flow-step-label">Optimize</div>
+        </div>
+      </div>
+      
+      <p>You tell us about your market and your business. We build and configure your AI concierge. We install it on your website. Then we optimize based on real conversations. Most agents are live within 7 days.</p>
+      
+      <p><strong>This is done-for-you.</strong> You don't configure anything. You don't write prompts. You don't troubleshoot integrations. You hand us the keys — we hand you a system that works.</p>
+    </section>
+
+    <!-- ONBOARDING TIMELINE -->
+    <section class="content-section">
+      <h2>Onboarding Timeline</h2>
+      
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-label">DAY 1</div>
+          <div class="timeline-content">
+            <h4>Discovery Call</h4>
+            <p>30-minute call to understand your market, your service area, your current workflow, and your goals. We learn what makes your business unique so we can configure the AI to represent you accurately.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-label">DAYS 2–5</div>
+          <div class="timeline-content">
+            <h4>Build & Configure</h4>
+            <p>We build your AI concierge from scratch. We train it on your market, your price points, your neighborhoods. We configure the qualification flow, the handoff rules, and the review capture system. We test every scenario.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-label">DAYS 6–7</div>
+          <div class="timeline-content">
+            <h4>Install & Go Live</h4>
+            <p>We install the system on your website. We verify everything works. We set up your notification preferences (email, push, or both). You're live and responding to leads 24/7.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-label">WEEK 2+</div>
+          <div class="timeline-content">
+            <h4>Monitor & Optimize</h4>
+            <p>We review conversation logs, identify edge cases, and continuously improve. As you close deals, we arm the review capture system. Your response velocity and review velocity start climbing.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT YOU GET -->
+    <section class="content-section">
+      <h2>What You Get</h2>
+      
+      <p>By the end of week one, you have a complete system installed and working. Here's exactly what's included:</p>
+      
+      <div class="deliverables">
+        <h4>DELIVERABLES — FIRST 7 DAYS</h4>
+        
+        <div class="deliverable-item">
+          <span class="deliverable-check">✓</span>
+          <span class="deliverable-text"><strong>AI Concierge</strong> — Installed on your website, responding to leads 24/7/365. Trained on your specific market and service area.</span>
+        </div>
+        
+        <div class="deliverable-item">
+          <span class="deliverable-check">✓</span>
+          <span class="deliverable-text"><strong>Qualification Flow</strong> — Configured to ask the right questions: budget, timeline, pre-approval status, current agent relationship. Filters time-wasters before they reach you.</span>
+        </div>
+        
+        <div class="deliverable-item">
+          <span class="deliverable-check">✓</span>
+          <span class="deliverable-text"><strong>Fair Housing Protection</strong> — Trained to deflect liability traps. Handles "safe neighborhood" and demographic questions with compliant redirects.</span>
+        </div>
+        
+        <div class="deliverable-item">
+          <span class="deliverable-check">✓</span>
+          <span class="deliverable-text"><strong>Escalation Rules</strong> — Seller inquiries and high-intent buyers get flagged immediately. You get notified within seconds, not hours.</span>
+        </div>
+        
+        <div class="deliverable-item">
+          <span class="deliverable-check">✓</span>
+          <span class="deliverable-text"><strong>Review Capture System</strong> — Powered by reviewSNIPER. One-tap SMS to Google review. Armed and ready to fire after every close.</span>
+        </div>
+        
+        <div class="deliverable-item">
+          <span class="deliverable-check">✓</span>
+          <span class="deliverable-text"><strong>Referral Capture</strong> — Out-of-area leads get captured, not lost. The AI collects their info so you can make the introduction and collect the referral fee.</span>
+        </div>
+        
+        <div class="deliverable-item">
+          <span class="deliverable-check">✓</span>
+          <span class="deliverable-text"><strong>Notification System</strong> — Email + push notifications to your phone. You know the moment something important happens.</span>
+        </div>
+        
+        <div class="deliverable-item">
+          <span class="deliverable-check">✓</span>
+          <span class="deliverable-text"><strong>90-Day Action Plan</strong> — A roadmap for building review velocity, improving response metrics, and positioning for Entity Search.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- AI CONCIERGE DEEP DIVE -->
+    <section class="content-section">
+      <h2>The AI Concierge</h2>
+      
+      <p>This isn't a chatbot that says "Thanks for your message! Someone will be in touch." It's a trained professional that qualifies leads, answers questions, and books appointments — at 2am on a Sunday.</p>
+      
+      <h3>The Qualification Flow</h3>
+      
+      <p>Every lead goes through a structured qualification process. The AI earns the right to ask hard questions by being helpful first:</p>
+      
+      <div class="qual-flow">
+        <div class="qual-step">
+          <div class="qual-num">01</div>
+          <div class="qual-content">
+            <strong>Area & Property Type</strong>
+            "What area are you looking in?" — Confirms they're in your service area. If not, captures info for referral.
+            <span class="qual-outcome">→ Service area match or referral capture</span>
+          </div>
+        </div>
+        
+        <div class="qual-step">
+          <div class="qual-num">02</div>
+          <div class="qual-content">
+            <strong>Budget Range</strong>
+            "What's your budget range?" — Filters out dreamers and mismatched expectations early.
+            <span class="qual-outcome">→ Realistic expectation check</span>
+          </div>
+        </div>
+        
+        <div class="qual-step">
+          <div class="qual-num">03</div>
+          <div class="qual-content">
+            <strong>Current Agent Relationship</strong>
+            "Are you currently working with another agent?" — If yes, exits gracefully. No poaching, no awkwardness.
+            <span class="qual-outcome">→ Exclusivity confirmed or graceful exit</span>
+          </div>
+        </div>
+        
+        <div class="qual-step">
+          <div class="qual-num">04</div>
+          <div class="qual-content">
+            <strong>Pre-Approval Status</strong>
+            "Are you pre-approved for financing?" — Framed as competitive advantage with sellers, not interrogation.
+            <span class="qual-outcome">→ Transaction-readiness confirmed</span>
+          </div>
+        </div>
+        
+        <div class="qual-step">
+          <div class="qual-num">05</div>
+          <div class="qual-content">
+            <strong>Timeline</strong>
+            "What's your timeline for buying?" — Identifies urgency level and prioritizes accordingly.
+            <span class="qual-outcome">→ Priority tier assigned</span>
+          </div>
+        </div>
+        
+        <div class="qual-step">
+          <div class="qual-num">06</div>
+          <div class="qual-content">
+            <strong>Agency Agreement & Booking</strong>
+            "Cool if I send over our agency agreement?" — Captures commitment before scheduling.
+            <span class="qual-outcome">→ Agreement sent, appointment booked</span>
+          </div>
+        </div>
+      </div>
+      
+      <p>By the time a lead reaches your calendar, you know: they're in your area, they have realistic expectations, they're not working with someone else, they're pre-approved (or working on it), and they've agreed to work with you.</p>
+      
+      <p><strong>That's not a lead. That's an appointment.</strong></p>
+      
+      <h3>What It Handles</h3>
+      
+      <p><strong>Buyer inquiries</strong> — Full qualification flow, property questions, scheduling.</p>
+      <p><strong>Seller inquiries</strong> — Immediate escalation. Timeline, motivation, and contact info captured. You get notified instantly.</p>
+      <p><strong>Time wasters</strong> — Politely filtered. Unrealistic expectations get redirected without wasting your time.</p>
+      <p><strong>Fair Housing traps</strong> — "Safe neighborhood" questions get deflected to objective resources. Your license stays protected.</p>
+      <p><strong>Out-of-area leads</strong> — Captured for referrals. Info collected, introduction offered. You get the 25% fee.</p>
+      <p><strong>After-hours coverage</strong> — 11pm on a Tuesday? 6am on a Sunday? Covered. No lead waits until you wake up.</p>
+    </section>
+
+    <!-- REVIEW SYSTEM -->
+    <section class="content-section">
+      <h2>The Review Capture System</h2>
+      
+      <p>Reviews don't happen by accident. They happen by design. The reviewSNIPER system makes capturing five-star reviews automatic.</p>
+      
+      <h3>How It Works</h3>
+      
+      <p><strong>Trigger:</strong> After you close a deal, you fire the review request with one tap. (Or set it to fire automatically when you mark a conversation as closed.)</p>
+      
+      <p><strong>Timing:</strong> The request goes out within 2 hours of closing — when satisfaction peaks and the experience is fresh. Not a week later when they've forgotten.</p>
+      
+      <p><strong>Delivery:</strong> SMS. Not email that goes to spam. A text message they'll actually see.</p>
+      
+      <p><strong>Friction:</strong> None. One tap takes them directly to your Google Business Profile review form. No searching, no extra clicks, no excuses.</p>
+      
+      <h3>Why It Matters</h3>
+      
+      <p>Google's Entity Search weighs review <em>velocity</em> — not just total count. 47 reviews from the last 90 days outranks 200 reviews from 2019. Recency matters. Frequency matters. Verification matters.</p>
+      
+      <p>The agents building review velocity now are the ones who will own the first page when Entity Search goes national.</p>
+    </section>
+
+    <!-- ONGOING -->
+    <section class="content-section">
+      <h2>Ongoing Support</h2>
+      
+      <p>This isn't a "set it and forget it" product. We're in the trenches with you.</p>
+      
+      <p><strong>Conversation monitoring</strong> — We review logs, identify patterns, and continuously improve the AI's responses.</p>
+      
+      <p><strong>Edge case handling</strong> — When something new comes up, we train for it. Your system gets smarter over time.</p>
+      
+      <p><strong>Performance reporting</strong> — Monthly check-ins on response metrics, qualification rates, and review velocity.</p>
+      
+      <p><strong>Direct access</strong> — Questions? Issues? You have Patrick's direct line. No support tickets. No waiting.</p>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+      <h2>Ready to See It Work?</h2>
+      <p>Click the chat bubble and say "show me." Experience the AI concierge yourself — including the Fair Housing scenario that gets agents sued.</p>
+      <div class="cta-buttons">
+        <a class="btn primary" href="/#alpha">Request Early Access</a>
+        <a class="btn" href="/faq.html">Read the FAQ</a>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-content">
+    <span>© 2026 GRAVITAS INDEX. ALL RIGHTS RESERVED.</span>
+    <span><a href="/">Home</a> · <a href="/faq.html">FAQ</a> · <a href="mailto:patrick@gravitasindex.com">Contact</a></span>
+  </div>
+</footer>
+
+<!-- Intercom Fin Chatbot -->
+<script>
+  window.intercomSettings = {
+    api_base: "https://api-iam.intercom.io",
+    app_id: "a92l2ygb",
+  };
+</script>
+<script>
+  (function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/a92l2ygb';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(document.readyState==='complete'){l();}else if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+</html>
