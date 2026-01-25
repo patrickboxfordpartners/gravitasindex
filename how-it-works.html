@@ -946,14 +946,36 @@
   </div>
 </main>
 
-<footer>
-  <div class="container footer-content">
-    <span>© 2026 GRAVITAS INDEX</span>
-    <div class="footer-links">
-      <a href="/">Home</a>
-      <a href="/faq.html">FAQ</a>
-      <a href="mailto:patrick@gravitasindex.com">Contact</a>
+<!-- UNIFIED FOOTER -->
+<footer style="background: var(--bg); border-top: 1px solid var(--border); padding: 2.5rem 0;">
+  <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
+    
+    <!-- Logo -->
+    <a class="brand" href="/" style="font-size: 1rem;">
+      <div class="logo-monogram" style="width: 32px; height: 32px; border-width: 2px;">
+        <style>
+          .logo-monogram[style*="32px"]::before { width: 10px; height: 2px; }
+          .logo-monogram[style*="32px"]::after { height: 20px; width: 2px; right: -2px; }
+        </style>
+      </div>
+      <div>
+        <span class="brand-heavy" style="font-size: 0.85rem;">GRAVITAS</span>
+        <span class="brand-light" style="font-size: 0.75rem;">index</span>
+      </div>
+    </a>
+    
+    <!-- Copyright -->
+    <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.03em;">
+      © 2026 Boxford Partners. All rights reserved.
+    </span>
+    
+    <!-- Links -->
+    <div style="display: flex; gap: 2rem;">
+      <a href="/privacy.html" style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.03em;">Privacy</a>
+      <a href="/terms.html" style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.03em;">Terms</a>
+      <a href="mailto:patrick@gravitasindex.com" style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.03em;">Support</a>
     </div>
+    
   </div>
 </footer>
 
