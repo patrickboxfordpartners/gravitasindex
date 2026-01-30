@@ -454,88 +454,86 @@
     input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 15px rgba(56, 189, 248, 0.1); }
     input::placeholder, textarea::placeholder { color: #475569; }
 
-    /* FOOTER - Boxford Style */
+    /* FOOTER */
     footer {
       background: var(--bg);
-      color: white;
-      padding: 60px 0 0;
       border-top: 1px solid var(--border);
-      margin-top: 0;
+      padding: 4rem var(--pad) 2rem;
     }
     
     .footer-grid {
+      max-width: var(--max-w);
+      margin: 0 auto;
       display: grid;
-      grid-template-columns: 1.5fr repeat(3, 1fr);
-      gap: 48px;
-      padding-bottom: 48px;
-    }
-    
-    .footer-brand {
-      max-width: 320px;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 3rem;
     }
     
     .footer-brand .brand {
+      margin-bottom: 1.25rem;
+    }
+    
+    .footer-badge {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      padding: 0.4rem 0.75rem;
+      letter-spacing: 0.05em;
       margin-bottom: 1.5rem;
     }
     
-    .footer-tagline {
-      font-size: 14px;
+    .footer-contact p {
       color: var(--text-muted);
+      font-size: 0.875rem;
       line-height: 1.6;
+      margin: 0 0 0.5rem 0;
+    }
+    
+    .footer-contact a {
+      color: var(--text-muted);
+    }
+    
+    .footer-contact a:hover {
+      color: var(--accent);
+    }
+    
+    .footer-col {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
     }
     
     .footer-col h4 {
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--accent);
-      margin-bottom: 20px;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
       font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-main);
+      letter-spacing: 0.1em;
+      margin: 0 0 0.5rem 0;
+      font-weight: 500;
     }
     
     .footer-col a {
-      display: block;
       color: var(--text-muted);
-      font-size: 14px;
-      padding: 6px 0;
-      transition: color 0.2s ease;
+      font-size: 0.9rem;
     }
     
     .footer-col a:hover {
-      color: var(--text-main);
-    }
-    
-    .footer-col p {
-      color: var(--text-muted);
-      font-size: 14px;
-      line-height: 1.6;
-      margin-bottom: 12px;
-    }
-    
-    .footer-bottom {
-      padding: 24px 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-    
-    .footer-bottom span,
-    .footer-bottom a {
-      font-size: 13px;
-      color: var(--text-muted);
-      font-family: var(--font-mono);
-    }
-    
-    .footer-bottom a:hover {
       color: var(--accent);
     }
     
-    .footer-links {
-      display: flex;
-      gap: 24px;
+    .footer-bottom {
+      max-width: var(--max-w);
+      margin: 3rem auto 0;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+    
+    .footer-bottom span {
+      color: var(--text-muted);
+      font-size: 0.875rem;
     }
 
     /* ══════════════════════════════════════════════
@@ -549,7 +547,11 @@
     @media(max-width: 900px) {
       .footer-grid {
         grid-template-columns: 1fr 1fr;
-        gap: 40px;
+        gap: 2.5rem;
+      }
+      
+      .footer-brand {
+        grid-column: 1 / -1;
       }
     }
     
@@ -782,69 +784,22 @@
         grid-template-columns: 1fr;
         gap: 2rem;
         text-align: center;
-        padding: 0;
       }
       
       .footer-brand {
-        max-width: none;
-        margin: 0 auto;
+        grid-column: auto;
       }
       
       .footer-brand .brand {
         justify-content: center;
       }
       
-      .footer-badge {
-        margin: 1rem auto;
-      }
-      
-      .footer-contact {
-        text-align: center;
-      }
-      
-      .footer-contact p {
-        font-size: 0.85rem;
-      }
-      
-      .footer-tagline {
-        font-size: 13px;
-      }
-      
       .footer-col {
         align-items: center;
       }
       
-      .footer-col h4 {
-        margin-bottom: 12px;
-      }
-      
-      .footer-col a,
-      .footer-col p {
-        font-size: 0.9rem;
-      }
-      
-      .footer-bottom { 
-        flex-direction: column; 
-        gap: 0.75rem; 
-        align-items: center;
-        text-align: center;
-        padding: 1.5rem var(--pad);
-        margin-top: 2rem;
-      }
-      
-      .footer-bottom span {
-        font-size: 0.75rem;
-        line-height: 1.5;
-      }
-      
-      .footer-links {
-        flex-direction: column;
-        gap: 6px;
-      }
-      
       footer {
         padding: 2.5rem var(--pad) 1.5rem;
-        overflow-x: hidden;
       }
     }
     
@@ -1333,7 +1288,7 @@ footer {
 <div>
 <div class="bio-stat">
 <span>SCALE</span>
-<span class="blue">TRULIA EMPLOYEE</span>
+<span class="blue">TRULIA (IPO TEAM)</span>
 </div>
 <div class="bio-stat">
 <span>REPUTATION ENGINE</span>
@@ -1341,11 +1296,11 @@ footer {
 </div>
 <div class="bio-stat">
 <span>TRANSACTION</span>
-<span class="blue">REALTOR</span>
+<span class="blue">LICENSED REALTOR</span>
 </div>
 <div class="bio-stat">
 <span>CAPITAL</span>
-<span class="blue">MORTGAGE BROKER</span>
+<span class="blue">LICENSED MORTGAGE ORIGINATOR</span>
 </div>
 </div>
 </div>
@@ -1432,60 +1387,57 @@ footer {
 </section>
 </main>
 
-<!-- UNIFIED FOOTER -->
 <footer>
-  <div class="container">
-    <div class="footer-grid">
-      
-      <!-- Brand Column -->
-      <div class="footer-brand">
-        <a class="brand" href="/">
-          <div class="logo-monogram"></div>
-          <div>
-            <span class="brand-heavy">GRAVITAS</span>
-            <span class="brand-light">index</span>
-          </div>
-        </a>
-        <div class="footer-badge">A BOXFORD PARTNERS COMPANY</div>
-        <div class="footer-contact">
-          <p>📍 345 California St, Suite 600<br>San Francisco, CA 94104</p>
-          <p>✉️ <a href="mailto:hello@gravitasindex.com">hello@gravitasindex.com</a></p>
+  <div class="footer-grid">
+    
+    <!-- Brand Column -->
+    <div class="footer-brand">
+      <a class="brand" href="/">
+        <div class="logo-monogram"></div>
+        <div>
+          <span class="brand-heavy">GRAVITAS</span>
+          <span class="brand-light">index</span>
         </div>
+      </a>
+      <div class="footer-badge">A BOXFORD PARTNERS COMPANY</div>
+      <div class="footer-contact">
+        <p>📍 345 California St, Suite 600<br>San Francisco, CA 94104</p>
+        <p>✉️ <a href="mailto:hello@gravitasindex.com">hello@gravitasindex.com</a></p>
       </div>
-      
-      <!-- Platform -->
-      <div class="footer-col">
-        <h4>PLATFORM</h4>
-        <a href="/how-it-works.html">How It Works</a>
-        <a href="/faq.html">FAQ</a>
-        <a href="/#alpha">Early Access</a>
-      </div>
-      
-      <!-- Company -->
-      <div class="footer-col">
-        <h4>COMPANY</h4>
-        <a href="https://boxfordpartners.com">About</a>
-        <a href="mailto:support@gravitasindex.com">Support</a>
-        <a href="mailto:contact@gravitasindex.com">Contact</a>
-      </div>
-      
-      <!-- Legal -->
-      <div class="footer-col">
-        <h4>LEGAL</h4>
-        <a href="/privacy.html">Privacy Policy</a>
-        <a href="/terms.html">Terms of Service</a>
-      </div>
-      
     </div>
     
-    <div class="footer-bottom">
-      <span>© 2026 Boxford Partners LLC dba Gravitas Index. All rights reserved.</span>
+    <!-- Platform -->
+    <div class="footer-col">
+      <h4>PLATFORM</h4>
+      <a href="/how-it-works.html">How It Works</a>
+      <a href="/faq.html">FAQ</a>
+      <a href="/#alpha">Early Access</a>
     </div>
+    
+    <!-- Company -->
+    <div class="footer-col">
+      <h4>COMPANY</h4>
+      <a href="https://boxfordpartners.com">About</a>
+      <a href="mailto:patrick@gravitasindex.com">Support</a>
+      <a href="mailto:patrick@gravitasindex.com">Contact</a>
+    </div>
+    
+    <!-- Legal -->
+    <div class="footer-col">
+      <h4>LEGAL</h4>
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/terms.html">Terms of Service</a>
+    </div>
+    
+  </div>
+  
+  <div class="footer-bottom">
+    <span>© 2026 Boxford Partners LLC dba Gravitas Index. All rights reserved.</span>
   </div>
 </footer>
 
 <!-- Supabase -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <!-- Intercom Fin Chatbot -->
 <script>
@@ -1613,14 +1565,4 @@ footer {
 
       const payload = Object.fromEntries(new FormData(form).entries());
 
-      payload.timestamp = new Date().toISOString();
-      payload.ticket = makeTicket();
-      payload.page_url = window.location.href;
-      payload.referrer = document.referrer || "";
-      payload.user_agent = navigator.userAgent || "";
-
-      try {
-        const result = await transmit(payload);
-
-        btn.textContent = `RECEIVED // TICKET #${result.ticket}`;
-        btn.style.backg
+      payload.timestamp = new Date().toISOSt
