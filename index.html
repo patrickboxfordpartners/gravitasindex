@@ -230,11 +230,14 @@
       right: 0;
       bottom: 0;
       background: rgba(2, 6, 23, 0.98);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       z-index: 150;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       gap: 2rem;
+      overflow-y: auto;
     }
     .mobile-nav.active {
       display: flex;
@@ -988,7 +991,6 @@ footer {
 }
 
 .footer-bottom {
-  max-width: var(--max-w);
   margin: 3rem auto 0;
   padding-top: 2rem;
   border-top: 1px solid var(--border);
@@ -1339,11 +1341,11 @@ footer {
 </div>
 <div class="bio-stat">
 <span>TRANSACTION</span>
-<span class="blue">LICENSED REALTOR</span>
+<span class="blue">REALTOR</span>
 </div>
 <div class="bio-stat">
 <span>CAPITAL</span>
-<span class="blue">LICENSED MORTGAGE ORIGINATOR</span>
+<span class="blue">MORTGAGE BROKER</span>
 </div>
 </div>
 </div>
@@ -1432,56 +1434,58 @@ footer {
 
 <!-- UNIFIED FOOTER -->
 <footer>
-  <div class="footer-grid">
-    
-    <!-- Brand Column -->
-    <div class="footer-brand">
-      <a class="brand" href="/">
-        <div class="logo-monogram"></div>
-        <div>
-          <span class="brand-heavy">GRAVITAS</span>
-          <span class="brand-light">index</span>
+  <div class="container">
+    <div class="footer-grid">
+      
+      <!-- Brand Column -->
+      <div class="footer-brand">
+        <a class="brand" href="/">
+          <div class="logo-monogram"></div>
+          <div>
+            <span class="brand-heavy">GRAVITAS</span>
+            <span class="brand-light">index</span>
+          </div>
+        </a>
+        <div class="footer-badge">A BOXFORD PARTNERS COMPANY</div>
+        <div class="footer-contact">
+          <p>📍 345 California St, Suite 600<br>San Francisco, CA 94104</p>
+          <p>✉️ <a href="/cdn-cgi/l/email-protection#9df5f8f1f1f2ddfff2e5fbf2eff9edfcefe9f3f8efeeb3fef2f0"><span class="__cf_email__" data-cfemail="2048454c4c4f60424f58464f5244504152544e4552530e434f4d">[email&#160;protected]</span></a></p>
         </div>
-      </a>
-      <div class="footer-badge">A BOXFORD PARTNERS COMPANY</div>
-      <div class="footer-contact">
-        <p>📍 345 California St, Suite 600<br>San Francisco, CA 94104</p>
-        <p>✉️ <a href="mailto:hello@boxfordpartners.com">hello@boxfordpartners.com</a></p>
       </div>
+      
+      <!-- Platform -->
+      <div class="footer-col">
+        <h4>PLATFORM</h4>
+        <a href="/how-it-works.html">How It Works</a>
+        <a href="/faq.html">FAQ</a>
+        <a href="/#alpha">Early Access</a>
+      </div>
+      
+      <!-- Company -->
+      <div class="footer-col">
+        <h4>COMPANY</h4>
+        <a href="https://boxfordpartners.com">About</a>
+        <a href="/cdn-cgi/l/email-protection#bcccddc8ced5dfd7fcdbceddcad5c8ddcfd5d2d8d9c492dfd3d1">Support</a>
+        <a href="/cdn-cgi/l/email-protection#413120353328222a012633203728352032282f2524396f222e2c">Contact</a>
+      </div>
+      
+      <!-- Legal -->
+      <div class="footer-col">
+        <h4>LEGAL</h4>
+        <a href="/privacy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms of Service</a>
+      </div>
+      
     </div>
     
-    <!-- Platform -->
-    <div class="footer-col">
-      <h4>PLATFORM</h4>
-      <a href="/how-it-works.html">How It Works</a>
-      <a href="/faq.html">FAQ</a>
-      <a href="/#alpha">Early Access</a>
+    <div class="footer-bottom">
+      <span>© 2026 Boxford Partners LLC dba Gravitas Index. All rights reserved.</span>
     </div>
-    
-    <!-- Company -->
-    <div class="footer-col">
-      <h4>COMPANY</h4>
-      <a href="https://boxfordpartners.com">About</a>
-      <a href="mailto:patrick@gravitasindex.com">Support</a>
-      <a href="mailto:patrick@gravitasindex.com">Contact</a>
-    </div>
-    
-    <!-- Legal -->
-    <div class="footer-col">
-      <h4>LEGAL</h4>
-      <a href="/privacy.html">Privacy Policy</a>
-      <a href="/terms.html">Terms of Service</a>
-    </div>
-    
-  </div>
-  
-  <div class="footer-bottom">
-    <span>© 2026 Boxford Partners LLC dba Gravitas Index. All rights reserved.</span>
   </div>
 </footer>
 
 <!-- Supabase -->
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <!-- Intercom Fin Chatbot -->
 <script>
@@ -1619,14 +1623,4 @@ footer {
         const result = await transmit(payload);
 
         btn.textContent = `RECEIVED // TICKET #${result.ticket}`;
-        btn.style.backgroundColor = "var(--accent)";
-        btn.style.borderColor = "var(--accent)";
-        btn.style.color = "#000";
-
-        if (status) {
-          status.textContent = result.simulated
-            ? "Demo mode: no endpoint configured yet."
-            : "Application received. Expect a response within 24–48 hours.";
-        }
-
-        form.reset();
+        btn.style.backg
