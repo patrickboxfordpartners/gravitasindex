@@ -44,8 +44,10 @@ export async function POST(request: NextRequest) {
       payment_method_types: ['card'],
       line_items: [
         {
-          // Replace with actual price ID from Stripe dashboard
-          price: 'price_REPLACE_WITH_MONTHLY_PRICE_ID',
+          // Price IDs from Stripe dashboard
+          price: planType === 'solo_agent'
+            ? 'price_1Svkk8CF4paqURcEE0WnN8Q3' // Solo Agent: $500/month
+            : 'price_1SvklpCF4paqURcEOlsxMhVr', // Team: $1,750/month
           quantity: 1,
         },
       ],

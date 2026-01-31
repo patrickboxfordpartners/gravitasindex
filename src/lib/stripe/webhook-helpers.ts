@@ -136,11 +136,9 @@ export async function handleSubscriptionDeleted(
  */
 function getPlanTypeFromPriceId(priceId: string): string {
   // Map Stripe price IDs to plan types
-  // These will be set after creating products in Stripe dashboard
   const priceMap: Record<string, string> = {
-    'price_solo_agent_monthly': 'solo_agent',
-    'price_team_monthly': 'team',
-    // Add actual price IDs from Stripe here
+    'price_1Svkk8CF4paqURcEE0WnN8Q3': 'solo_agent', // Solo Agent: $500/month
+    'price_1SvklpCF4paqURcEOlsxMhVr': 'team',       // Team: $1,750/month
   };
 
   return priceMap[priceId] || 'solo_agent';
