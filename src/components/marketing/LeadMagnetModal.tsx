@@ -1,8 +1,9 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Input } from '@/components/ui/Input';
 import { Button } from '@/components/ui/Button';
+import { trackEvent, AnalyticsEvents, identifyUser } from '@/lib/analytics/posthog';
 
 interface LeadMagnetModalProps {
   onClose: () => void;
@@ -13,6 +14,11 @@ export function LeadMagnetModal({ onClose }: LeadMagnetModalProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
+
+  // Track modal view on mount
+  useEffect(() => {
+    trackEvent(AnalyticsEvents.LEAD_MAGNET_VIEWED);
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData((prev) => ({
@@ -44,12 +50,16 @@ export function LeadMagnetModal({ onClose }: LeadMagnetModalProps) {
 
       setSubmitStatus('success');
 
-      // Track event
-      if (typeof window !== 'undefined' && (window as any).posthog) {
-        (window as any).posthog.capture('lead_magnet_converted', {
-          email: formData.email,
-        });
-      }
+      // Identify user and track conversion
+      identifyUser(result.leadId, {
+        name: formData.name,
+        email: formData.email,
+        source: 'lead_magnet',
+      });
+
+      trackEvent(AnalyticsEvents.LEAD_MAGNET_SUBMITTED, {
+        email: formData.email,
+      });
 
       // Auto-download PDF after short delay
       setTimeout(() => {
@@ -70,6 +80,7 @@ export function LeadMagnetModal({ onClose }: LeadMagnetModalProps) {
   // Close on background click
   const handleBackgroundClick = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
+      trackEvent(AnalyticsEvents.LEAD_MAGNET_CLOSED, { reason: 'background_click' });
       onClose();
     }
   };

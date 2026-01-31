@@ -1,10 +1,11 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Input } from '@/components/ui/Input';
 import { TextArea } from '@/components/ui/TextArea';
 import { Button } from '@/components/ui/Button';
 import { LeadFormData } from '@/lib/validations/lead';
+import { trackEvent, AnalyticsEvents, identifyUser } from '@/lib/analytics/posthog';
 
 export function AlphaForm() {
   const [formData, setFormData] = useState<LeadFormData>({
@@ -17,10 +18,22 @@ export function AlphaForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
+  const [hasStarted, setHasStarted] = useState(false);
+
+  // Track form view on mount
+  useEffect(() => {
+    trackEvent(AnalyticsEvents.ALPHA_FORM_VIEWED);
+  }, []);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
+    // Track first interaction
+    if (!hasStarted) {
+      trackEvent(AnalyticsEvents.ALPHA_FORM_STARTED);
+      setHasStarted(true);
+    }
+
     setFormData((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
@@ -49,6 +62,21 @@ export function AlphaForm() {
       }
 
       setSubmitStatus('success');
+
+      // Identify user and track successful submission
+      identifyUser(result.leadId, {
+        name: formData.name,
+        email: formData.email,
+        market: formData.market,
+        role: formData.role,
+      });
+
+      trackEvent(AnalyticsEvents.ALPHA_FORM_SUBMITTED, {
+        market: formData.market,
+        role: formData.role,
+        hasPainPoint: !!formData.pain,
+      });
+
       // Reset form
       setFormData({
         name: '',
@@ -58,18 +86,16 @@ export function AlphaForm() {
         pain: '',
       });
 
-      // Track event (will be implemented in Phase 6)
-      if (typeof window !== 'undefined' && (window as any).posthog) {
-        (window as any).posthog.capture('alpha_form_submitted', {
-          market: formData.market,
-          role: formData.role,
-        });
-      }
-
     } catch (error) {
       console.error('Form submission error:', error);
       setSubmitStatus('error');
       setErrorMessage(error instanceof Error ? error.message : 'An error occurred');
+
+      // Track error
+      trackEvent(AnalyticsEvents.ALPHA_FORM_ERROR, {
+        error: error instanceof Error ? error.message : 'Unknown error',
+        market: formData.market,
+      });
     } finally {
       setIsSubmitting(false);
     }
