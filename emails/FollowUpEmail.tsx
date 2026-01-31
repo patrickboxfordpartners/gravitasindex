@@ -17,6 +17,17 @@ interface FollowUpEmailProps {
   dayNumber: number; // 1, 3, or 7
 }
 
+interface EmailContent {
+  preview: string;
+  headline: string;
+  body: string[];
+  highlight: string;
+  cta?: {
+    text: string;
+    url: string;
+  };
+}
+
 export const FollowUpEmail = ({ name, dayNumber }: FollowUpEmailProps) => {
   const content = getContentForDay(dayNumber);
 
@@ -35,7 +46,7 @@ export const FollowUpEmail = ({ name, dayNumber }: FollowUpEmailProps) => {
 
             <Text style={text}>Hi {name},</Text>
 
-            {content.body.map((paragraph, index) => (
+            {content.body.map((paragraph: string, index: number) => (
               <Text key={index} style={text}>
                 {paragraph}
               </Text>
@@ -83,8 +94,8 @@ export const FollowUpEmail = ({ name, dayNumber }: FollowUpEmailProps) => {
 export default FollowUpEmail;
 
 // Content generator based on day
-function getContentForDay(day: number) {
-  const contentMap: Record<number, any> = {
+function getContentForDay(day: number): EmailContent {
+  const contentMap: Record<number, EmailContent> = {
     1: {
       preview: 'Why most agents will miss the Entity Search shift',
       headline: 'The First-Mover Advantage',
