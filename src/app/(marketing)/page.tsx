@@ -1,4 +1,5 @@
 import { HeroSection } from '@/components/marketing/HeroSection';
+import { AlphaForm } from '@/components/marketing/AlphaForm';
 
 export const metadata = {
   title: "GRAVITAS INDEX | Win Google's Entity Search",
@@ -95,22 +96,59 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Alpha Section Placeholder */}
+      {/* Alpha Section */}
       <section className="container mx-auto px-8 py-28 border-t border-border" id="alpha">
-        <div className="mb-10">
-          <span className="font-mono text-accent text-xs block mb-6 tracking-wider font-normal">
-            04 // ACCESS
-          </span>
-          <h2 className="font-serif text-5xl font-normal text-text-main">
-            Limited Alpha Access
-          </h2>
-        </div>
-        <p className="text-text-muted text-lg mb-12 max-w-3xl">
-          We're onboarding 12 agents per market. Applications close when spots fill.
-          If you're serious about owning your market, this is your window.
-        </p>
-        <div className="text-center text-text-muted">
-          [Alpha form to be implemented in Phase 2]
+        <div className="grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] gap-12 items-start">
+          <div>
+            <span className="font-mono text-accent text-xs block mb-6 tracking-wider font-normal">
+              04 // ACCESS
+            </span>
+            <h2 className="font-serif text-5xl font-normal text-text-main mb-6">
+              Limited Alpha Access
+            </h2>
+            <p className="text-text-muted text-lg mb-8 leading-relaxed">
+              We're onboarding 12 agents per market. Applications close when spots fill.
+              If you're serious about owning your market, this is your window.
+            </p>
+
+            <div className="space-y-6">
+              <div className="border-l-2 border-accent pl-6">
+                <h3 className="font-mono text-sm text-accent mb-2 tracking-wider">
+                  WHO THIS IS FOR
+                </h3>
+                <p className="text-text-muted leading-relaxed">
+                  Solo agents and teams doing $500K+ in GCI who want infrastructure, not
+                  marketing fluff. If you're willing to invest in long-term competitive advantage,
+                  this is for you.
+                </p>
+              </div>
+
+              <div className="border-l-2 border-accent pl-6">
+                <h3 className="font-mono text-sm text-accent mb-2 tracking-wider">
+                  WHO THIS ISN'T FOR
+                </h3>
+                <p className="text-text-muted leading-relaxed">
+                  Part-timers looking for a quick fix. Agents who want "more leads" instead of
+                  better systems. Anyone expecting overnight results without doing the work.
+                </p>
+              </div>
+
+              <div className="border-l-2 border-accent pl-6">
+                <h3 className="font-mono text-sm text-accent mb-2 tracking-wider">
+                  WHAT HAPPENS NEXT
+                </h3>
+                <p className="text-text-muted leading-relaxed">
+                  Submit your application. We'll review within 24 hours. If it's a fit, we'll
+                  schedule a qualification call to walk through the system and answer technical
+                  questions. No generic sales pitches.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <AlphaForm />
+          </div>
         </div>
       </section>
     </div>
