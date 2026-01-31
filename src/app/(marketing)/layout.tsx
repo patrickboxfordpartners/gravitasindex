@@ -1,5 +1,6 @@
 import { Header } from '@/components/marketing/Header';
 import { Footer } from '@/components/marketing/Footer';
+import { ExitIntentPopup } from '@/components/marketing/ExitIntentPopup';
 
 export default function MarketingLayout({
   children,
@@ -18,6 +19,7 @@ export default function MarketingLayout({
       <Header />
       <main id="main-content">{children}</main>
       <Footer />
+      <ExitIntentPopup />
 
       {/* Intercom Integration */}
       <script
