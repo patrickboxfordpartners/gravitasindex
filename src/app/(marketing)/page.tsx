@@ -20,7 +20,7 @@ export default function HomePage() {
           <h2 className="font-serif text-5xl font-normal mb-0 text-text-main">
             Google Is Ranking You Right Now.
             <br />
-            <span className="text-text-muted italic">Whether You're Ready or Not.</span>
+            <span className="text-text-muted italic">Whether You&apos;re Ready or Not.</span>
           </h2>
         </div>
 
@@ -34,7 +34,7 @@ export default function HomePage() {
             <p className="text-text-muted mb-6 leading-relaxed">
               Entity Search changes the game. Instead of links, Google displays the{' '}
               <em>home itself</em>—photos, price, beds, baths, structured data—directly in
-              search results. And next to every listing: the agent's name, response time, and
+              search results. And next to every listing: the agent&apos;s name, response time, and
               review score.
             </p>
             <p className="text-text-main mb-6 leading-relaxed">
@@ -64,8 +64,8 @@ export default function HomePage() {
               </h4>
               <p className="text-text-muted leading-relaxed">
                 Review count, recency, sentiment, transaction volume, years in business. Google
-                aggregates public trust signals into a single authority score. If you're not
-                actively building digital credibility, you're invisible.
+                aggregates public trust signals into a single authority score. If you&apos;re not
+                actively building digital credibility, you&apos;re invisible.
               </p>
             </div>
           </div>
@@ -85,7 +85,7 @@ export default function HomePage() {
           </h2>
         </div>
         <p className="text-text-muted text-lg mb-12 max-w-3xl">
-          Most agents think they need "better marketing." They don't. They need infrastructure—the
+          Most agents think they need "better marketing." They don&apos;t. They need infrastructure—the
           backend systems that turn leads into closed deals at scale. This is what separates
           $200K producers from $2M producers.
         </p>
@@ -107,8 +107,8 @@ export default function HomePage() {
               Limited Alpha Access
             </h2>
             <p className="text-text-muted text-lg mb-8 leading-relaxed">
-              We're onboarding 12 agents per market. Applications close when spots fill.
-              If you're serious about owning your market, this is your window.
+              We&apos;re onboarding 12 agents per market. Applications close when spots fill.
+              If you&apos;re serious about owning your market, this is your window.
             </p>
 
             <div className="space-y-6">
@@ -118,14 +118,14 @@ export default function HomePage() {
                 </h3>
                 <p className="text-text-muted leading-relaxed">
                   Solo agents and teams doing $500K+ in GCI who want infrastructure, not
-                  marketing fluff. If you're willing to invest in long-term competitive advantage,
+                  marketing fluff. If you&apos;re willing to invest in long-term competitive advantage,
                   this is for you.
                 </p>
               </div>
 
               <div className="border-l-2 border-accent pl-6">
                 <h3 className="font-mono text-sm text-accent mb-2 tracking-wider">
-                  WHO THIS ISN'T FOR
+                  WHO THIS ISN&apos;T FOR
                 </h3>
                 <p className="text-text-muted leading-relaxed">
                   Part-timers looking for a quick fix. Agents who want "more leads" instead of
@@ -138,7 +138,7 @@ export default function HomePage() {
                   WHAT HAPPENS NEXT
                 </h3>
                 <p className="text-text-muted leading-relaxed">
-                  Submit your application. We'll review within 24 hours. If it's a fit, we'll
+                  Submit your application. We&apos;ll review within 24 hours. If it&apos;s a fit, we&apos;ll
                   schedule a qualification call to walk through the system and answer technical
                   questions. No generic sales pitches.
                 </p>

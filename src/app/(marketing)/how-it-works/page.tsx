@@ -12,7 +12,7 @@ export default function HowItWorksPage() {
         </h1>
         <p className="text-text-muted text-xl max-w-3xl mb-16 leading-relaxed">
           Three infrastructure layers working together to transform you into a market authority
-          Google can't ignore.
+          Google can&apos;t ignore.
         </p>
 
         <div className="space-y-20">
@@ -50,8 +50,8 @@ export default function HowItWorksPage() {
               feedback goes to private channels for resolution.
             </p>
             <p className="text-text-muted text-lg max-w-3xl leading-relaxed">
-              Google's Entity Search algorithm weighs review velocity, recency, and sentiment.
-              Most agents get 2-3 reviews per year. You'll get 2-3 per month. That's the
+              Google&apos;s Entity Search algorithm weighs review velocity, recency, and sentiment.
+              Most agents get 2-3 reviews per year. You&apos;ll get 2-3 per month. That&apos;s the
               difference between page three and position one.
             </p>
           </div>
@@ -67,11 +67,11 @@ export default function HowItWorksPage() {
             <p className="text-text-muted text-lg max-w-3xl leading-relaxed mb-6">
               Your website becomes machine-readable. We implement Schema markup, JSON-LD, and
               Knowledge Graph protocols that tell Google exactly who you are, what you do, and
-              why you're an authority.
+              why you&apos;re an authority.
             </p>
             <p className="text-text-muted text-lg max-w-3xl leading-relaxed">
-              When Google rolls out Entity Search in your market, you'll already be indexed as
-              the primary agent entity. Your competitors will be scrambling. You'll be closing.
+              When Google rolls out Entity Search in your market, you&apos;ll already be indexed as
+              the primary agent entity. Your competitors will be scrambling. You&apos;ll be closing.
             </p>
           </div>
 
