@@ -3,10 +3,33 @@ import { supabase } from '@/lib/supabase/client';
 import { leadSchema } from '@/lib/validations/lead';
 import { sendSequenceEmail } from '@/lib/email/send';
 import { scheduleLeadSequence } from '@/lib/email/sequences';
+import { rateLimit, getClientIdentifier, RATE_LIMITS } from '@/app/api/rate-limit';
 import { z } from 'zod';
 
 export async function POST(request: NextRequest) {
   try {
+    // Rate limiting
+    const identifier = getClientIdentifier(request);
+    const rateLimitResult = rateLimit(identifier, RATE_LIMITS.moderate);
+
+    if (!rateLimitResult.success) {
+      return NextResponse.json(
+        {
+          error: 'Too many requests. Please try again later.',
+          retryAfter: Math.ceil((rateLimitResult.reset - Date.now()) / 1000),
+        },
+        {
+          status: 429,
+          headers: {
+            'X-RateLimit-Limit': rateLimitResult.limit.toString(),
+            'X-RateLimit-Remaining': rateLimitResult.remaining.toString(),
+            'X-RateLimit-Reset': rateLimitResult.reset.toString(),
+            'Retry-After': Math.ceil((rateLimitResult.reset - Date.now()) / 1000).toString(),
+          },
+        }
+      );
+    }
+
     // Parse and validate request body
     const body = await request.json();
     const validated = leadSchema.parse(body);

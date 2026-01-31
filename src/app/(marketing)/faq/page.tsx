@@ -1,7 +1,7 @@
 import { getFAQs } from '@/lib/sanity/queries';
 
 export const metadata = {
-  title: 'FAQ | GRAVITAS INDEX',
+  title: 'FAQ',
   description: 'Frequently asked questions about Gravitas Index, Entity Search, pricing, and implementation.',
 };
 
@@ -68,8 +68,28 @@ export default async function FAQPage() {
     ];
   }
 
+  // Generate FAQ structured data for SEO
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
+      },
+    })),
+  };
+
   return (
     <div className="min-h-screen">
+      {/* FAQ Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+
       <section className="container mx-auto px-8 py-28">
         <h1 className="font-serif text-6xl font-normal mb-8">
           Frequently Asked Questions

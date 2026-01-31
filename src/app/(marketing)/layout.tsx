@@ -1,6 +1,7 @@
 import { Header } from '@/components/marketing/Header';
 import { Footer } from '@/components/marketing/Footer';
 import { ExitIntentPopup } from '@/components/marketing/ExitIntentPopup';
+import { OrganizationSchema, WebsiteSchema, ServiceSchema } from '@/app/structured-data';
 
 export default function MarketingLayout({
   children,
@@ -9,6 +10,11 @@ export default function MarketingLayout({
 }) {
   return (
     <>
+      {/* Structured Data for SEO */}
+      <OrganizationSchema />
+      <WebsiteSchema />
+      <ServiceSchema />
+
       {/* Skip to main content link for accessibility */}
       <a
         href="#main-content"
