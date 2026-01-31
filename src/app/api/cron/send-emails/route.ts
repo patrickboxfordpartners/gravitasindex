@@ -6,11 +6,12 @@ import { FollowUpEmail } from '../../../../../emails/FollowUpEmail';
 
 /**
  * Vercel Cron Job for sending scheduled emails
+ * Runs daily at 9:00 AM UTC (Vercel Hobby plan compatible)
  * Configure in vercel.json:
  * {
  *   "crons": [{
  *     "path": "/api/cron/send-emails",
- *     "schedule": "*/5 * * * *"
+ *     "schedule": "0 9 * * *"
  *   }]
  * }
  */
