@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabase/client';
+import { sendSequenceEmail } from '@/lib/email/send';
+import { scheduleLeadMagnetSequence } from '@/lib/email/sequences';
 import { z } from 'zod';
 
 const leadMagnetSchema = z.object({
@@ -64,11 +66,28 @@ export async function POST(request: NextRequest) {
       // Don't fail the request, just log the error
     }
 
-    // TODO Phase 4: Send email with download link via Resend
-    // For now, return a direct link to the PDF
-    const downloadUrl = '/lead-magnets/entity-search-playbook.pdf';
+    // Send email with download link
+    const downloadUrl = `${process.env.NEXT_PUBLIC_APP_URL || 'https://gravitasindex.com'}/lead-magnets/entity-search-playbook.pdf`;
 
-    // TODO Phase 4: Schedule email sequence
+    try {
+      await sendSequenceEmail({
+        to: validated.email,
+        name: validated.name,
+        sequenceType: 'lead_magnet',
+        downloadUrl,
+      });
+    } catch (emailError) {
+      console.error('Error sending lead magnet email:', emailError);
+      // Don't fail the request if email fails
+    }
+
+    // Schedule follow-up sequence
+    try {
+      await scheduleLeadMagnetSequence(leadId);
+    } catch (sequenceError) {
+      console.error('Error scheduling email sequence:', sequenceError);
+      // Don't fail the request if scheduling fails
+    }
 
     // Track analytics event
     const { error: analyticsError } = await supabase
