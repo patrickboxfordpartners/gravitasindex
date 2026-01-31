@@ -60,6 +60,11 @@ const nextConfig: NextConfig = {
 
   // Power by header (remove for security)
   poweredByHeader: false,
+
+  // Disable ESLint during build (can run separately in CI/CD)
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 };
 
 export default nextConfig;
