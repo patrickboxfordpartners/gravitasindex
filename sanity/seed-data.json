@@ -1,0 +1,110 @@
+{
+  "faqs": [
+    {
+      "_type": "faq",
+      "question": "What is Entity Search and why does it matter?",
+      "answer": "Entity Search is Google's new way of displaying real estate results. Instead of showing ten blue links to Zillow and Realtor.com, Google will show the home itself—photos, price, details—directly in search results. Next to each listing: the agent's name, response time, and review score. The agents with the fastest response times and strongest reputations will get priority placement. The ones who don't adapt will disappear.",
+      "category": "general",
+      "order": 1
+    },
+    {
+      "_type": "faq",
+      "question": "How long does setup take?",
+      "answer": "Most implementations are live within 7-10 business days. We handle CRM integration, AI configuration, review automation setup, and Schema implementation. You'll have a dedicated onboarding call to map out your specific workflow, then we execute everything on our end.",
+      "category": "process",
+      "order": 2
+    },
+    {
+      "_type": "faq",
+      "question": "Do I need to change my CRM or website?",
+      "answer": "No. Gravitas Index integrates with your existing tools—Follow Up Boss, kvCORE, LionDesk, or whatever you're using. We layer on top of your current stack, we don't replace it.",
+      "category": "technical",
+      "order": 3
+    },
+    {
+      "_type": "faq",
+      "question": "What's the pricing?",
+      "answer": "$1,500 setup fee (one-time) + $500/month for solo agents or $1,750/month for teams. Setup covers full implementation, onboarding, and integration. Monthly fee includes 24/7 AI monitoring, review automation, ongoing entity optimization, and support.",
+      "category": "pricing",
+      "order": 4
+    },
+    {
+      "_type": "faq",
+      "question": "Is there a contract?",
+      "answer": "Month-to-month after the first 90 days. We're confident in the results. If it's not working after three months, you can walk away. No long-term lock-in.",
+      "category": "pricing",
+      "order": 5
+    },
+    {
+      "_type": "faq",
+      "question": "Why only 12 agents per market?",
+      "answer": "Entity Search rewards first movers. If we onboard 50 agents in Denver, they're competing against each other. We limit capacity to 12 per market so our clients have a structural advantage. Once spots fill, we close applications and open a waitlist.",
+      "category": "general",
+      "order": 6
+    },
+    {
+      "_type": "faq",
+      "question": "Do you guarantee results?",
+      "answer": "We guarantee infrastructure—your AI will respond in under 60 seconds, your review automation will run every month, and your entity optimization will be implemented correctly. What we can't control is your close rate or how fast Google rolls out Entity Search in your specific market. But when it does, you'll be ready. Your competitors won't.",
+      "category": "general",
+      "order": 7
+    },
+    {
+      "_type": "faq",
+      "question": "Can I see a demo?",
+      "answer": "Yes. Book a qualification call and we'll walk you through the system, show you live examples, and answer technical questions. We don't do generic sales pitches. If it's not a fit, we'll tell you. Link to schedule: https://cal.com/gravitasindex/consultation",
+      "category": "process",
+      "order": 8
+    }
+  ],
+  "caseStudies": [
+    {
+      "_type": "caseStudy",
+      "title": "Denver Market Transformation",
+      "market": "Denver, CO",
+      "agent": "Sarah M.",
+      "beforeMetrics": {
+        "portalSpend": "$2,800/month",
+        "closeRate": "1.8%",
+        "responseTime": "4 hours"
+      },
+      "afterMetrics": {
+        "responseTime": "38 seconds",
+        "reviewCount": "18 in 3 months",
+        "gci": "$180K from organic"
+      },
+      "summary": "Canceled Zillow contract in April. Now doing $180K in GCI from organic search alone. Owns positions 1-3 for every major search term in her zip code.",
+      "date": "2025-01-15"
+    }
+  ],
+  "spotCounts": [
+    {
+      "_type": "spotCount",
+      "market": "Denver, CO",
+      "spotsRemaining": 3,
+      "totalSpots": 12,
+      "lastUpdated": "2026-01-31T00:00:00.000Z"
+    },
+    {
+      "_type": "spotCount",
+      "market": "Los Angeles, CA",
+      "spotsRemaining": 5,
+      "totalSpots": 12,
+      "lastUpdated": "2026-01-31T00:00:00.000Z"
+    },
+    {
+      "_type": "spotCount",
+      "market": "Miami, FL",
+      "spotsRemaining": 7,
+      "totalSpots": 12,
+      "lastUpdated": "2026-01-31T00:00:00.000Z"
+    },
+    {
+      "_type": "spotCount",
+      "market": "Houston, TX",
+      "spotsRemaining": 8,
+      "totalSpots": 12,
+      "lastUpdated": "2026-01-31T00:00:00.000Z"
+    }
+  ]
+}
