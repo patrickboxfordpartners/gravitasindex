@@ -90,7 +90,7 @@ function getContentForDay(day: number) {
       headline: 'The First-Mover Advantage',
       body: [
         'Quick question: When was the last time you changed your systems?',
-        'Most agents run the same playbook they learned in 2015. Buy leads. Chase portals. Hope for referrals. It worked then. It's dying now.',
+        'Most agents run the same playbook they learned in 2015. Buy leads. Chase portals. Hope for referrals. It worked then. It\'s dying now.',
         'Entity Search changes everything. Google is building a knowledge graph of your market—who the agents are, how fast they respond, how trusted they are. The agents who understand this and adapt now will dominate.',
         'The ones who wait will wake up in 12 months wondering why their phone stopped ringing.',
       ],
@@ -124,12 +124,12 @@ function getContentForDay(day: number) {
       body: [
         'This is the last email in this sequence.',
         'We limit capacity to 12 agents per market. Right now, we have 3 spots open in your area. When they fill, we close applications and open a waitlist.',
-        'If you're still reading these emails, you're thinking about it. That means you understand what's coming. You see the shift. You know the portals aren't sustainable.',
-        'The question is whether you're willing to move now or wait and see what happens.',
+        'If you\'re still reading these emails, you\'re thinking about it. That means you understand what\'s coming. You see the shift. You know the portals aren\'t sustainable.',
+        'The question is whether you\'re willing to move now or wait and see what happens.',
         'The agents who move now get the advantage. The ones who wait get to watch from the sidelines.',
       ],
       highlight:
-        'Entity Search is rolling out market by market. When it hits yours, you'll either be ready or you'll be scrambling. Which sounds better?',
+        'Entity Search is rolling out market by market. When it hits yours, you\'ll either be ready or you\'ll be scrambling. Which sounds better?',
       cta: {
         text: 'Book Your Call Now',
         url: 'https://cal.com/gravitasindex/consultation',
