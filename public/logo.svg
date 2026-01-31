@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 46" width="44" height="46">
+  <defs>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- C-shape body: top, left, bottom borders (no right) -->
+  <!-- Top border -->
+  <rect x="0" y="0" width="40" height="3" fill="#64748b"/>
+  <!-- Left border -->
+  <rect x="0" y="0" width="3" height="40" fill="#64748b"/>
+  <!-- Bottom border -->
+  <rect x="0" y="37" width="40" height="3" fill="#64748b"/>
+  
+  <!-- Crossbar (horizontal, centered vertically) -->
+  <rect x="28" y="18.5" width="12" height="3" fill="#64748b"/>
+  
+  <!-- Blue "I" downstroke (extends below the G) -->
+  <rect x="37" y="18.5" width="3" height="26" fill="#38bdf8" filter="url(#glow)"/>
+</svg>
