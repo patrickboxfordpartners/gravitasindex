@@ -11,6 +11,7 @@
   "dependencies": {
     "@react-email/components": "^1.0.6",
     "@sanity/client": "^6.25.0",
+    "@supabase/ssr": "^0.8.0",
     "@supabase/supabase-js": "^2.93.3",
     "next": "^15.1.6",
     "posthog-js": "^1.336.4",
