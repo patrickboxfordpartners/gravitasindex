@@ -152,10 +152,10 @@ export function LeadMagnetModal({ onClose }: LeadMagnetModalProps) {
               Check Your Email
             </h3>
             <p className="text-text-muted mb-4">
-              We've sent you a link to download <strong>The Entity Search Playbook</strong>.
+              We&apos;ve sent you a link to download <strong>The Entity Search Playbook</strong>.
             </p>
             <p className="text-sm text-text-muted">
-              Your download will start automatically. If it doesn't, check your email for the link.
+              Your download will start automatically. If it doesn&apos;t, check your email for the link.
             </p>
             <Button
               onClick={onClose}
@@ -175,7 +175,7 @@ export function LeadMagnetModal({ onClose }: LeadMagnetModalProps) {
                 The Entity Search Playbook
               </h2>
               <p className="text-text-muted leading-relaxed">
-                Learn how Google's Entity Search works and the exact steps to position yourself
+                Learn how Google&apos;s Entity Search works and the exact steps to position yourself
                 as the market authority. 7 pages, zero fluff.
               </p>
             </div>
