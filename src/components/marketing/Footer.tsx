@@ -8,13 +8,11 @@ export function Footer() {
   return (
     <footer className="border-t border-border bg-panel py-16">
       <div className="container mx-auto px-8">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-12 text-center md:text-left">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-12">
           {/* Brand Column */}
           <div className="md:col-span-5">
-            <div className="flex justify-center md:justify-start">
-              <Logo size="small" />
-            </div>
-            <p className="text-text-muted text-sm mt-6 leading-relaxed max-w-md mx-auto md:mx-0">
+            <Logo size="small" />
+            <p className="text-text-muted text-sm mt-6 leading-relaxed max-w-md">
               Transform your business into a market authority Google can't ignore.
               Data-driven entity optimization that turns search invisibility into market dominance.
             </p>
@@ -89,7 +87,7 @@ export function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="pt-8 border-t border-border text-center md:text-left">
+        <div className="pt-8 border-t border-border">
           <p className="text-xs text-text-muted font-mono font-normal">
             © {currentYear} GRAVITAS INDEX. All rights reserved.
           </p>
