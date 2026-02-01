@@ -13,6 +13,10 @@ export default async function FAQPage() {
   let faqs;
   try {
     faqs = await getFAQs();
+    // If Sanity returns empty array, use fallback
+    if (!faqs || faqs.length === 0) {
+      throw new Error('No FAQs in Sanity');
+    }
   } catch (error) {
     console.error('Error fetching FAQs from Sanity:', error);
     // Fallback to static data if Sanity is not configured yet
