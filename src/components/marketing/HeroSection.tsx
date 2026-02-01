@@ -41,24 +41,26 @@ export function HeroSection() {
       </p>
 
       {/* Metrics Ticker */}
-      <div className="border border-border bg-panel inline-flex flex-wrap rounded overflow-hidden mb-8">
-        <div className="flex-1 min-w-0 relative px-12 py-6 border-r border-border">
-          <span className="block font-mono text-3xl text-accent font-normal">$30K+</span>
-          <span className="text-[0.7rem] uppercase tracking-wider text-text-muted mt-2 block font-normal">
-            Annual Portal Spend (Avg)
-          </span>
-        </div>
-        <div className="flex-1 min-w-0 relative px-12 py-6 border-r border-border">
-          <span className="block font-mono text-3xl text-text-main font-normal">2%</span>
-          <span className="text-[0.7rem] uppercase tracking-wider text-text-muted mt-2 block font-normal">
-            Portal Lead Close Rate
-          </span>
-        </div>
-        <div className="flex-1 min-w-0 relative px-12 py-6">
-          <span className="block font-mono text-3xl text-accent font-normal">&lt;60s</span>
-          <span className="text-[0.7rem] uppercase tracking-wider text-text-muted mt-2 block font-normal">
-            Response Time Google Measures
-          </span>
+      <div className="border border-border bg-panel rounded overflow-hidden mb-8 w-full max-w-4xl">
+        <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-border">
+          <div className="px-6 sm:px-8 py-6 text-center sm:text-left">
+            <span className="block font-mono text-3xl text-accent font-normal">$30K+</span>
+            <span className="text-[0.7rem] uppercase tracking-wider text-text-muted mt-2 block font-normal">
+              Annual Portal Spend (Avg)
+            </span>
+          </div>
+          <div className="px-6 sm:px-8 py-6 text-center sm:text-left">
+            <span className="block font-mono text-3xl text-text-main font-normal">2%</span>
+            <span className="text-[0.7rem] uppercase tracking-wider text-text-muted mt-2 block font-normal">
+              Portal Lead Close Rate
+            </span>
+          </div>
+          <div className="px-6 sm:px-8 py-6 text-center sm:text-left">
+            <span className="block font-mono text-3xl text-accent font-normal">&lt;60s</span>
+            <span className="text-[0.7rem] uppercase tracking-wider text-text-muted mt-2 block font-normal">
+              Response Time Google Measures
+            </span>
+          </div>
         </div>
       </div>
 

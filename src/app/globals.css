@@ -97,3 +97,26 @@ section[id] {
 .animate-fade-in {
   animation: fadeIn 0.2s ease-out;
 }
+
+/* Pulse animation for metrics */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.animate-pulse-subtle {
+  animation: pulse 3s ease-in-out infinite;
+}
+
+/* Hover lift effect */
+.hover-lift {
+  transition: transform 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+}

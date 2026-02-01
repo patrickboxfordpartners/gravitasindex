@@ -66,8 +66,11 @@ export default async function FAQPage() {
       {
         _id: '8',
         question: "Can I see a demo?",
-        answer: "Yes. Book a qualification call and we'll walk you through the system, show you live examples, and answer technical questions. We don't do generic sales pitches. If it's not a fit, we'll tell you. Link to schedule: https://cal.com/gravitasindex/consultation",
+        answer: "Yes. Book a qualification call and we'll walk you through the system, show you live examples, and answer technical questions. We don't do generic sales pitches. If it's not a fit, we'll tell you.",
         order: 8,
+        hasLink: true,
+        linkText: "Schedule a consultation",
+        linkUrl: "https://cal.com/gravitasindex/consultation"
       },
     ];
   }
@@ -103,7 +106,7 @@ export default async function FAQPage() {
         </p>
 
         <div className="max-w-4xl space-y-12">
-          {faqs.map((faq) => (
+          {faqs.map((faq: any) => (
             <div key={faq._id} className="border-t border-border pt-8">
               <h2 className="font-serif text-2xl font-normal mb-4 text-text-main">
                 {faq.question}
@@ -111,6 +114,16 @@ export default async function FAQPage() {
               <p className="text-text-muted text-lg leading-relaxed whitespace-pre-line">
                 {faq.answer}
               </p>
+              {faq.hasLink && (
+                <a
+                  href={faq.linkUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block mt-4 text-accent hover:underline font-medium"
+                >
+                  {faq.linkText} →
+                </a>
+              )}
             </div>
           ))}
         </div>

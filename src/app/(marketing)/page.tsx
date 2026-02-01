@@ -93,8 +93,8 @@ export default function HomePage() {
         {/* System Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Card 1: Velocity */}
-          <div className="border border-border bg-panel p-8 relative">
-            <span className="font-mono text-6xl text-accent opacity-20 absolute top-4 right-4">
+          <div className="border border-border bg-panel p-8 relative transition-all duration-300 hover:border-accent hover:shadow-[0_0_30px_rgba(56,189,248,0.15)] hover:-translate-y-1 group cursor-default">
+            <span className="font-mono text-6xl text-accent opacity-20 absolute top-4 right-4 transition-opacity group-hover:opacity-40">
               01
             </span>
             <h3 className="font-serif text-2xl mb-4 font-normal">Velocity</h3>
@@ -115,8 +115,8 @@ export default function HomePage() {
           </div>
 
           {/* Card 2: Trust */}
-          <div className="border border-border bg-panel p-8 relative">
-            <span className="font-mono text-6xl text-accent opacity-20 absolute top-4 right-4">
+          <div className="border border-border bg-panel p-8 relative transition-all duration-300 hover:border-accent hover:shadow-[0_0_30px_rgba(56,189,248,0.15)] hover:-translate-y-1 group cursor-default">
+            <span className="font-mono text-6xl text-accent opacity-20 absolute top-4 right-4 transition-opacity group-hover:opacity-40">
               02
             </span>
             <h3 className="font-serif text-2xl mb-4 font-normal">Trust</h3>
@@ -145,8 +145,8 @@ export default function HomePage() {
           </div>
 
           {/* Card 3: Capital */}
-          <div className="border border-border bg-panel p-8 relative">
-            <span className="font-mono text-6xl text-accent opacity-20 absolute top-4 right-4">
+          <div className="border border-border bg-panel p-8 relative transition-all duration-300 hover:border-accent hover:shadow-[0_0_30px_rgba(56,189,248,0.15)] hover:-translate-y-1 group cursor-default">
+            <span className="font-mono text-6xl text-accent opacity-20 absolute top-4 right-4 transition-opacity group-hover:opacity-40">
               03
             </span>
             <h3 className="font-serif text-2xl mb-4 font-normal">Capital</h3>
