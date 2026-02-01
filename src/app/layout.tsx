@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Inter, Playfair_Display, JetBrains_Mono } from "next/font/google";
 import { PostHogProvider } from "@/components/analytics/PostHogProvider";
 import "./globals.css";
@@ -78,7 +79,9 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${playfair.variable} ${jetbrainsMono.variable} antialiased bg-bg text-text-main font-sans`}
       >
-        <PostHogProvider>{children}</PostHogProvider>
+        <Suspense fallback={children}>
+          <PostHogProvider>{children}</PostHogProvider>
+        </Suspense>
       </body>
     </html>
   );

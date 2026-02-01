@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
-import { stripe } from '@/lib/stripe/client';
+import { getStripe } from '@/lib/stripe/client';
 import {
   handleCheckoutSessionCompleted,
   handleSubscriptionUpdated,
@@ -25,7 +25,7 @@ export async function POST(request: NextRequest) {
     // Verify webhook signature
     let event: Stripe.Event;
     try {
-      event = stripe.webhooks.constructEvent(
+      event = getStripe().webhooks.constructEvent(
         body,
         signature,
         process.env.STRIPE_WEBHOOK_SECRET!

@@ -1,13 +1,21 @@
 import Stripe from 'stripe';
 
-if (!process.env.STRIPE_SECRET_KEY) {
-  throw new Error('STRIPE_SECRET_KEY is not set');
-}
+// Lazy initialization: defer env check until first API call (runtime).
+// This prevents build failures when STRIPE_SECRET_KEY isn't available at build time (e.g. Vercel).
+let _stripe: Stripe | null = null;
 
-export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
-  apiVersion: '2026-01-28.clover' as any,
-  typescript: true,
-});
+export function getStripe(): Stripe {
+  if (!_stripe) {
+    if (!process.env.STRIPE_SECRET_KEY) {
+      throw new Error('STRIPE_SECRET_KEY is not set');
+    }
+    _stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
+      apiVersion: '2026-01-28.clover' as any,
+      typescript: true,
+    });
+  }
+  return _stripe;
+}
 
 /**
  * Stripe pricing configuration

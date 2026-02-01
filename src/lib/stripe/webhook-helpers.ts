@@ -1,5 +1,5 @@
 import Stripe from 'stripe';
-import { stripe } from './client';
+import { getStripe } from './client';
 import { supabaseAdmin } from '@/lib/supabase/client';
 
 /**
@@ -14,7 +14,7 @@ export async function handleCheckoutSessionCompleted(
     const subscriptionId = session.subscription as string;
 
     // Get subscription details from Stripe
-    const subscription = await stripe.subscriptions.retrieve(subscriptionId) as any;
+    const subscription = await getStripe().subscriptions.retrieve(subscriptionId) as any;
 
     // Get lead ID from metadata (passed during checkout creation)
     const leadId = session.metadata?.lead_id;

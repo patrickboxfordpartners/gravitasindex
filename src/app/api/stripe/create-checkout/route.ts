@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { stripe, STRIPE_CONFIG } from '@/lib/stripe/client';
+import { getStripe, STRIPE_CONFIG } from '@/lib/stripe/client';
 import { z } from 'zod';
 
 const checkoutSchema = z.object({
@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
 
     // Create or get customer
     let customer;
-    const existingCustomers = await stripe.customers.list({
+    const existingCustomers = await getStripe().customers.list({
       email,
       limit: 1,
     });
@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
     if (existingCustomers.data.length > 0) {
       customer = existingCustomers.data[0];
     } else {
-      customer = await stripe.customers.create({
+      customer = await getStripe().customers.create({
         email,
         name,
         metadata: {
@@ -38,7 +38,7 @@ export async function POST(request: NextRequest) {
     // Create checkout session
     // NOTE: You'll need to create products and prices in Stripe dashboard first
     // Then update these price IDs
-    const session = await stripe.checkout.sessions.create({
+    const session = await getStripe().checkout.sessions.create({
       customer: customer.id,
       mode: 'subscription',
       payment_method_types: ['card'],
