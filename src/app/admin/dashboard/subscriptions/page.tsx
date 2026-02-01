@@ -26,8 +26,6 @@ export default function SubscriptionsPage() {
   const [subscriptions, setSubscriptions] = useState<Subscription[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const supabase = createClientSupabaseClient();
-
   useEffect(() => {
     fetchSubscriptions();
   }, []);
@@ -35,6 +33,7 @@ export default function SubscriptionsPage() {
   async function fetchSubscriptions() {
     setLoading(true);
     try {
+      const supabase = createClientSupabaseClient();
       const { data, error } = await supabase
         .from('subscriptions')
         .select('*, leads(name, email, market)')

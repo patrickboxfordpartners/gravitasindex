@@ -21,9 +21,9 @@ export function createClientSupabaseClient() {
 export function useUser() {
   const [user, setUser] = useState<any>(null);
   const [loading, setLoading] = useState(true);
-  const supabase = createClientSupabaseClient();
 
   useEffect(() => {
+    const supabase = createClientSupabaseClient();
     // Get initial user
     supabase.auth.getUser().then(({ data: { user } }) => {
       setUser(user);

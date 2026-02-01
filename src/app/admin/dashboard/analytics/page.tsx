@@ -38,8 +38,6 @@ export default function AnalyticsPage() {
   const [downloadCount, setDownloadCount] = useState(0);
   const [emailStats, setEmailStats] = useState({ sent: 0, pending: 0, failed: 0 });
 
-  const supabase = createClientSupabaseClient();
-
   useEffect(() => {
     fetchAnalytics();
   }, []);
@@ -47,6 +45,7 @@ export default function AnalyticsPage() {
   async function fetchAnalytics() {
     setLoading(true);
     try {
+      const supabase = createClientSupabaseClient();
       // Fetch all leads
       const { data: leads } = await supabase
         .from('leads')

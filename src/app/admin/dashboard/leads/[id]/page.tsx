@@ -47,8 +47,6 @@ export default function LeadDetailPage() {
   const [loading, setLoading] = useState(true);
   const [updating, setUpdating] = useState(false);
 
-  const supabase = createClientSupabaseClient();
-
   useEffect(() => {
     fetchLeadData();
   }, [leadId]);
@@ -56,6 +54,7 @@ export default function LeadDetailPage() {
   async function fetchLeadData() {
     setLoading(true);
     try {
+      const supabase = createClientSupabaseClient();
       // Fetch lead
       const { data: leadData, error: leadError } = await supabase
         .from('leads')
@@ -93,6 +92,7 @@ export default function LeadDetailPage() {
   async function updateStatus(newStatus: string) {
     setUpdating(true);
     try {
+      const supabase = createClientSupabaseClient();
       const { error } = await supabase
         .from('leads')
         .update({ status: newStatus, updated_at: new Date().toISOString() })
@@ -113,6 +113,7 @@ export default function LeadDetailPage() {
     if (!newNote.trim()) return;
 
     try {
+      const supabase = createClientSupabaseClient();
       const { error } = await supabase
         .from('admin_notes')
         .insert({

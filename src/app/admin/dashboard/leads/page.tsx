@@ -24,8 +24,6 @@ export default function LeadsPage() {
   const [statusFilter, setStatusFilter] = useState('all');
   const [roleFilter, setRoleFilter] = useState('all');
 
-  const supabase = createClientSupabaseClient();
-
   useEffect(() => {
     fetchLeads();
   }, []);
@@ -33,6 +31,7 @@ export default function LeadsPage() {
   async function fetchLeads() {
     setLoading(true);
     try {
+      const supabase = createClientSupabaseClient();
       const { data, error } = await supabase
         .from('leads')
         .select('*')
