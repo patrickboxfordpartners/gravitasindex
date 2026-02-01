@@ -90,9 +90,73 @@ export default function HomePage() {
           $200K producers from $2M producers.
         </p>
 
-        {/* System cards will be added */}
-        <div className="text-center text-text-muted mt-20">
-          [System cards to be implemented]
+        {/* System Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Card 1: Velocity */}
+          <div className="border border-border bg-panel p-8 relative">
+            <span className="font-mono text-6xl text-accent opacity-20 absolute top-4 right-4">
+              01
+            </span>
+            <h3 className="font-serif text-2xl mb-4 font-normal">Velocity</h3>
+            <p className="text-text-muted mb-4 leading-relaxed">
+              <strong className="text-text-main">The Sub-60-Second Response Engine.</strong> When a lead hits your website at 11:47 PM, they get a response at 11:47 PM. Not a form confirmation—a conversation. Our AI concierge qualifies intent, answers property questions, and books showings while you sleep.
+            </p>
+            <p className="text-accent text-sm mb-6">
+              Google&apos;s Entity Search will measure this. We make sure you win.
+            </p>
+            <div className="pt-4 border-t border-border">
+              <span className="font-mono text-xs text-text-muted tracking-wider">
+                LICENSE-SAFE:
+              </span>
+              <span className="text-sm text-text-muted ml-2">
+                Trained to deflect Fair Housing traps. It knows what NOT to say.
+              </span>
+            </div>
+          </div>
+
+          {/* Card 2: Trust */}
+          <div className="border border-border bg-panel p-8 relative">
+            <span className="font-mono text-6xl text-accent opacity-20 absolute top-4 right-4">
+              02
+            </span>
+            <h3 className="font-serif text-2xl mb-4 font-normal">Trust</h3>
+            <p className="text-text-muted mb-4 leading-relaxed">
+              <strong className="text-text-main">The Review Capture Protocol.</strong> We don&apos;t hope for reviews. We engineer them. The reviewSNIPER system triggers within 2 hours of closing—when satisfaction peaks and the experience is fresh. One tap from SMS to published review.
+            </p>
+            <p className="text-accent text-sm mb-6">
+              Your review velocity becomes your ranking velocity.
+            </p>
+            {/* Sample Google Review Card */}
+            <div className="bg-bg border border-border p-4 rounded">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="w-8 h-8 bg-accent rounded-full flex items-center justify-center text-bg font-bold text-sm">
+                  G
+                </span>
+                <div className="text-accent text-lg">★★★★★</div>
+              </div>
+              <p className="text-text-muted text-sm leading-relaxed mb-3">
+                &ldquo;The most professional transaction I&apos;ve experienced. Responded instantly, knew the market cold, made the whole process seamless.&rdquo;
+              </p>
+              <div className="flex items-center gap-3 text-xs text-text-muted">
+                <span className="text-accent">✓ Verified</span>
+                <span>2 hrs post-close</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Card 3: Capital */}
+          <div className="border border-border bg-panel p-8 relative">
+            <span className="font-mono text-6xl text-accent opacity-20 absolute top-4 right-4">
+              03
+            </span>
+            <h3 className="font-serif text-2xl mb-4 font-normal">Capital</h3>
+            <p className="text-text-muted mb-4 leading-relaxed">
+              <strong className="text-text-main">The Qualification Firewall.</strong> Before anyone gets on your calendar, they answer three questions: Are you pre-approved? What&apos;s your timeline? Are you working with another agent?
+            </p>
+            <p className="text-accent text-sm">
+              No more driving across town for a &ldquo;buyer&rdquo; who can&apos;t get a loan. Every tour is transaction-ready.
+            </p>
+          </div>
         </div>
       </section>
 
