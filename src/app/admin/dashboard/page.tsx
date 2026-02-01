@@ -3,7 +3,7 @@ import { Card } from '@/components/ui/Card';
 import Link from 'next/link';
 
 export default async function DashboardPage() {
-  const supabase = createServerSupabaseClient();
+  const supabase = await createServerSupabaseClient();
 
   // Fetch overview stats
   const [
