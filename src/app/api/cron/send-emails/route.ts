@@ -69,21 +69,21 @@ export async function GET(request: NextRequest) {
         switch (email.sequence_type) {
           case 'follow_up_day1':
             emailSubject = 'The Entity Search Shift: What Happens Next';
-            emailHtml = render(
+            emailHtml = await render(
               FollowUpEmail({ name: lead.name, dayNumber: 1 })
             );
             break;
 
           case 'follow_up_day3':
             emailSubject = 'How Denver Agents Captured 47% More Leads';
-            emailHtml = render(
+            emailHtml = await render(
               FollowUpEmail({ name: lead.name, dayNumber: 3 })
             );
             break;
 
           case 'follow_up_day7':
             emailSubject = 'Last Call: Your Market Is Filling Up';
-            emailHtml = render(
+            emailHtml = await render(
               FollowUpEmail({ name: lead.name, dayNumber: 7 })
             );
             break;

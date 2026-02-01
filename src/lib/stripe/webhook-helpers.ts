@@ -14,7 +14,7 @@ export async function handleCheckoutSessionCompleted(
     const subscriptionId = session.subscription as string;
 
     // Get subscription details from Stripe
-    const subscription = await stripe.subscriptions.retrieve(subscriptionId);
+    const subscription = await stripe.subscriptions.retrieve(subscriptionId) as any;
 
     // Get lead ID from metadata (passed during checkout creation)
     const leadId = session.metadata?.lead_id;
@@ -64,7 +64,7 @@ export async function handleCheckoutSessionCompleted(
  * Updates subscription status in database
  */
 export async function handleSubscriptionUpdated(
-  subscription: Stripe.Subscription
+  subscription: Stripe.Subscription | any
 ) {
   try {
     const { error } = await supabaseAdmin
@@ -94,7 +94,7 @@ export async function handleSubscriptionUpdated(
  * Marks subscription as canceled in database
  */
 export async function handleSubscriptionDeleted(
-  subscription: Stripe.Subscription
+  subscription: Stripe.Subscription | any
 ) {
   try {
     const { error } = await supabaseAdmin

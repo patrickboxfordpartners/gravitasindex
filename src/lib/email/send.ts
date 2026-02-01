@@ -25,7 +25,7 @@ export async function sendSequenceEmail({
     switch (sequenceType) {
       case 'welcome':
         subject = 'Welcome to Gravitas Index';
-        html = render(WelcomeEmail({ name }));
+        html = await render(WelcomeEmail({ name }));
         break;
 
       case 'lead_magnet':
@@ -33,22 +33,22 @@ export async function sendSequenceEmail({
           throw new Error('Download URL required for lead magnet email');
         }
         subject = 'Your Entity Search Playbook is Ready';
-        html = render(LeadMagnetEmail({ name, downloadUrl }));
+        html = await render(LeadMagnetEmail({ name, downloadUrl }));
         break;
 
       case 'follow_up_day1':
         subject = 'The First-Mover Advantage';
-        html = render(FollowUpEmail({ name, dayNumber: 1 }));
+        html = await render(FollowUpEmail({ name, dayNumber: 1 }));
         break;
 
       case 'follow_up_day3':
         subject = 'Real Results: Denver Market Case Study';
-        html = render(FollowUpEmail({ name, dayNumber: 3 }));
+        html = await render(FollowUpEmail({ name, dayNumber: 3 }));
         break;
 
       case 'follow_up_day7':
         subject = 'Final Notice: Limited Spots Remaining';
-        html = render(FollowUpEmail({ name, dayNumber: 7 }));
+        html = await render(FollowUpEmail({ name, dayNumber: 7 }));
         break;
 
       default:

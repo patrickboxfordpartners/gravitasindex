@@ -2,11 +2,12 @@ import React from 'react';
 
 interface LogoProps {
   size?: 'default' | 'small';
+  className?: string;
 }
 
-export function Logo({ size = 'default' }: LogoProps) {
+export function Logo({ size = 'default', className = '' }: LogoProps) {
   return (
-    <div className="flex items-center gap-4 font-mono text-xl leading-none">
+    <div className={`flex items-center gap-4 font-mono text-xl leading-none ${className}`}>
       {/* CSS-based "G" monogram */}
       <div
         className={`relative flex-shrink-0 ${size === 'small' ? 'scale-75 origin-left' : ''}`}

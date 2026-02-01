@@ -5,8 +5,8 @@ import { cookies } from 'next/headers';
  * Create Supabase client for Server Components
  * Handles cookie-based auth for server-side rendering
  */
-export function createServerSupabaseClient() {
-  const cookieStore = cookies();
+export async function createServerSupabaseClient() {
+  const cookieStore = await cookies();
 
   return createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -40,7 +40,7 @@ export function createServerSupabaseClient() {
  * Returns null if not authenticated
  */
 export async function getUser() {
-  const supabase = createServerSupabaseClient();
+  const supabase = await createServerSupabaseClient();
 
   try {
     const { data: { user }, error } = await supabase.auth.getUser();
@@ -62,7 +62,7 @@ export async function getUser() {
  * Returns null if no active session
  */
 export async function getSession() {
-  const supabase = createServerSupabaseClient();
+  const supabase = await createServerSupabaseClient();
 
   try {
     const { data: { session }, error } = await supabase.auth.getSession();

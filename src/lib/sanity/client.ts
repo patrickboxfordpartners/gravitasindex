@@ -9,5 +9,5 @@ export const sanityClient = createClient({
 
 // Helper for fetching content
 export async function sanityFetch<T>(query: string, params?: Record<string, any>): Promise<T> {
-  return sanityClient.fetch<T>(query, params);
+  return params ? sanityClient.fetch<T>(query, params) : sanityClient.fetch<T>(query);
 }
