@@ -1,6 +1,6 @@
 import Stripe from 'stripe';
 import { getStripe } from './client';
-import { supabaseAdmin } from '@/lib/supabase/client';
+import { getSupabaseAdmin } from '@/lib/supabase/client';
 
 /**
  * Handle successful checkout session
@@ -29,7 +29,7 @@ export async function handleCheckoutSessionCompleted(
     const planType = getPlanTypeFromPriceId(priceId);
 
     // Insert subscription record
-    const { error } = await supabaseAdmin.from('subscriptions').insert({
+    const { error } = await getSupabaseAdmin().from('subscriptions').insert({
       lead_id: leadId,
       stripe_customer_id: customerId,
       stripe_subscription_id: subscriptionId,
@@ -47,7 +47,7 @@ export async function handleCheckoutSessionCompleted(
     }
 
     // Update lead status to converted
-    await supabaseAdmin
+    await getSupabaseAdmin()
       .from('leads')
       .update({ status: 'converted' })
       .eq('id', leadId);
@@ -67,7 +67,7 @@ export async function handleSubscriptionUpdated(
   subscription: Stripe.Subscription | any
 ) {
   try {
-    const { error } = await supabaseAdmin
+    const { error } = await getSupabaseAdmin()
       .from('subscriptions')
       .update({
         status: subscription.status,
@@ -97,7 +97,7 @@ export async function handleSubscriptionDeleted(
   subscription: Stripe.Subscription | any
 ) {
   try {
-    const { error } = await supabaseAdmin
+    const { error } = await getSupabaseAdmin()
       .from('subscriptions')
       .update({
         status: 'canceled',
@@ -110,14 +110,14 @@ export async function handleSubscriptionDeleted(
     }
 
     // Optionally update lead status
-    const { data: sub } = await supabaseAdmin
+    const { data: sub } = await getSupabaseAdmin()
       .from('subscriptions')
       .select('lead_id')
       .eq('stripe_subscription_id', subscription.id)
       .single();
 
     if (sub?.lead_id) {
-      await supabaseAdmin
+      await getSupabaseAdmin()
         .from('leads')
         .update({ status: 'lost' })
         .eq('id', sub.lead_id);

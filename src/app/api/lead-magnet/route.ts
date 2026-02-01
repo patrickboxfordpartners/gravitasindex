@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase/client';
+import { getSupabase } from '@/lib/supabase/client';
 import { sendSequenceEmail } from '@/lib/email/send';
 import { scheduleLeadMagnetSequence } from '@/lib/email/sequences';
 import { rateLimit, getClientIdentifier, RATE_LIMITS } from '@/app/api/rate-limit';
@@ -38,7 +38,7 @@ export async function POST(request: NextRequest) {
     const validated = leadMagnetSchema.parse(body);
 
     // Check if lead already exists
-    const { data: existingLead } = await supabase
+    const { data: existingLead } = await getSupabase()
       .from('leads')
       .select('id')
       .eq('email', validated.email)
@@ -48,7 +48,7 @@ export async function POST(request: NextRequest) {
 
     // If no existing lead, create one
     if (!leadId) {
-      const { data: newLead, error: leadError } = await supabase
+      const { data: newLead, error: leadError } = await getSupabase()
         .from('leads')
         .insert({
           name: validated.name,
@@ -73,7 +73,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Record the download
-    const { error: downloadError } = await supabase
+    const { error: downloadError } = await getSupabase()
       .from('lead_magnet_downloads')
       .insert({
         lead_id: leadId,
@@ -112,7 +112,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Track analytics event
-    const { error: analyticsError } = await supabase
+    const { error: analyticsError } = await getSupabase()
       .from('analytics_events')
       .insert({
         event_name: 'lead_magnet_downloaded',

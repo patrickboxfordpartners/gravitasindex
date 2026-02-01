@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase/client';
+import { getSupabase } from '@/lib/supabase/client';
 import { leadSchema } from '@/lib/validations/lead';
 import { sendSequenceEmail } from '@/lib/email/send';
 import { scheduleLeadSequence } from '@/lib/email/sequences';
@@ -35,7 +35,7 @@ export async function POST(request: NextRequest) {
     const validated = leadSchema.parse(body);
 
     // Insert lead into Supabase
-    const { data, error } = await supabase
+    const { data, error } = await getSupabase()
       .from('leads')
       .insert({
         name: validated.name,

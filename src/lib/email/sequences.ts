@@ -1,4 +1,4 @@
-import { supabaseAdmin } from '@/lib/supabase/client';
+import { getSupabaseAdmin } from '@/lib/supabase/client';
 
 export type SequenceType =
   | 'welcome'
@@ -24,7 +24,7 @@ export async function scheduleEmail({
   const scheduledFor = new Date();
   scheduledFor.setMinutes(scheduledFor.getMinutes() + delayMinutes);
 
-  const { data, error } = await supabaseAdmin
+  const { data, error } = await getSupabaseAdmin()
     .from('email_sequences')
     .insert({
       lead_id: leadId,
@@ -121,7 +121,7 @@ export async function scheduleLeadMagnetSequence(leadId: string) {
  * Mark an email as sent
  */
 export async function markEmailAsSent(emailId: string) {
-  const { error } = await supabaseAdmin
+  const { error } = await getSupabaseAdmin()
     .from('email_sequences')
     .update({
       status: 'sent',
@@ -139,7 +139,7 @@ export async function markEmailAsSent(emailId: string) {
  * Mark an email as failed
  */
 export async function markEmailAsFailed(emailId: string, errorMessage?: string) {
-  const { error } = await supabaseAdmin
+  const { error } = await getSupabaseAdmin()
     .from('email_sequences')
     .update({
       status: 'failed',

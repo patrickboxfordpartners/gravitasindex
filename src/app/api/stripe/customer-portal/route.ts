@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getStripe } from '@/lib/stripe/client';
-import { supabaseAdmin } from '@/lib/supabase/client';
+import { getSupabaseAdmin } from '@/lib/supabase/client';
 import { z } from 'zod';
 
 const portalSchema = z.object({
@@ -13,7 +13,7 @@ export async function POST(request: NextRequest) {
     const { leadId } = portalSchema.parse(body);
 
     // Get customer ID from subscription
-    const { data: subscription, error } = await supabaseAdmin
+    const { data: subscription, error } = await getSupabaseAdmin()
       .from('subscriptions')
       .select('stripe_customer_id')
       .eq('lead_id', leadId)

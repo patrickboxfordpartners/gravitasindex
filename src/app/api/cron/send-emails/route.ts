@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { supabaseAdmin } from '@/lib/supabase/client';
+import { getSupabaseAdmin } from '@/lib/supabase/client';
 import { resend } from '@/lib/email/resend';
 import { render } from '@react-email/components';
 import { FollowUpEmail } from '../../../../../emails/FollowUpEmail';
@@ -27,7 +27,7 @@ export async function GET(request: NextRequest) {
     const now = new Date().toISOString();
 
     // Get pending emails that are scheduled to be sent
-    const { data: pendingEmails, error: fetchError } = await supabaseAdmin
+    const { data: pendingEmails, error: fetchError } = await getSupabaseAdmin()
       .from('email_sequences')
       .select('*, leads(name, email)')
       .eq('status', 'pending')
@@ -101,7 +101,7 @@ export async function GET(request: NextRequest) {
         });
 
         // Update email status to sent
-        await supabaseAdmin
+        await getSupabaseAdmin()
           .from('email_sequences')
           .update({
             status: 'sent',
@@ -114,7 +114,7 @@ export async function GET(request: NextRequest) {
         console.error(`Error sending email ${email.id}:`, error);
 
         // Update email status to failed
-        await supabaseAdmin
+        await getSupabaseAdmin()
           .from('email_sequences')
           .update({
             status: 'failed',
