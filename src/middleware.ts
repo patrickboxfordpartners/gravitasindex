@@ -1,16 +1,23 @@
 import { createServerClient, type CookieOptions } from '@supabase/ssr';
 import { NextResponse, type NextRequest } from 'next/server';
 
-export async function proxy(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   let response = NextResponse.next({
     request: {
       headers: request.headers,
     },
   });
 
+  // Skip auth check if Supabase env vars are missing (e.g. during build or misconfiguration).
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  if (!supabaseUrl || !supabaseAnonKey) {
+    return response;
+  }
+
   const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    supabaseUrl,
+    supabaseAnonKey,
     {
       cookies: {
         get(name: string) {
@@ -54,18 +61,20 @@ export async function proxy(request: NextRequest) {
     }
   );
 
-  const { data: { user } } = await supabase.auth.getUser();
+  try {
+    const { data: { user } } = await supabase.auth.getUser();
 
-  // Protect admin routes
-  if (request.nextUrl.pathname.startsWith('/admin') && !request.nextUrl.pathname.startsWith('/admin/login')) {
-    if (!user) {
-      return NextResponse.redirect(new URL('/admin/login', request.url));
+    if (request.nextUrl.pathname.startsWith('/admin') && !request.nextUrl.pathname.startsWith('/admin/login')) {
+      if (!user) {
+        return NextResponse.redirect(new URL('/admin/login', request.url));
+      }
     }
-  }
 
-  // Redirect to dashboard if already logged in
-  if (request.nextUrl.pathname === '/admin/login' && user) {
-    return NextResponse.redirect(new URL('/admin/dashboard', request.url));
+    if (request.nextUrl.pathname === '/admin/login' && user) {
+      return NextResponse.redirect(new URL('/admin/dashboard', request.url));
+    }
+  } catch (error) {
+    console.error('Middleware auth error:', error);
   }
 
   return response;
