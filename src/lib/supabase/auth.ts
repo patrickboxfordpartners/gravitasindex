@@ -5,7 +5,7 @@ import { cookies } from 'next/headers';
  * Create Supabase client for Server Components
  * Handles cookie-based auth for server-side rendering
  */
-export function createServerSupabaseClient() {
+export async function createServerSupabaseClient() {
   const cookieStore = await cookies();
 
   return createServerClient(
