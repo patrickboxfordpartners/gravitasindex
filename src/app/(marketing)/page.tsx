@@ -93,7 +93,7 @@ export default function HomePage() {
         {/* System Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Card 1: Velocity */}
-          <div className="border border-border bg-panel p-8 relative transition-all duration-300 hover:border-accent hover:shadow-[0_0_30px_rgba(56,189,248,0.15)] hover:-translate-y-1 group cursor-default">
+          <div className="border border-border bg-panel p-8 relative transition-all duration-300 hover:border-accent hover:shadow-[0_0_30px_rgba(56,189,248,0.15)] hover:-translate-y-1 group cursor-default overflow-hidden">
             <span className="font-mono text-6xl text-accent opacity-20 absolute top-4 right-4 transition-opacity group-hover:opacity-40">
               01
             </span>
@@ -112,10 +112,36 @@ export default function HomePage() {
                 Trained to deflect Fair Housing traps. It knows what NOT to say.
               </span>
             </div>
+
+            {/* Hover Preview */}
+            <div className="absolute inset-0 bg-panel border-2 border-accent p-8 transition-all duration-300 translate-y-full group-hover:translate-y-0">
+              <span className="font-mono text-6xl text-accent opacity-20 absolute top-4 right-4">
+                01
+              </span>
+              <h3 className="font-serif text-2xl mb-4 font-normal text-accent">Velocity Details</h3>
+              <div className="space-y-3 text-sm text-text-muted">
+                <div className="flex items-start gap-2">
+                  <span className="text-accent mt-0.5">→</span>
+                  <span><strong className="text-text-main">Instant Qualification:</strong> AI asks pre-approval, timeline, agent status</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <span className="text-accent mt-0.5">→</span>
+                  <span><strong className="text-text-main">Smart Scheduling:</strong> Books showings directly to your calendar</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <span className="text-accent mt-0.5">→</span>
+                  <span><strong className="text-text-main">24/7 Coverage:</strong> Never miss a lead at night or weekends</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <span className="text-accent mt-0.5">→</span>
+                  <span><strong className="text-text-main">CRM Integration:</strong> Syncs with Follow Up Boss, kvCORE, LionDesk</span>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Card 2: Trust */}
-          <div className="border border-border bg-panel p-8 relative transition-all duration-300 hover:border-accent hover:shadow-[0_0_30px_rgba(56,189,248,0.15)] hover:-translate-y-1 group cursor-default">
+          <div className="border border-border bg-panel p-8 relative transition-all duration-300 hover:border-accent hover:shadow-[0_0_30px_rgba(56,189,248,0.15)] hover:-translate-y-1 group cursor-default overflow-hidden">
             <span className="font-mono text-6xl text-accent opacity-20 absolute top-4 right-4 transition-opacity group-hover:opacity-40">
               02
             </span>
@@ -142,10 +168,36 @@ export default function HomePage() {
                 <span>2 hrs post-close</span>
               </div>
             </div>
+
+            {/* Hover Preview */}
+            <div className="absolute inset-0 bg-panel border-2 border-accent p-8 transition-all duration-300 translate-y-full group-hover:translate-y-0">
+              <span className="font-mono text-6xl text-accent opacity-20 absolute top-4 right-4">
+                02
+              </span>
+              <h3 className="font-serif text-2xl mb-4 font-normal text-accent">Trust Details</h3>
+              <div className="space-y-3 text-sm text-text-muted">
+                <div className="flex items-start gap-2">
+                  <span className="text-accent mt-0.5">→</span>
+                  <span><strong className="text-text-main">2-Hour Trigger:</strong> SMS sent when dopamine peaks post-closing</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <span className="text-accent mt-0.5">→</span>
+                  <span><strong className="text-text-main">One-Tap Flow:</strong> From text to published review in 30 seconds</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <span className="text-accent mt-0.5">→</span>
+                  <span><strong className="text-text-main">Multi-Platform:</strong> Google, Zillow, Realtor.com simultaneously</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <span className="text-accent mt-0.5">→</span>
+                  <span><strong className="text-text-main">Conversion Rate:</strong> 67% average (industry: 12%)</span>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Card 3: Capital */}
-          <div className="border border-border bg-panel p-8 relative transition-all duration-300 hover:border-accent hover:shadow-[0_0_30px_rgba(56,189,248,0.15)] hover:-translate-y-1 group cursor-default">
+          <div className="border border-border bg-panel p-8 relative transition-all duration-300 hover:border-accent hover:shadow-[0_0_30px_rgba(56,189,248,0.15)] hover:-translate-y-1 group cursor-default overflow-hidden">
             <span className="font-mono text-6xl text-accent opacity-20 absolute top-4 right-4 transition-opacity group-hover:opacity-40">
               03
             </span>
@@ -156,6 +208,32 @@ export default function HomePage() {
             <p className="text-accent text-sm">
               No more driving across town for a &ldquo;buyer&rdquo; who can&apos;t get a loan. Every tour is transaction-ready.
             </p>
+
+            {/* Hover Preview */}
+            <div className="absolute inset-0 bg-panel border-2 border-accent p-8 transition-all duration-300 translate-y-full group-hover:translate-y-0">
+              <span className="font-mono text-6xl text-accent opacity-20 absolute top-4 right-4">
+                03
+              </span>
+              <h3 className="font-serif text-2xl mb-4 font-normal text-accent">Capital Details</h3>
+              <div className="space-y-3 text-sm text-text-muted">
+                <div className="flex items-start gap-2">
+                  <span className="text-accent mt-0.5">→</span>
+                  <span><strong className="text-text-main">Pre-Approval Check:</strong> Verifies financial readiness before showing</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <span className="text-accent mt-0.5">→</span>
+                  <span><strong className="text-text-main">Timeline Filtering:</strong> Only serious buyers within 90 days</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <span className="text-accent mt-0.5">→</span>
+                  <span><strong className="text-text-main">Agent Conflict:</strong> Auto-declines if already represented</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <span className="text-accent mt-0.5">→</span>
+                  <span><strong className="text-text-main">Time ROI:</strong> Average 73% reduction in wasted showings</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

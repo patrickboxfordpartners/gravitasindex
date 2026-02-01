@@ -1,4 +1,5 @@
 import { getFAQs } from '@/lib/sanity/queries';
+import { FAQAccordion } from '@/components/marketing/FAQAccordion';
 
 export const metadata = {
   title: 'FAQ',
@@ -105,28 +106,7 @@ export default async function FAQPage() {
           Everything you need to know about Entity Search, Gravitas Index, and what happens next.
         </p>
 
-        <div className="max-w-4xl space-y-12">
-          {faqs.map((faq: any) => (
-            <div key={faq._id} className="border-t border-border pt-8">
-              <h2 className="font-serif text-2xl font-normal mb-4 text-text-main">
-                {faq.question}
-              </h2>
-              <p className="text-text-muted text-lg leading-relaxed whitespace-pre-line">
-                {faq.answer}
-              </p>
-              {faq.hasLink && (
-                <a
-                  href={faq.linkUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block mt-4 text-accent hover:underline font-medium"
-                >
-                  {faq.linkText} →
-                </a>
-              )}
-            </div>
-          ))}
-        </div>
+        <FAQAccordion faqs={faqs} />
 
         <div className="mt-20 pt-12 border-t border-border">
           <h2 className="font-serif text-3xl font-normal mb-6">
