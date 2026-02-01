@@ -16,7 +16,7 @@
     "@stripe/stripe-js": "^8.7.0",
     "@supabase/ssr": "^0.8.0",
     "@supabase/supabase-js": "^2.93.3",
-    "next": "^16.1.6",
+    "next": "15.5.11",
     "next-sanity": "^11.6.12",
     "posthog-js": "^1.336.4",
     "react": "^19.0.0",
