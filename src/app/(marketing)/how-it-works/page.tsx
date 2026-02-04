@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 
 export default function HowItWorksPage() {
   const [expandedLayer, setExpandedLayer] = useState<number | null>(1);
@@ -235,7 +236,7 @@ export default function HowItWorksPage() {
 
         {/* CTA */}
         <div className="mt-20 text-center">
-          <a
+          <Link
             href="/#alpha"
             className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-mono text-sm rounded-full hover:shadow-xl hover:shadow-cyan-500/50 transition-all duration-300 hover:scale-105"
           >
@@ -243,7 +244,7 @@ export default function HowItWorksPage() {
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
-          </a>
+          </Link>
         </div>
       </section>
 
