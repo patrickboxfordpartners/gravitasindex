@@ -6,93 +6,114 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-border bg-panel py-16">
-      <div className="container mx-auto px-8">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-12 text-center md:text-left">
-          {/* Brand Column */}
-          <div className="md:col-span-5">
-            <div className="flex justify-center md:justify-start">
+    <footer className="text-center bg-slate-950 text-slate-400 py-16 border-t border-slate-900">
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="grid md:grid-cols-4 gap-12 mb-12">
+          {/* Logo and Company Info */}
+          <div className="col-span-1 md:col-span-1">
+            <div className="flex justify-center mb-4">
               <Logo size="small" />
             </div>
-            <p className="text-text-muted text-sm mt-6 leading-relaxed max-w-md mx-auto md:mx-0">
-              Transform your business into a market authority Google can't ignore.
-              Data-driven entity optimization that turns search invisibility into market dominance.
-            </p>
+
+            <a
+              href="https://www.boxfordpartners.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-center inline-block px-2 py-1 mb-6 border border-slate-800 rounded text-[10px] font-bold text-slate-500 uppercase tracking-wider hover:border-slate-600 hover:text-slate-300 transition-colors"
+            >
+              A Boxford Partners Company
+            </a>
+
+            <div className="text-center text-sm text-slate-500 space-y-2 mb-6">
+              <p>
+                <svg className="w-4 h-4 inline text-slate-600 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+                </svg>
+                345 California St, Suite 600<br />
+                <span className="pl-5">San Francisco, CA 94104</span>
+              </p>
+              <p>
+                <a href="mailto:hello@gravitasindex.com" className="hover:text-white transition-colors">
+                  <svg className="w-4 h-4 inline text-slate-600 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                  </svg>
+                  hello@gravitasindex.com
+                </a>
+              </p>
+            </div>
           </div>
 
-          {/* Product Column */}
-          <div className="md:col-span-2">
-            <h5 className="font-mono text-xs uppercase tracking-wider text-text-main mb-4 font-normal">
+          {/* Product Links */}
+          <div>
+            <h4 className="text-center text-white font-bold mb-6 text-sm uppercase tracking-wide">
               Product
-            </h5>
-            <ul className="space-y-3">
+            </h4>
+            <ul className="space-y-3 text-sm text-center">
               <li>
-                <Link href="/how-it-works" className="text-sm text-text-muted hover:text-accent transition-colors">
+                <Link href="/how-it-works" className="hover:text-white transition-colors">
                   How It Works
                 </Link>
               </li>
               <li>
-                <Link href="/#alpha" className="text-sm text-text-muted hover:text-accent transition-colors">
+                <Link href="/#alpha" className="hover:text-white transition-colors">
                   Join Alpha
                 </Link>
               </li>
               <li>
-                <Link href="/faq" className="text-sm text-text-muted hover:text-accent transition-colors">
+                <Link href="/faq" className="hover:text-white transition-colors">
                   FAQ
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Company Column */}
-          <div className="md:col-span-2">
-            <h5 className="font-mono text-xs uppercase tracking-wider text-text-main mb-4 font-normal">
+          {/* Company Links */}
+          <div>
+            <h4 className="text-center text-white font-bold mb-6 text-sm uppercase tracking-wide">
               Company
-            </h5>
-            <ul className="space-y-3">
+            </h4>
+            <ul className="space-y-3 text-sm text-center">
               <li>
-                <a
-                  href="mailto:hello@gravitasindex.com"
-                  className="text-sm text-text-muted hover:text-accent transition-colors"
-                >
-                  Contact
+                <a href="https://www.boxfordpartners.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                  About
                 </a>
               </li>
               <li>
-                <Link href="/privacy" className="text-sm text-text-muted hover:text-accent transition-colors">
-                  Privacy
-                </Link>
+                <a href="mailto:hello@gravitasindex.com" className="hover:text-white transition-colors">
+                  Support
+                </a>
               </li>
               <li>
-                <Link href="/terms" className="text-sm text-text-muted hover:text-accent transition-colors">
-                  Terms
-                </Link>
+                <a href="mailto:hello@gravitasindex.com" className="hover:text-white transition-colors">
+                  Contact
+                </a>
               </li>
             </ul>
           </div>
 
-          {/* Connect Column */}
-          <div className="md:col-span-3">
-            <h5 className="font-mono text-xs uppercase tracking-wider text-text-main mb-4 font-normal">
-              Connect
-            </h5>
-            <p className="text-sm text-text-muted mb-4">
-              Questions? Reach out:
-            </p>
-            <a
-              href="mailto:hello@gravitasindex.com"
-              className="text-sm text-accent hover:underline font-mono"
-            >
-              hello@gravitasindex.com
-            </a>
+          {/* Legal Links */}
+          <div>
+            <h4 className="text-center text-white font-bold mb-6 text-sm uppercase tracking-wide">
+              Legal
+            </h4>
+            <ul className="space-y-3 text-sm text-center">
+              <li>
+                <Link href="/privacy" className="hover:text-white transition-colors">
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link href="/terms" className="hover:text-white transition-colors">
+                  Terms of Service
+                </Link>
+              </li>
+            </ul>
           </div>
         </div>
 
-        {/* Copyright */}
-        <div className="pt-8 border-t border-border text-center md:text-left">
-          <p className="text-xs text-text-muted font-mono font-normal">
-            © {currentYear} GRAVITAS INDEX. All rights reserved.
-          </p>
+        <div className="pt-8 border-t border-slate-900 text-center text-sm">
+          <p>&copy; {currentYear} Boxford Partners LLC DBA GRAVITAS INDEX. All rights reserved.</p>
         </div>
       </div>
     </footer>
