@@ -34,10 +34,7 @@ export default function AdminLoginPage() {
     <div className="min-h-screen bg-bg flex items-center justify-center p-4">
       <div className="bg-panel border border-border max-w-md w-full p-8 md:p-12">
         <div className="flex items-center justify-center mb-8">
-          <Logo className="mr-3" />
-          <span className="font-serif text-2xl text-text-main">
-            GRAVITAS INDEX
-          </span>
+          <Logo />
         </div>
 
         {status === 'success' ? (
