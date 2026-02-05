@@ -83,11 +83,8 @@ export function Sidebar() {
   return (
     <div className="w-64 bg-panel border-r border-border flex flex-col h-screen sticky top-0">
       <div className="p-6 border-b border-border">
-        <Link href="/admin/dashboard" className="flex items-center">
-          <Logo className="mr-3" />
-          <span className="font-serif text-xl text-text-main">
-            GRAVITAS INDEX
-          </span>
+        <Link href="/admin/dashboard" className="flex items-center justify-center">
+          <Logo />
         </Link>
       </div>
 
