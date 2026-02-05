@@ -5,6 +5,7 @@ import { createClientSupabaseClient } from '@/lib/supabase/client-auth';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { TextArea } from '@/components/ui/TextArea';
+import { ClassificationBadge, type Classification } from '@/components/ui/ClassificationBadge';
 import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
 
@@ -19,6 +20,11 @@ type Lead = {
   source: string;
   created_at: string;
   updated_at: string;
+  classification?: Classification | null;
+  recommended_action?: string | null;
+  signals?: any;
+  rationale?: string | null;
+  classification_timestamp?: string | null;
 };
 
 type EmailSequence = {
@@ -35,6 +41,12 @@ type Note = {
   created_at: string;
 };
 
+type TimelineEvent = {
+  id: string;
+  event: string;
+  timestamp: string;
+};
+
 export default function LeadDetailPage() {
   const params = useParams();
   const router = useRouter();
@@ -43,9 +55,11 @@ export default function LeadDetailPage() {
   const [lead, setLead] = useState<Lead | null>(null);
   const [emailSequences, setEmailSequences] = useState<EmailSequence[]>([]);
   const [notes, setNotes] = useState<Note[]>([]);
+  const [timeline, setTimeline] = useState<TimelineEvent[]>([]);
   const [newNote, setNewNote] = useState('');
   const [loading, setLoading] = useState(true);
   const [updating, setUpdating] = useState(false);
+  const [classifying, setClassifying] = useState(false);
 
   useEffect(() => {
     fetchLeadData();
@@ -82,6 +96,15 @@ export default function LeadDetailPage() {
         .order('created_at', { ascending: false });
 
       setNotes(notesData || []);
+
+      // Fetch classification timeline
+      const { data: timelineData } = await supabase
+        .from('classification_timeline')
+        .select('*')
+        .eq('lead_id', leadId)
+        .order('timestamp', { ascending: true });
+
+      setTimeline(timelineData || []);
     } catch (error) {
       console.error('Error fetching lead data:', error);
     } finally {
@@ -132,6 +155,32 @@ export default function LeadDetailPage() {
     }
   }
 
+  async function classifyLead() {
+    setClassifying(true);
+    try {
+      const response = await fetch('/api/leads/classify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ lead_id: leadId }),
+      });
+
+      if (!response.ok) throw new Error('Classification failed');
+
+      const result = await response.json();
+
+      if (result.success) {
+        fetchLeadData(); // Refresh to show classification
+      } else {
+        throw new Error(result.error || 'Classification failed');
+      }
+    } catch (error: any) {
+      console.error('Error classifying lead:', error);
+      alert(error.message || 'Failed to classify lead');
+    } finally {
+      setClassifying(false);
+    }
+  }
+
   if (loading) {
     return (
       <div className="text-center py-12">
@@ -175,6 +224,141 @@ export default function LeadDetailPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2 space-y-6">
+          {/* Classification Analysis Card */}
+          <Card className="p-6">
+            <div className="flex items-start justify-between mb-4">
+              <h3 className="font-serif text-xl text-text-main">Classification Analysis</h3>
+              {!lead.classification && (
+                <Button
+                  onClick={classifyLead}
+                  disabled={classifying}
+                  variant="accent"
+                  className="text-sm"
+                >
+                  {classifying ? 'Classifying...' : 'Classify Lead'}
+                </Button>
+              )}
+            </div>
+
+            {lead.classification ? (
+              <div className="space-y-4">
+                {/* Classification Badge & Timestamp */}
+                <div className="flex items-center gap-3">
+                  <ClassificationBadge classification={lead.classification} />
+                  {lead.classification_timestamp && (
+                    <span className="text-sm text-text-muted">
+                      Classified {new Date(lead.classification_timestamp).toLocaleString()}
+                    </span>
+                  )}
+                </div>
+
+                {/* Recommended Action */}
+                {lead.recommended_action && (
+                  <div className="bg-bg border border-border rounded-lg p-4">
+                    <p className="text-sm font-medium text-text-muted mb-1">Recommended Action</p>
+                    <p className="text-text-main">{lead.recommended_action}</p>
+                  </div>
+                )}
+
+                {/* Rationale */}
+                {lead.rationale && (
+                  <div>
+                    <p className="text-sm font-medium text-text-muted mb-2">Rationale</p>
+                    <p className="text-text-main text-sm leading-relaxed">{lead.rationale}</p>
+                  </div>
+                )}
+
+                {/* Signals */}
+                {lead.signals && Object.keys(lead.signals).length > 0 && (
+                  <div>
+                    <p className="text-sm font-medium text-text-muted mb-3">Signals Detected</p>
+                    <div className="space-y-3">
+                      {lead.signals.timelineClarity && (
+                        <div className="flex items-start gap-2">
+                          <span className="text-accent text-xs mt-0.5">⏱</span>
+                          <div className="flex-1">
+                            <p className="text-xs font-medium text-text-muted">Timeline Clarity</p>
+                            <p className="text-sm text-text-main">{lead.signals.timelineClarity}</p>
+                          </div>
+                        </div>
+                      )}
+                      {lead.signals.locationSpecificity && (
+                        <div className="flex items-start gap-2">
+                          <span className="text-accent text-xs mt-0.5">📍</span>
+                          <div className="flex-1">
+                            <p className="text-xs font-medium text-text-muted">Location Specificity</p>
+                            <p className="text-sm text-text-main">{lead.signals.locationSpecificity}</p>
+                          </div>
+                        </div>
+                      )}
+                      {lead.signals.propertyClarity && (
+                        <div className="flex items-start gap-2">
+                          <span className="text-accent text-xs mt-0.5">🏠</span>
+                          <div className="flex-1">
+                            <p className="text-xs font-medium text-text-muted">Property Clarity</p>
+                            <p className="text-sm text-text-main">{lead.signals.propertyClarity}</p>
+                          </div>
+                        </div>
+                      )}
+                      {lead.signals.readinessIndicators && lead.signals.readinessIndicators.length > 0 && (
+                        <div className="flex items-start gap-2">
+                          <span className="text-green-400 text-xs mt-0.5">✓</span>
+                          <div className="flex-1">
+                            <p className="text-xs font-medium text-text-muted mb-1">Readiness Indicators</p>
+                            <ul className="space-y-1">
+                              {lead.signals.readinessIndicators.map((indicator: string, i: number) => (
+                                <li key={i} className="text-sm text-text-main">• {indicator}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        </div>
+                      )}
+                      {lead.signals.riskTriggers && lead.signals.riskTriggers.length > 0 && (
+                        <div className="flex items-start gap-2">
+                          <span className="text-red-400 text-xs mt-0.5">⚠</span>
+                          <div className="flex-1">
+                            <p className="text-xs font-medium text-text-muted mb-1">Risk Triggers</p>
+                            <ul className="space-y-1">
+                              {lead.signals.riskTriggers.map((trigger: string, i: number) => (
+                                <li key={i} className="text-sm text-red-400">• {trigger}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                )}
+
+                {/* Timeline */}
+                {timeline.length > 0 && (
+                  <div>
+                    <p className="text-sm font-medium text-text-muted mb-3">Classification Timeline</p>
+                    <div className="space-y-2">
+                      {timeline.map((event) => (
+                        <div key={event.id} className="flex items-start gap-3 text-sm">
+                          <span className="text-accent mt-0.5">→</span>
+                          <div className="flex-1">
+                            <p className="text-text-main">{event.event}</p>
+                            <p className="text-xs text-text-muted">
+                              {new Date(event.timestamp).toLocaleString()}
+                            </p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <div className="text-center py-8">
+                <p className="text-text-muted mb-4">
+                  This lead has not been classified yet. Click "Classify Lead" to analyze and categorize this inquiry.
+                </p>
+              </div>
+            )}
+          </Card>
+
           <Card className="p-6">
             <h3 className="font-serif text-xl mb-4 text-text-main">Lead Information</h3>
             <div className="grid grid-cols-2 gap-4">

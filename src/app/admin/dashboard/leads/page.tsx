@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { createClientSupabaseClient } from '@/lib/supabase/client-auth';
 import { Card } from '@/components/ui/Card';
 import Link from 'next/link';
+import { ClassificationBadge, type Classification } from '@/components/ui/ClassificationBadge';
 
 type Lead = {
   id: string;
@@ -15,6 +16,8 @@ type Lead = {
   pain: string;
   source: string;
   created_at: string;
+  classification?: Classification | null;
+  recommended_action?: string | null;
 };
 
 export default function LeadsPage() {
@@ -23,6 +26,7 @@ export default function LeadsPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState('all');
   const [roleFilter, setRoleFilter] = useState('all');
+  const [classificationFilter, setClassificationFilter] = useState('all');
 
   useEffect(() => {
     fetchLeads();
@@ -55,8 +59,12 @@ export default function LeadsPage() {
 
     const matchesStatus = statusFilter === 'all' || lead.status === statusFilter;
     const matchesRole = roleFilter === 'all' || lead.role === roleFilter;
+    const matchesClassification =
+      classificationFilter === 'all' ||
+      (classificationFilter === 'unclassified' && !lead.classification) ||
+      lead.classification === classificationFilter;
 
-    return matchesSearch && matchesStatus && matchesRole;
+    return matchesSearch && matchesStatus && matchesRole && matchesClassification;
   });
 
   // Get unique roles for filter
@@ -108,6 +116,19 @@ export default function LeadsPage() {
               </option>
             ))}
           </select>
+
+          <select
+            value={classificationFilter}
+            onChange={(e) => setClassificationFilter(e.target.value)}
+            className="bg-bg border border-border px-4 py-2 rounded text-text-main focus:outline-none focus:border-accent"
+          >
+            <option value="all">All Classifications</option>
+            <option value="unclassified">Unclassified</option>
+            <option value="opportunity">Opportunity</option>
+            <option value="noise">Noise</option>
+            <option value="risk">Risk</option>
+            <option value="reputation">Reputation</option>
+          </select>
         </div>
 
         {loading ? (
@@ -124,6 +145,7 @@ export default function LeadsPage() {
                   <th className="text-left py-3 px-4 text-sm font-medium text-text-muted">Email</th>
                   <th className="text-left py-3 px-4 text-sm font-medium text-text-muted">Market</th>
                   <th className="text-left py-3 px-4 text-sm font-medium text-text-muted">Role</th>
+                  <th className="text-left py-3 px-4 text-sm font-medium text-text-muted">Classification</th>
                   <th className="text-left py-3 px-4 text-sm font-medium text-text-muted">Status</th>
                   <th className="text-left py-3 px-4 text-sm font-medium text-text-muted">Source</th>
                   <th className="text-left py-3 px-4 text-sm font-medium text-text-muted">Date</th>
@@ -137,6 +159,9 @@ export default function LeadsPage() {
                     <td className="py-4 px-4 text-text-muted text-sm">{lead.email}</td>
                     <td className="py-4 px-4 text-text-main">{lead.market}</td>
                     <td className="py-4 px-4 text-text-muted text-sm">{lead.role}</td>
+                    <td className="py-4 px-4">
+                      <ClassificationBadge classification={lead.classification} size="sm" />
+                    </td>
                     <td className="py-4 px-4">
                       <span className={`text-xs px-2 py-1 rounded ${
                         lead.status === 'new' ? 'bg-accent/20 text-accent' :
